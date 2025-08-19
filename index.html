@@ -59,6 +59,9 @@
     <a class="btn" href="https://www.facebook.com/share/g/16oiiv7GdB/">انضم للجروب</a>
     <button class="btn btn-outline" onclick="openShare()">شارك الحملة الآن</button>
   </div>
+  <small style="margin-top:2rem;font-size:.8rem;color:#aaa">
+    <span class="ar">تم إنشاء هذا الموقع كدعم شخصي للحملة، إيمانًا بأهمية إنترنت غير محدود وعادل للجميع.</span>
+  </small>
 </section>
 
 <!-- Why -->
@@ -80,7 +83,7 @@
   <h2>كيف تشارك الآن؟</h2>
   <ol>
     <li><a href="https://www.facebook.com/share/g/16oiiv7GdB/">انضم للجروب الرسمي</a></li>
-    <li><a href="<!--{{a4_flyer_pdf_link}}-->">أطبع QR Code وشارك في النشر </a></li>
+    <li><a href="https://www.mediafire.com/file/czs4k5tjwnf6pye/%2523Poster.rar/file">>أطبع QR Code وشارك في النشر </a></li>
     <li>
       ادعُ أصدقاءك:
       <a href="https://wa.me/?text=أنا%20مع%20%23انترنت_غير_محدود_في_مصر">واتساب</a> |
@@ -102,20 +105,51 @@
 </section>
 
 <!-- Day Zero -->
-<section id="day-zero">
+<section id="day-zero" style="text-align:center;margin:4rem 1rem">
   <h2>يوم الصفر</h2>
   <p>قوة المقاطعة في التزامنا سويًا.</p>
-  <div class="countdown" id="countdown">1 سبتمبر 2025 – ‎باقي…</div>
+
+  <!-- العداد التنازلي -->
+  <div id="countdown" style="font-size:2rem;margin:1rem 0">
+    <span id="cd-days">--</span> يوم
+    <span id="cd-hours">--</span> ساعة
+    <span id="cd-mins">--</span> دقيقة
+  </div>
+
+  <script>
+    (function () {
+      const target = new Date("2025-09-01T00:00:00+02:00").getTime(); // توقيت القاهرة
+      const cd   = document.getElementById('countdown');
+      const days = document.getElementById('cd-days');
+      const hrs  = document.getElementById('cd-hours');
+      const mins = document.getElementById('cd-mins');
+
+      function tick() {
+        const diff = target - Date.now();
+        if (diff <= 0) {
+          cd.innerHTML = "انتهى العدّاد";
+          return;
+        }
+        days.textContent = Math.floor(diff / (1000*60*60*24));
+        hrs.textContent  = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
+        mins.textContent = Math.floor((diff % (1000*60*60)) / (1000*60));
+      }
+
+      tick();                 // تشغيل فورًا
+      setInterval(tick, 60000); // تحديث كل دقيقة
+    })();
+  </script>
 </section>
 
 <!-- Assets -->
 <section id="assets">
-  <h2>الملفات الجاهزة</h2>
-  <a class="btn" href="<!--{{assets_zip_link}}-->">طباعه ورقه QR </a>
-</section>
-  
- 
+  <h2 class="ar">الملفات الجاهزة</h2>
 
+  <a class="btn" href="https://www.mediafire.com/file/czs4k5tjwnf6pye/%2523Poster.rar/file">
+    <span class="ar"> تحميل البوستر </span>
+  </a>
+</section>
+ 
 <!-- FAQ -->
 <section id="faq">
   <h2>أسئلة شائعة</h2>
