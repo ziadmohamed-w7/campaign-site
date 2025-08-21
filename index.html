@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>الإنترنت حقنا – حملة الإنترنت غير المحدود في مصر</title>
   <meta name="description" content="معًا لـ #انترنت_غير_محدود_في_مصر. انضم، شارك، غيّر الواقع.">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta property="og:title" content="الإنترنت مش رفاهية… حقنا">
   <meta property="og:description" content="حملة الإنترنت غير المحدود في مصر">
   <meta property="og:image" content="<!--{{og_image}}-->">
@@ -12,185 +12,549 @@
   <link rel="icon" href="<!--{{favicon}}-->">
 
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      --primary:#FF3B30;
+      --primary:#e53935;
+      --primary-dark:#c62828;
       --bg:#111;
+      --surface:#1a1a1a;
       --text:#fff;
-      --muted:#f5f5f5;
+      --radius:24px;
     }
-    *{margin:0;padding:0;box-sizing:border-box;font-family:'Cairo',sans-serif;}
-    body{background:var(--bg);color:var(--text);line-height:1.6;scroll-behavior:smooth;}
+
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    body{
+      font-family:'Cairo',sans-serif;
+      background:linear-gradient(135deg,var(--bg) 0%,var(--surface) 100%);
+      min-height:100vh;
+      color:var(--text);
+      line-height:1.6;
+      scroll-behavior:smooth;
+    }
     h1,h2,h3{font-weight:900;margin-bottom:.6em}
     a{color:var(--primary);text-decoration:none}
     section{padding:4rem 1rem;max-width:960px;margin:auto}
     .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;background:url('<!--{{hero_bg}}-->') center/cover}
-    .hero h1{font-size:2.8rem;margin-bottom:.5rem}
-    .hero p{font-size:1.2rem;margin-bottom:2rem}
-    .btn{background:var(--primary);color:#fff;padding:.8rem 1.4rem;border-radius:16px;font-weight:700;margin:.5rem;display:inline-block}
+    .btn{background:var(--primary);color:#fff;padding:.8rem 1.4rem;border-radius:16px;font-weight:700;margin:.5rem;display:inline-block;border:none;cursor:pointer}
     .btn-outline{border:2px solid var(--primary);background:transparent}
     .sticky{position:fixed;top:0;left:0;right:0;background:#000a;padding:.7rem 1rem;display:flex;justify-content:space-between;align-items:center;z-index:99}
-    .countdown{font-size:2rem;text-align:center;margin:1rem 0}
-    .faq details{margin-bottom:1rem}
-    .gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:1rem}
-    .gallery img{width:100%;border-radius:12px}
-    .platforms{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center}
-    footer{background:#000;padding:2rem 1rem;text-align:center;font-size:.9rem;color:var(--muted)}
-    @media(max-width:600px){.hero h1{font-size:2.2rem}}
-  </style>
+    footer{background:#000;padding:2rem 1rem;text-align:center;font-size:.9rem;color:#ccc}
 
-  <!-- Analytics -->
-  <!--{{plausible_or_ga_tag}}-->
-</head>
-<body>
-
-<!-- Sticky bar -->
-<div class="sticky">
-  <span id="logo">الإنترنت حقنا</span>
-</div>
-
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-  <meta charset="utf-8">
-  <title>الإنترنت حقنا – حملة الإنترنت غير المحدود في مصر</title>
-  <meta name="description" content="معًا لـ #انترنت_غير_محدود_في_مصر. انضم، شارك، غيّر الواقع.">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta property="og:title" content="الإنترنت مش رفاهية… حقنا">
-  <meta property="og:description" content="حملة الإنترنت غير المحدود في مصر">
-  <meta property="og:image" content="<!--{{og_image}}-->">
-  <meta name="twitter:card" content="summary_large_image">
-  <link rel="icon" href="<!--{{favicon}}-->">
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
-
-  <style>
-    :root{
-      --primary:#FF3B30;
-      --bg:#111;
-      --text:#fff;
-      --muted:#f5f5f5;
+    /* تصميم الـ Hero الجديد */
+    .hero{
+      padding:clamp(40px,8vw,80px) clamp(20px,4vw,40px);
+      background:rgba(40,40,40,.8);
+      backdrop-filter:blur(10px);
+      border-radius:var(--radius);
+      max-width:800px;
+      width:100%;
+      margin:auto;
+      box-shadow:0 25px 50px rgba(0,0,0,.4),0 0 0 1px rgba(255,255,255,.1);
+      position:relative;
+      animation:fadeInUp .8s ease-out;
+      overflow:hidden;
     }
-    *{margin:0;padding:0;box-sizing:border-box;font-family:'Cairo',sans-serif;}
-    body{background:var(--bg);color:var(--text);line-height:1.6;scroll-behavior:smooth;}
-    h1,h2,h3{font-weight:900;margin-bottom:.6em}
-    a{color:var(--primary);text-decoration:none}
-    section{padding:4rem 1rem;max-width:960px;margin:auto}
-    .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;background:url('<!--{{hero_bg}}-->') center/cover}
-    .hero h1{font-size:2.8rem;margin-bottom:.5rem}
-    .hero p{font-size:1.2rem;margin-bottom:2rem}
-    .btn{background:var(--primary);color:#fff;padding:.8rem 1.4rem;border-radius:16px;font-weight:700;margin:.5rem;display:inline-block}
-    .btn-outline{border:2px solid var(--primary);background:transparent}
-    .sticky{position:fixed;top:0;left:0;right:0;background:#000a;padding:.7rem 1rem;display:flex;justify-content:space-between;align-items:center;z-index:99}
-    .countdown{font-size:2rem;text-align:center;margin:1rem 0}
-    .faq details{margin-bottom:1rem}
-    .gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:1rem}
-    .gallery img{width:100%;border-radius:12px}
-    .platforms{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center}
-    footer{background:#000;padding:2rem 1rem;text-align:center;font-size:.9rem;color:var(--muted)}
+    .hero h1{
+      font-size:clamp(2rem,5vw,3.5rem);
+      font-weight:900;
+      background:linear-gradient(135deg,#fff,#f8f9ff);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      line-height:1.2;
+      margin-bottom:20px;
+    }
+    .hero p{margin-bottom:40px;font-size:clamp(1rem,3vw,1.4rem);opacity:.95}
+    .buttons-container{display:flex;gap:20px;justify-content:center;flex-wrap:wrap}
+    .floating-elements{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+    .float-icon{
+      position:absolute;font-size:38px;
+      background:linear-gradient(135deg,#ff4d4d,#ff9966);
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+      opacity:.3;animation:float 8s ease-in-out infinite;
+    }
+    .float-icon:nth-child(1){top:20%;left:15%;animation-delay:0s}
+    .float-icon:nth-child(2){top:40%;right:10%;animation-delay:2s}
+    .float-icon:nth-child(3){bottom:25%;left:30%;animation-delay:4s}
+    .float-icon:nth-child(4){top:70%;right:20%;animation-delay:1s}
+    .float-icon:nth-child(5){bottom:10%;left:50%;animation-delay:3s}
+    @keyframes float{0%,100%{transform:translateY(0) rotate(0deg);opacity:.3}50%{transform:translateY(-25px) rotate(15deg);opacity:.8}}
+    @keyframes fadeInUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+
+    /* قوالب المراحل */
+    details{margin-bottom:1rem}
+    summary{cursor:pointer;font-weight:700}
+    textarea{width:100%;min-height:120px;background:#111;color:#ccc;border:none;border-radius:6px;padding:1rem;font-family:'Cairo',sans-serif;font-size:.9rem;resize:vertical}
     @media(max-width:600px){.hero h1{font-size:2.2rem}}
   </style>
-
-  <!-- Analytics -->
-  <!--{{plausible_or_ga_tag}}-->
 </head>
 <body>
 
-<!-- Sticky bar -->
+<!-- الشريط العلوي الثابت -->
 <div class="sticky">
-  <span id="logo">الإنترنت حقنا</span>
+  <span>الإنترنت حقنا</span>
 </div>
 
-<!-- Hero -->
+<!-- Hero جديد -->
 <section class="hero">
+  <div class="floating-elements" aria-hidden="true">
+    <span class="float-icon">❔</span>
+    <span class="float-icon">🌐</span>
+    <span class="float-icon">📡</span>
+    <span class="float-icon">💻</span>
+    <span class="float-icon">♾️</span>
+  </div>
+
   <h1>مستقبلنا يبدأ بإنترنت غير محدود</h1>
-  <p>معًا لــ  #انترنت_غير_محدود_في_مصر</p>
-  <div>
-    <a class="btn" href="https://www.facebook.com/share/g/16oiiv7GdB/">انضم للجروب</a>
+  <p>معًا لــ #انترنت_غير_محدود_في_مصر</p>
+
+  <div class="buttons-container">
+    <a class="btn" href="https://www.facebook.com/share/g/16oiiv7GdB/" target="_blank">انضم للجروب</a>
     <button class="btn btn-outline" onclick="openShare()">شارك الحملة الآن</button>
   </div>
-  <script>
-function openShare() {
-  const shareData = {
-    title: 'حملة #Poster',
-    text: 'انضم لحملة #Poster وشارك بوسترات التوعية في أماكن آمنة!',
-    url: window.location.href
-  };
 
-  if (navigator.share) {
-    // Web Share API (Chrome, Edge, Safari, Samsung, iOS Safari...)
-    navigator.share(shareData).catch(() => {});
-  } else {
-    // Fallback: نافذة صغيرة لنسخ الرابط
-    const dummyInput = document.createElement('input');
-    dummyInput.value = shareData.url;
-    document.body.appendChild(dummyInput);
-    dummyInput.select();
-    document.execCommand('copy');
-    document.body.removeChild(dummyInput);
-    alert('✅ تم نسخ الرابط، شاركه الآن في أي مكان!');
-  }
-}
-</script>
-  <small style="margin-top:2rem;font-size:.8rem;color:#aaa">
-    <span class="ar">تم إنشاء هذا الموقع كدعم شخصي، وبشكل غير ربحي نهائي، إيمانًا بأهمية إنترنت غير محدود وعادل للجميع.</span>
+  <small style="display:block;margin-top:2rem;font-size:.8rem;color:#aaa">
+    تم إنشاء هذا الموقع كدعم شخصي، وبشكل غير ربحي نهائي، إيمانًا بأهمية إنترنت غير محدود وعادل للجميع.
   </small>
 </section>
-  
-  
- 
 
-
-    <!-- قسم المراحل -->
+<!-- قسم المراحل -->
 <section id="phases">
-  <h2 style="background:var(--primary);color:#fff;padding:1rem;font-weight:900;font-size:1.25rem;border-radius:8px;margin-bottom:.5rem">
+  <style>
+    :root {
+      --primary: #e74c3c;
+      --primary-hover: #c0392b;
+      --success: #2ecc71;
+      --success-light: #58d68d;
+      --dark-bg: #1a1a1a;
+      --card-bg: #2b2b2b;
+      --card-hover: #353535;
+      --text-light: #ddd;
+      --text-white: #fff;
+      --border-color: #444;
+      --shadow: 0 8px 32px rgba(0,0,0,0.3);
+      --gradient: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+      --success-gradient: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
+      --card-gradient: linear-gradient(135deg, #2b2b2b 0%, #353535 100%);
+    }
     
-  مراحل المشاركه في حملة الإنترنت غير المحدود في مصر
+    #phases {
+      font-family: 'Cairo', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+      background: linear-gradient(135deg, #0c0c0c 0%, #1a1a1a 100%);
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    #phases::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(231,76,60,0.1) 0%, transparent 70%);
+      animation: pulse 8s ease-in-out infinite;
+      pointer-events: none;
+    }
+    
+    @keyframes pulse {
+      0%, 100% { opacity: 0.3; transform: scale(1); }
+      50% { opacity: 0.7; transform: scale(1.1); }
+    }
+    
+    #phases h2 {
+      background: var(--gradient);
+      color: var(--text-white);
+      padding: 25px 30px;
+      font-weight: 900;
+      font-size: 1.5rem;
+      border-radius: 15px;
+      margin-bottom: 30px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(231,76,60,0.4);
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+    
+    #phases h2::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+      transition: left 0.5s;
+    }
+    
+    #phases h2:hover::before {
+      left: 100%;
+    }
+    
+    #phases details {
+      background: var(--card-gradient);
+      border-radius: 15px;
+      margin-bottom: 20px;
+      overflow: hidden;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+      border: 1px solid var(--border-color);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+    }
+    
+    #phases details::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--success-gradient);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+    
+    #phases details:hover::before,
+    #phases details[open]::before {
+      transform: scaleX(1);
+    }
+    
+    #phases details:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+      border-color: var(--success);
+      background: linear-gradient(135deg, #353535 0%, #404040 100%);
+    }
+    
+    #phases details summary {
+      cursor: pointer;
+      padding: 20px 25px;
+      background: var(--card-gradient);
+      color: var(--text-white);
+      font-weight: 700;
+      font-size: 1.1rem;
+      border: none;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    #phases details summary::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      right: 25px;
+      width: 12px;
+      height: 12px;
+      border: 2px solid var(--success);
+      border-left: none;
+      border-bottom: none;
+      transform: translateY(-50%) rotate(45deg);
+      transition: transform 0.3s ease;
+    }
+    
+    #phases details[open] summary::before {
+      transform: translateY(-50%) rotate(135deg);
+    }
+    
+    #phases details summary:hover {
+      background: linear-gradient(135deg, #404040 0%, #4a4a4a 100%);
+      padding-right: 50px;
+    }
+    
+    #phases details summary span {
+      background: var(--success-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      filter: drop-shadow(0 0 8px rgba(46,204,113,0.3));
+    }
+    
+    #phases details > div {
+      background: var(--card-bg);
+      padding: 25px;
+      margin: 0;
+      border-radius: 0 0 15px 15px;
+      color: var(--text-light);
+      line-height: 1.8;
+      border-top: 1px solid var(--border-color);
+    }
+    
+    #phases details details {
+      background: #333;
+      border-radius: 10px;
+      margin: 15px 0;
+      border: 1px solid #555;
+    }
+    
+    #phases details details summary {
+      background: linear-gradient(135deg, #444 0%, #555 100%);
+      padding: 15px 20px;
+      font-size: 1rem;
+      border-radius: 10px 10px 0 0;
+    }
+    
+    #phases details details summary:hover {
+      background: linear-gradient(135deg, #555 0%, #666 100%);
+    }
+    
+    #phases ul {
+      padding-left: 25px;
+      margin: 15px 0;
+    }
+    
+    #phases ul li {
+      margin-bottom: 10px;
+      position: relative;
+      padding-left: 10px;
+    }
+    
+    #phases ul li::before {
+      content: '▸';
+      position: absolute;
+      left: -15px;
+      color: var(--success);
+      font-weight: bold;
+      font-size: 1.2em;
+    }
+    
+    #phases ol {
+      padding-left: 25px;
+      margin: 15px 0;
+    }
+    
+    #phases ol li {
+      margin-bottom: 10px;
+      counter-increment: item;
+      position: relative;
+    }
+    
+    #phases textarea {
+      width: 100%;
+      min-height: 120px;
+      padding: 20px;
+      background: linear-gradient(135deg, #111 0%, #222 100%);
+      color: var(--text-light);
+      border: 2px solid #444;
+      border-radius: 12px;
+      font-family: 'Cairo', sans-serif;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      resize: vertical;
+      transition: all 0.3s ease;
+      box-shadow: inset 0 4px 8px rgba(0,0,0,0.3);
+    }
+    
+    #phases textarea:focus {
+      border-color: var(--success);
+      box-shadow: inset 0 4px 8px rgba(0,0,0,0.3), 0 0 0 3px rgba(46,204,113,0.2);
+      outline: none;
+      background: linear-gradient(135deg, #000 0%, #111 100%);
+    }
+    
+    #phases textarea:hover {
+      border-color: #666;
+      background: linear-gradient(135deg, #000 0%, #1a1a1a 100%);
+    }
+    
+    #phases a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      position: relative;
+      padding: 2px 0;
+    }
+    
+    #phases a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--success-gradient);
+      transition: width 0.3s ease;
+    }
+    
+    #phases a:hover {
+      color: var(--success);
+      transform: translateY(-2px);
+    }
+    
+    #phases a:hover::after {
+      width: 100%;
+    }
+    
+    #phases .btn {
+      display: inline-block;
+      background: var(--gradient);
+      color: white;
+      padding: 12px 25px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(231,76,60,0.3);
+      border: none;
+      cursor: pointer;
+    }
+    
+    #phases .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(231,76,60,0.4);
+      background: var(--success-gradient);
+    }
+    
+    #phases h3, #phases h4 {
+      color: var(--text-white);
+      margin: 20px 0 15px 0;
+      font-size: 1.1rem;
+      position: relative;
+      padding-left: 15px;
+    }
+    
+    #phases h3::before, #phases h4::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 4px;
+      height: 20px;
+      background: var(--success-gradient);
+      border-radius: 2px;
+    }
+    
+    #phases strong {
+      color: var(--text-white);
+      font-weight: 700;
+    }
+    
+    /* تحسينات متقدمة للتفاعل */
+    @media (max-width: 768px) {
+      #phases {
+        margin: 10px;
+        padding: 15px;
+      }
+      
+      #phases h2 {
+        font-size: 1.2rem;
+        padding: 20px;
+      }
+      
+      #phases details summary {
+        padding: 15px;
+        font-size: 1rem;
+      }
+      
+      #phases details > div {
+        padding: 20px;
+      }
+    }
+    
+    /* تأثيرات إضافية */
+    #phases details[open] {
+      animation: expandDetails 0.3s ease-out;
+    }
+    
+    @keyframes expandDetails {
+      from {
+        max-height: 60px;
+      }
+      to {
+        max-height: 2000px;
+      }
+    }
+    
+    #phases textarea[readonly] {
+      cursor: pointer;
+    }
+    
+    #phases textarea[readonly]:hover {
+      background: linear-gradient(135deg, #001a00 0%, #002200 100%);
+      border-color: var(--success);
+    }
+    
+    /* تحسين الخلفية العامة */
+    #phases::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      right: -10px;
+      width: 100px;
+      height: 100px;
+      background: radial-gradient(circle, var(--success) 0%, transparent 70%);
+      opacity: 0.1;
+      pointer-events: none;
+    }
+    
+    /* تأثير الظلال المتحركة */
+    @keyframes shadowMove {
+      0%, 100% { box-shadow: 0 8px 25px rgba(0,0,0,0.2), 0 0 0 1px var(--border-color); }
+      50% { box-shadow: 0 15px 40px rgba(46,204,113,0.1), 0 0 0 1px var(--success); }
+    }
+    
+    #phases details:not([open]):hover {
+      animation: shadowMove 2s ease-in-out infinite;
+    }
+  </style>
+
+  <h2>
+    مراحل المشاركه في حملة الإنترنت غير المحدود في مصر
   </h2>
 
  <!-- المرحلة 1 -->
 <details>
   <summary>
-    <span style="color:#90EE91; font-weight:bold;">المرحلة الأولى</span> : إيصال صوتنا
+    <span>المرحلة الأولى</span> : إيصال صوتنا
   </summary>
-  <div style="background-color:#2b2b2b; padding:1rem; margin:1rem 0; border-radius:8px; color:#ddd; line-height:1.8;">
+  <div>
     تعلن حملة الإنترنت غير المحدود في مصر عن بدء أولى خطواتها الرسمية لإيصال صوت المواطنين إلى الجهات المختصة.
     هذه المرحلة تهدف إلى التعبير عن الاستياء بشكل منظم ورسمي من خلال تقديم الشكاوى عبر القنوات الرسمية التالية:<br><br>
 
     <strong>من نوجّه لهم رسالتنا :</strong>
-    <ul style="margin:.5rem 0 1rem 1.2rem">
+    <ul>
       <li>هيئة الرقابة الإدارية</li>
       <li>الجهاز القومي لتنظيم الاتصالات (NTRA)</li>
       <li>شركات الاتصالات الأربع</li>
       <li>منظومة الشكاوى الحكومية الموحدة</li>
     </ul>
- <div style="padding:1rem 0;color:#ccc;line-height:1.7">
+ <div>
   إن هذه الخطوة تعتبر الأساس الأول في مسار الضغط الشعبي السلمي، لضمان وصول مطالبنا إلى صُنّاع القرار بشكل واضح ورسمي<br><br>
    
 
     <strong>الهدف:</strong> إلغاء سياسة الاستخدام العادل وتوفير إنترنت غير محدود للجميع.
+  </div>
   </div>
 </details>
 
  <!-- المرحلة الثانية -->
 <details>
   <summary>
-    <span style="color:#90EE91; font-weight:bold;">المرحلة الثانية</span> : تقديم شكوى عبر هيئة الرقابة الإدارية
+    <span>المرحلة الثانية</span> : تقديم شكوى عبر هيئة الرقابة الإدارية
   </summary>
 
-  <div style="background-color:#2b2b2b; padding:1rem; margin:1rem 0; border-radius:8px; color:#ddd; line-height:1.8;">
+  <div>
     <p>لإيصال صوتنا بشكل رسمي، نبدأ بتقديم شكوى إلى هيئة الرقابة الإدارية من خلال الرابط التالي:</p>
-   <a href="https://www.illicitgains.gov.eg/Ar/Complain/Complain.aspx" style="color:red;text-decoration:none;background:none;border:none;">
+   <a href="https://aca.gov.eg/content/SendComplaint.aspx" class="btn">
   🔗 تقديم شكوى – هيئة الرقابة الإدارية
 </a>
 
 
 
-    <h3 style="margin:1.5rem 0 .5rem;font-size:1.1rem;color:#fff">كيفية تقديم الشكوى:</h3>
-    <ol style="padding-left:1.2rem">
+    <h3>كيفية تقديم الشكوى:</h3>
+    <ol>
       <li>الدخول على الصفحة المخصصة للشكاوى.</li>
       <li>اختيار الجهة: الجهاز القومي لتنظيم الاتصالات (NTRA).</li>
       <li>ملء البيانات المطلوبة.</li>
@@ -198,10 +562,10 @@ function openShare() {
     </ol>
 
     <details>
-      <summary style="cursor:pointer;background:#222;color:#fff;padding:.8rem;border-radius:6px;font-weight:700;margin-top:.5rem">
+      <summary>
         الصيغة المقترحة للشكوى (انقر لنسخ)
       </summary>
-      <textarea readonly onclick="this.select()" style="width:100%;min-height:300px;padding:1rem;margin-top:.5rem;background:#111;color:#ccc;border:none;border-radius:6px;font-family:'Cairo',sans-serif;font-size:.95rem;line-height:1.6">
+      <textarea readonly onclick="this.select()">
 أنا المواطن المصري/ [اكتب اسمك الثلاثي]،
 أُطالب بحقي الدستوري في التعبير عن الرأي وفقًا للمادة (65) من الدستور المصري، والتي تكفل لكل مواطن حرية الرأي.
 
@@ -220,14 +584,14 @@ function openShare() {
  <!-- المرحلة الثالثة -->
 <details>
   <summary>
-    <span style="color:#90EE91; font-weight:bold;">المرحلة الثالثة</span> : تقديم الشكاوي إلى NTRA
+    <span>المرحلة الثالثة</span> : تقديم الشكاوي إلى NTRA
   </summary>
 
-<div style="background-color:#2b2b2b; padding:1rem; margin:1rem 0; border-radius:8px; color:#ddd; line-height:1.8;">
+<div>
     <p>نوّجه شكاوينا مباشرة إلى الجهاز القومي لتنظيم الاتصالات (NTRA)، باعتباره الجهة المسؤولة عن تنظيم ومتابعة خدمات الإنترنت في مصر.</p>
 
-    <h3 style="margin:1.5rem 0 .5rem;font-size:1.1rem;color:#fff">قنوات التواصل الرسمية:</h3>
-    <ul style="padding-left:1.2rem">
+    <h3>قنوات التواصل الرسمية:</h3>
+    <ul>
       <li><strong>أرقام واتساب:</strong><br>01202155155 – 01015515155 – 01111115150 – 01551515505</li>
       <li><strong>الخط الساخن:</strong> 155</li>
       <li><strong>البريد الإلكتروني:</strong> <a href="mailto:complaints@tra.gov.eg">complaints@tra.gov.eg</a></li>
@@ -235,11 +599,11 @@ function openShare() {
       <li><strong>صفحة فيسبوك:</strong> <a href="https://facebook.com/NTRAEgypt" target="_blank">facebook.com/NTRAEgypt</a></li>
     </ul>
 
-    <p style="margin:1rem 0"><strong>📌 ملاحظة هامة:</strong><br>
+    <p><strong>📌 ملاحظة هامة:</strong><br>
       عند التواصل عبر صفحة فيسبوك، يُفضّل إرسال رسالة خاصة ثم إلغاء متابعة الصفحة كرسالة احتجاج صامتة.</p>
 
-    <h3 style="margin:1rem 0 .5rem;font-size:1.1rem;color:#fff">الصيغة المقترحة للرسالة:   {نقر للنسخ }</h3>
-    <textarea readonly onclick="this.select()" style="width:100%;min-height:260px;padding:1rem;background:#111;color:#ccc;border:none;border-radius:6px;font-family:'Cairo',sans-serif;font-size:.95rem;resize:vertical">
+    <h3>الصيغة المقترحة للرسالة: {نقر للنسخ }</h3>
+    <textarea readonly onclick="this.select()">
 أنا المواطن المصري/ [اسمك الثلاثي]،
 أُطالب بحقي الدستوري في التعبير عن الرأي وفقًا للمادة (65) من الدستور المصري، والتي تكفل لكل مواطن حرية الرأي.
 
@@ -252,10 +616,10 @@ function openShare() {
 نرجو من الجهات المعنية الاستجابة لهذا المطلب الشعبي العادل والعمل على إصلاح المنظومة بما يخدم المواطن والدولة معًا.
     </textarea>
 
-    <h3 style="margin:1.5rem 0 .5rem;font-size:1.1rem;color:#fff">تقييم تطبيق NTRA</h3>
+    <h3>تقييم تطبيق NTRA</h3>
     <p><a class="btn" href="https://play.google.com/store/apps/details?id=eg.gov.tra" target="_blank">رابط تطبيق NTRA</a></p>
     <p><strong>التقييم المطلوب:</strong> نجمة واحدة </p>
-    <textarea readonly onclick="this.select()" style="width:100%;min-height:80px;padding:.8rem;background:#111;color:#ccc;border:none;border-radius:6px;font-family:'Cairo',sans-serif;font-size:.9rem;resize:vertical">
+    <textarea readonly onclick="this.select()">
 أُعبر عن سوء خدمات الإنترنت والاتصالات في مصر. أرى أن هناك ضعفًا في الرقابة من جانب الجهاز القومي لتنظيم الاتصالات، مع انحياز واضح لشركة المصرية للاتصالات (WE) وسيطرتها على البنية التحتية. هذا يمثل مخالفة لمبادئ الدستور والقانون المصري.
     </textarea>
   </div>
@@ -264,110 +628,109 @@ function openShare() {
  <!-- المرحلة الرابعة: تقديم الشكاوى لشركات الاتصالات  -->
 <details>
   <summary>
-    <span style="color:#90EE91; font-weight:bold;">المرحلة الرابعة</span> : تقديم الشكاوى لشركات الاتصالات
+    <span>المرحلة الرابعة</span> : تقديم الشكاوى لشركات الاتصالات
   </summary>
 
-  <div style="padding:1.5rem 0;color:#ccc;line-height:1.8;font-size:1rem">
+  <div>
 
     <!-- Orange -->
     <details>
-      <summary style="cursor:pointer;background:#222;color:#fff;padding:.8rem 1rem;border-radius:6px;margin-bottom:1rem;font-weight:700">شركة أورانج</summary>
-      <ul style="margin:.5rem 0 1rem 1.2rem">
+      <summary>شركة أورانج</summary>
+      <ul>
         
         <li><strong>خدمة العملاء:</strong> 110 أو 16110</li>
-        <li><strong>واتساب:</strong> <a href="https://wa.me/201271002000" style="color:var(--primary)">01271002000</a></li>
-        <li><strong>البريد:</strong> <a href="mailto:info@orange.com" style="color:var(--primary)">info@orange.com</a></li>
-        <li><strong>فيسبوك:</strong> <a href="https://www.facebook.com/share/1BvsUBumYL/" target="_blank" style="color:var(--primary)">Orange | Cairo</a></li>
+        <li><strong>واتساب:</strong> <a href="https://wa.me/201271002000">01271002000</a></li>
+        <li><strong>البريد:</strong> <a href="mailto:info@orange.com">info@orange.com</a></li>
+        <li><strong>فيسبوك:</strong> <a href="https://www.facebook.com/share/1BvsUBumYL/" target="_blank">Orange | Cairo</a></li>
       </ul>
 
-      <h4 style="color:#fff;margin:.5rem 0">نص الرسالة (واتساب – بريد – فيسبوك):</h4>
-      <textarea readonly onclick="this.select()" style="width:100%;min-height:160px;background:#111;color:#ccc;border:none;border-radius:6px;padding:1rem;font-family:'Cairo',sans-serif;font-size:.95rem;resize:vertical">
+      <h4>نص الرسالة (واتساب – بريد – فيسبوك):</h4>
+      <textarea readonly onclick="this.select()">
 أنا مواطن مصري أتقدم بشكوى بشأن خدمات الإنترنت غير العادلة في السوق المصري. أطلب من شركة 'أورانج' تحسين خدماتها وتوفير منافسة حقيقية بين الشركات، وذلك بتغيير نظام الإنترنت المحدود غير العادل إلى نظام الإنترنت غير المحدود، كما هو مطبق في جميع دول العالم. إن شركة 'أورانج' العريقة معروفة عالميًا، ونحن كعملاء متعاقدون معكم منذ سنوات طويلة، نطالب بهذا التغيير لتحقيق تنمية اقتصادية حقيقية في مصر، التي تُعد مركزًا إقليميًا وعالميًا للإنترنت. نحن كشعب مصري نطمح في تحقيق تطور حقيقي في الخدمات بما يتناسب مع دخل المواطن، وتحقيق إنجازات تليق بمصر وشعبها. شكرًا لحضراتكم، وأرجو إصدار بيان رسمي بتقديم خدمات نظام الإنترنت غير المحدود 'فعليًا' بما يتناسب مع دخل المواطن.
       </textarea>
 
-      <h4 style="color:#fff;margin:.8rem 0 .5rem">تقييم التطبيقات (نجمة واحدة ⭐):</h4>
-      <ul style="font-size:.9rem">
-        <li><a href="https://play.google.com/store/apps/details?id=com.orange.mobinilandme" target="_blank" style="color:var(--primary)">My Orange</a></li>
-        <li><a href="https://play.google.com/store/apps/details?id=io.paysky.orange" target="_blank" style="color:var(--primary)">Orange Cash</a></li>
-        <li><a href="https://play.google.com/store/apps/details?id=com.orange.pos" target="_blank" style="color:var(--primary)">Orange POS</a></li>
-        <li><a href="https://play.google.com/store/apps/details?id=com.linkdev.orange_cp" target="_blank" style="color:var(--primary)">Orange U-Ctrl+</a></li>
-        <li><a href="https://play.google.com/store/apps/details?id=com.orange.eg.myhr" target="_blank" style="color:var(--primary)">My HR</a></li>
+      <h4>تقييم التطبيقات (نجمة واحدة ⭐):</h4>
+      <ul>
+        <li><a href="https://play.google.com/store/apps/details?id=com.orange.mobinilandme" target="_blank">My Orange</a></li>
+        <li><a href="https://play.google.com/store/apps/details?id=io.paysky.orange" target="_blank">Orange Cash</a></li>
+        <li><a href="https://play.google.com/store/apps/details?id=com.orange.pos" target="_blank">Orange POS</a></li>
+        <li><a href="https://play.google.com/store/apps/details?id=com.linkdev.orange_cp" target="_blank">Orange U-Ctrl+</a></li>
+        <li><a href="https://play.google.com/store/apps/details?id=com.orange.eg.myhr" target="_blank">My HR</a></li>
       </ul>
 
-      <textarea readonly onclick="this.select()" style="width:100%;min-height:60px;background:#111;color:#ccc;border:none;border-radius:4px;padding:.5rem;font-family:'Cairo',sans-serif;font-size:.85rem;resize:vertical">
+      <textarea readonly onclick="this.select()">
 أُعبر عن استيائي من الإنترنت المحدود في مصر. يجب أن تكون هناك منافسة حقيقية في الخدمات بين أورانج وباقي الشركات.
       </textarea>
     </details>
 
     <!-- Etisalat -->
     <details>
-      <summary style="cursor:pointer;background:#222;color:#fff;padding:.8rem 1rem;border-radius:6px;margin-bottom:1rem;font-weight:700">شركة اتصالات</summary>
-      <ul style="margin:.5rem 0 1rem 1.2rem">
+      <summary>شركة اتصالات</summary>
+      <ul>
         <li><strong>الهاتف:</strong> 333 أو 01111234333</li>
-        <li><strong>البريد:</strong> <a href="mailto:etisalat.fans@etisalat.com" style="color:var(--primary)">etisalat.fans@etisalat.com</a></li>
-        <li><strong>فيسبوك:</strong> <a href="https://www.facebook.com/share/16wdb7EbMD/" target="_blank" style="color:var(--primary)">e& Egypt</a></li>
+        <li><strong>البريد:</strong> <a href="mailto:etisalat.fans@etisalat.com">etisalat.fans@etisalat.com</a></li>
+        <li><strong>فيسبوك:</strong> <a href="https://www.facebook.com/share/16wdb7EbMD/" target="_blank">e& Egypt</a></li>
       </ul>
 
-      <h4 style="color:#fff;margin:.5rem 0">نص الرسالة:</h4>
-      <textarea readonly onclick="this.select()" style="width:100%;min-height:160px;background:#111;color:#ccc;border:none;border-radius:6px;padding:1rem;font-family:'Cairo',sans-serif;font-size:.95rem;resize:vertical">
+      <h4>نص الرسالة:</h4>
+      <textarea readonly onclick="this.select()">
 أنا مواطن مصري أقدم شكوى بشأن خدمات الإنترنت غير العادلة في السوق المصري. أطلب من شركة "اتصالات" تحسين خدماتها وتوفير منافسة حقيقية بين الشركات عبر تغيير نظام الإنترنت المحدود إلى نظام الإنترنت غير المحدود، كما هو الحال في جميع دول العالم. إن شركة "اتصالات" شركة عريقة ومعروفة عالميًا، ونحن كعملاء نتعاقد معكم منذ أكثر من 30 عامًا، نطلب هذا التغيير لتحقيق تنمية اقتصادية حقيقية في مصر، التي تُعتبر مركزًا إقليميًا وعالميًا للإنترنت. نحن كشعب مصري نريد تحقيق تطور حقيقي في الخدمات يتناسب مع دخل المواطن. شكرًا لكم، وأرجو أن يصدر بيان رسمي بتقديم خدمات الإنترنت غير المحدود فعليًا وبما يتناسب مع دخل المواطن.
       </textarea>
 
-      <h4 style="color:#fff;margin:.8rem 0 .5rem">تقييم التطبيقات:</h4>
-      <ul style="font-size:.9rem">
-        <li><a href="https://play.google.com/store/apps/details?id=com.etisalat.flous" target="_blank" style="color:var(--primary)">e& Cash</a></li>
-        <li><a href="https://play.google.com/store/apps/details?id=com.etisalat.business" target="_blank" style="color:var(--primary)">e& Business</a></li>
+      <h4>تقييم التطبيقات:</h4>
+      <ul>
+        <li><a href="https://play.google.com/store/apps/details?id=com.etisalat.flous" target="_blank">e& Cash</a></li>
+        <li><a href="https://play.google.com/store/apps/details?id=com.etisalat.business" target="_blank">e& Business</a></li>
       </ul>
-      <textarea readonly onclick="this.select()" style="width:100%;min-height:60px;background:#111;color:#ccc;border:none;border-radius:4px;padding:.5rem;font-family:'Cairo',sans-serif;font-size:.85rem;resize:vertical">
+      <textarea readonly onclick="this.select()">
 أعبر عن استيائي من الإنترنت المحدود في مصر. يجب أن تكون هناك منافسة حقيقية في الخدمات بين اتصالات وباقي الشركات.
       </textarea>
     </details>
 
     <!-- Vodafone -->
     <details>
-      <summary style="cursor:pointer;background:#222;color:#fff;padding:.8rem 1rem;border-radius:6px;margin-bottom:1rem;font-weight:700">شركة فودافون</summary>
-      <ul style="margin:.5rem 0 1rem 1.2rem">
-        <li><strong>خدمة العملاء:</strong> 16888 أو <a href="https://web.vodafone.com.eg/ar/call-us" target="_blank" style="color:var(--primary)">أرقام إضافية</a></li>
-        <li><strong>واتساب:</strong> <a href="https://wa.me/201050888888" style="color:var(--primary)">01050888888</a></li>
-       
+      <summary>شركة فودافون</summary>
+      <ul>
+        <li><strong>خدمة العملاء:</strong> 16888 أو <a href="https://web.vodafone.com.eg/ar/call-us" target="_blank">أرقام إضافية</a></li>
+        <li><strong>واتساب:</strong> <a href="https://wa.me/201050888888">01050888888</a></li>
+        <li><strong>البريد:</strong> <a href="mailto:support@vodafone.de">support@vodafone.de</a></li>
+      </ul>
 
-      <h4 style="color:#fff;margin:.5rem 0">نص الرسالة (عربي):</h4>
-      <textarea readonly onclick="this.select()" style="width:100%;min-height:160px;background:#111;color:#ccc;border:none;border-radius:6px;padding:1rem;font-family:'Cairo',sans-serif;font-size:.95rem;resize:vertical">
+      <h4>نص الرسالة (عربي):</h4>
+      <textarea readonly onclick="this.select()">
 أنا مواطن مصري أقدم شكوى بشأن خدمات الإنترنت غير العادلة في السوق المصري. أطلب من شركة 'فودافون' تحسين خدماتها وتوفير منافسة حقيقية بين الشركات، وذلك بتغيير نظام الإنترنت المحدود غير العادل إلى نظام الإنترنت غير المحدود، كما هو مطبق في جميع دول العالم. إن شركة 'فودافون' العريقة معروفة عالميًا، ونحن كعملاء نتعاقد معكم منذ سنوات طويلة، نطالب بهذا التغيير لتحقيق تنمية اقتصادية حقيقية في مصر، التي تُعد مركزًا إقليميًا وعالميًا للإنترنت. نحن كشعب مصري نطمح في تحقيق تطور حقيقي في الخدمات بما يتناسب مع دخل المواطن، وتحقيق إنجازات تليق بمصر وشعبها. شكرًا لحضراتكم، وأرجو إصدار بيان رسمي بتقديم خدمات نظام الإنترنت غير المحدود 'فعليًا' بما يتناسب مع دخل المواطن.
       </textarea>
 
-      <h4 style="color:#fff;margin:.5rem 0">نص الرسالة (إنجليزي):</h4>
-      <li><strong>البريد:</strong> <a href="mailto:support@vodafone.de" style="color:var(--primary)">support@vodafone.de</a></li>
-      </ul>
-      <textarea readonly onclick="this.select()" style="width:100%;min-height:160px;background:#111;color:#ccc;border:none;border-radius:6px;padding:1rem;font-family:'Cairo',sans-serif;font-size:.95rem;resize:vertical">
-Hello .. I am an Egyptian citizen. I am sending you a complaint about Vodafone in Egypt. The services and development are poor, and 45% of the annual profits are taken by the “Egyptian Telecom” company. This company monopolizes the Internet and communications market. The Egyptian infrastructure is connected to the Egyptian interior, and this is considered a violation of the competition between Vodafone and other companies, and the Internet packages are limited. The company does not provide Internet services at speed, but rather monopolizes the effort of gigabytes. Specific. This is an injustice that does not befit a well-established company that has been present in Egypt for more than 30 years. I hope that you will provide services worthy of Vodafone Egypt, a world-renowned company that is ranked first in the field of digital technology... Thank you, Signature of an Egyptian citizen
+      <h4>نص الرسالة (إنجليزي):</h4>
+      <textarea readonly onclick="this.select()">
+Hello .. I am an Egyptian citizen. I am sending you a complaint about Vodafone in Egypt. The services and development are poor, and 45% of the annual profits are taken by the "Egyptian Telecom" company. This company monopolizes the Internet and communications market. The Egyptian infrastructure is connected to the Egyptian interior, and this is considered a violation of the competition between Vodafone and other companies, and the Internet packages are limited. The company does not provide Internet services at speed, but rather monopolizes the effort of gigabytes. Specific. This is an injustice that does not befit a well-established company that has been present in Egypt for more than 30 years. I hope that you will provide services worthy of Vodafone Egypt, a world-renowned company that is ranked first in the field of digital technology... Thank you, Signature of an Egyptian citizen
       </textarea>
 
-      <h4 style="color:#fff;margin:.8rem 0 .5rem">تقييم التطبيقات:</h4>
-      <ul style="font-size:.9rem">
-        <li><a href="https://play.google.com/store/apps/details?id=om.vodafone.mva" target="_blank" style="color:var(--primary)">My Vodafone Egypt</a></li>
-        <li><a href="https://play.google.com/store/apps/details?id=com.emeint.android.myservices" target="_blank" style="color:var(--primary)">My Vodafone</a></li>
-        <li><a href="https://play.google.com/store/apps/details?id=com.vodafone.spoc" target="_blank" style="color:var(--primary)">Vodafone Smart</a></li>
-        <li><a href="https://play.google.com/store/apps/details?id=com.vodafone.selfservis" target="_blank" style="color:var(--primary)">My Vodafone Self Service</a></li>
-        <li><a href="https://play.google.com/store/apps/details?id=qa.vodafone.myvodafone" target="_blank" style="color:var(--primary)">My Vodafone Qatar</a></li>
+      <h4>تقييم التطبيقات:</h4>
+      <ul>
+        <li><a href="https://play.google.com/store/apps/details?id=om.vodafone.mva" target="_blank">My Vodafone Egypt</a></li>
+        <li><a href="https://play.google.com/store/apps/details?id=com.emeint.android.myservices" target="_blank">My Vodafone</a></li>
+        <li><a href="https://play.google.com/store/apps/details?id=com.vodafone.spoc" target="_blank">Vodafone Smart</a></li>
+        <li><a href="https://play.google.com/store/apps/details?id=com.vodafone.selfservis" target="_blank">My Vodafone Self Service</a></li>
+        <li><a href="https://play.google.com/store/apps/details?id=qa.vodafone.myvodafone" target="_blank">My Vodafone Qatar</a></li>
       </ul>
-      <textarea readonly onclick="this.select()" style="width:100%;min-height:60px;background:#111;color:#ccc;border:none;border-radius:4px;padding:.5rem;font-family:'Cairo',sans-serif;font-size:.85rem;resize:vertical">
+      <textarea readonly onclick="this.select()">
 أعبر عن استيائي من سوء جودة خدمات الإنترنت. أرى أن نظام الإنترنت المحدود لا يلبي احتياجات المستخدمين، وأتمنى أن يتم توفير خطط إنترنت غير محدود لتلبية متطلبات السوق وتوفير منافسة حقيقية.
       </textarea>
     </details>
 
     <!-- WE -->
     <details>
-      <summary style="cursor:pointer;background:#222;color:#fff;padding:.8rem 1rem;border-radius:6px;font-weight:700">شركة وي (المصرية للاتصالات)</summary>
-      <ul style="margin:.5rem 0 1rem 1.2rem">
+      <summary>شركة وي (المصرية للاتصالات)</summary>
+      <ul>
         <li><strong>الهاتف:</strong> 111 أو 01555000111</li>
-        <li><strong>واتساب:</strong> <a href="https://wa.me/201500002222" style="color:var(--primary)">01500002222</a></li>
-        <li><strong>البريد:</strong> <a href="mailto:Customer.care@te.eg" style="color:var(--primary)">Customer.care@te.eg</a></li>
-        <li><strong>فيسبوك:</strong> <a href="https://www.facebook.com/share/16avh86yfX/" target="_blank" style="color:var(--primary)">WE Egypt</a></li>
+        <li><strong>واتساب:</strong> <a href="https://wa.me/201500002222">01500002222</a></li>
+        <li><strong>البريد:</strong> <a href="mailto:Customer.care@te.eg">Customer.care@te.eg</a></li>
+        <li><strong>فيسبوك:</strong> <a href="https://www.facebook.com/share/16avh86yfX/" target="_blank">WE Egypt</a></li>
       </ul>
 
-      <h4 style="color:#fff;margin:.5rem 0">نص الرسالة:</h4>
-      <textarea readonly onclick="this.select()" style="width:100%;min-height:200px;background:#111;color:#ccc;border:none;border-radius:6px;padding:1rem;font-family:'Cairo',sans-serif;font-size:.95rem;resize:vertical">
+      <h4>نص الرسالة:</h4>
+      <textarea readonly onclick="this.select()">
 أنا مواطن وعميل في شبكة 'وي'، وأطلب تقديم خدمات إنترنت غير محدودة تُحاسب حسب سرعة الخط وليس بنظام الجيجابايت.
 
 رساله واضحه صارمة : هذا النظام غير عادل، وسأقوم بتحويل خطي إلى شبكة أخرى إذا لم يتم تحقيق مطالبي:
@@ -381,14 +744,14 @@ Hello .. I am an Egyptian citizen. I am sending you a complaint about Vodafone i
 هذه هي مطالبنا الأساسية لتطوير مصر دون استغلال للمواطن. نعلمكم أننا سنقوم بالتحويل إلى المنافسين أو المقاطعة حتى يتم تنفيذ مطالبنا.
       </textarea>
 
-      <h4 style="color:#fff;margin:.8rem 0 .5rem">تقييم التطبيقات:</h4>
-      <ul style="font-size:.9rem">
-        <li><a href="https://play.google.com/store/apps/details?id=com.ucare.we" target="_blank" style="color:var(--primary)">My WE</a></li>
-        <li><a href="https://play.google.com/store/apps/details?id=com.TE.WEWallet" target="_blank" style="color:var(--primary)">WE Wallet</a></li>
-        <li><a href="https://play.google.com/store/apps/details?id=com.we.weAttend" target="_blank" style="color:var(--primary)">WE Attend</a></li>
-        <li><a href="https://play.google.com/store/apps/details?id=com.we.teamcare" target="_blank" style="color:var(--primary)">Team Care</a></li>
+      <h4>تقييم التطبيقات:</h4>
+      <ul>
+        <li><a href="https://play.google.com/store/apps/details?id=com.ucare.we" target="_blank">My WE</a></li>
+        <li><a href="https://play.google.com/store/apps/details?id=com.TE.WEWallet" target="_blank">WE Wallet</a></li>
+        <li><a href="https://play.google.com/store/apps/details?id=com.we.weAttend" target="_blank">WE Attend</a></li>
+        <li><a href="https://play.google.com/store/apps/details?id=com.we.teamcare" target="_blank">Team Care</a></li>
       </ul>
-      <textarea readonly onclick="this.select()" style="width:100%;min-height:60px;background:#111;color:#ccc;border:none;border-radius:4px;padding:.5rem;font-family:'Cairo',sans-serif;font-size:.85rem;resize:vertical">
+      <textarea readonly onclick="this.select()">
 أرفض احتكار شركة 'وي' لسوق الإنترنت. نطالب بخدمات انترنت غير محدودة تحقق المنافسة وتطور السوق.
       </textarea>
     </details>
@@ -397,18 +760,18 @@ Hello .. I am an Egyptian citizen. I am sending you a complaint about Vodafone i
 
 <details>
   <summary>
-    <span style="color:#90EE91; font-weight:bold;">المرحلة الخامسة</span> : منظومة الشكاوى الحكومية الموحدة
+    <span>المرحلة الخامسة</span> : منظومة الشكاوى الحكومية الموحدة
   </summary>
   
-  <div style="background-color:#2b2b2b; padding:1rem; margin:1rem 0; border-radius:8px; color:#ddd; line-height:1.8;">
+  <div>
     <p>
       تُعدّ هذه المنظومة القناة الرسمية النهائية لتقديم الشكاوى المتعلقة بخدمات الإنترنت في مصر، بما في ذلك المطالبة بتطبيق نظام الإنترنت غير المحدود.
     </p>
 
-    <ul style="margin:1rem 0 1.5rem 1.2rem">
+    <ul>
       <li><strong>الخط الساخن:</strong> 16528</li>
-      <li><strong>واتساب:</strong> <a href="https://wa.me/201555525444" style="color:var(--primary)">01555525444</a></li>
-      <li><strong>الموقع الإلكتروني:</strong> <a href="https://shakwa.eg/GCP/Default.aspx" target="_blank" style="color:var(--primary)">بوابة الشكاوى الحكومية الموحدة</a></li>
+      <li><strong>واتساب:</strong> <a href="https://wa.me/201555525444">01555525444</a></li>
+      <li><strong>الموقع الإلكتروني:</strong> <a href="https://shakwa.eg/GCP/Default.aspx" target="_blank">بوابة الشكاوى الحكومية الموحدة</a></li>
     </ul>
 
     <p>
@@ -424,25 +787,74 @@ Hello .. I am an Egyptian citizen. I am sending you a complaint about Vodafone i
     </div>
   </div>
 </details>
-  
-  
-  
-  
-  
+
+</section>
 
 <!-- Why -->
-<section id="why">
+<section id="why" class="why-section">
   <h2>لماذا نطالب بإنترنت غير محدود وعادل؟</h2>
   <ul>
-    <li>الإنترنت أصبح خدمة أساسية زي الكهرباء والمياه، ومش رفاهية، وبالتالي لازم يكون متاح بجودة عادلة للجميع.</li>
-    <li>السرعات الحالية لا تكفي لاجتماعات العمل ولا المحاضرات أونلاين، ومع الهبوط بعد انتهاء الكوتا بتبقى الخدمة شبه منعدمة.</li>
-    <li>الطلاب والباحثين بيضطروا يدفعوا زيادة أو يشتروا باقات إضافية علشان يقدروا يذاكروا أو يحملوا مراجع، وده عبء غير منطقي.</li>
-    <li>أصحاب الأعمال الصغيرة والفريلانسرز بيعتمدوا كليًا على الإنترنت، وأي بطء أو قيود بيأثر مباشرة على مصدر دخلهم.</li>
-    <li>خدمات الحكومة الرقمية نفسها محتاجة إنترنت ثابت وسريع (التقديم للكليات، الشكاوى الحكومية، الدفع الإلكتروني)، وده مش متحقق.</li>
-    <li>معايير الإنترنت في مصر أقل من دول أقل في الإمكانيات، ومع ذلك أسعارهم أرخص وخدماتهم أفضل.</li>
-    <li>التسعير حسب الاستهلاك ظلم، لأن السرعة هي المقياس الحقيقي لقيمة الخدمة.</li>
+    <li><span class="icon">🌍</span> الإنترنت أصبح خدمة أساسية زي الكهرباء والمياه، ومش رفاهية، وبالتالي لازم يكون متاح بجودة عادلة للجميع.</li>
+    <li><span class="icon">⚡</span> السرعات الحالية لا تكفي لاجتماعات العمل ولا المحاضرات أونلاين، ومع الهبوط بعد انتهاء الكوتا بتبقى الخدمة شبه منعدمة.</li>
+    <li><span class="icon">📚</span> الطلاب والباحثين بيضطروا يدفعوا زيادة أو يشتروا باقات إضافية علشان يقدروا يذاكروا أو يحملوا مراجع، وده عبء غير منطقي.</li>
+    <li><span class="icon">💼</span> أصحاب الأعمال الصغيرة والفريلانسرز بيعتمدوا كليًا على الإنترنت، وأي بطء أو قيود بيأثر مباشرة على مصدر دخلهم.</li>
+    <li><span class="icon">🏛️</span> خدمات الحكومة الرقمية نفسها محتاجة إنترنت ثابت وسريع (التقديم للكليات، الشكاوى الحكومية، الدفع الإلكتروني)، وده مش متحقق.</li>
+    <li><span class="icon">📉</span> معايير الإنترنت في مصر أقل من دول أقل في الإمكانيات، ومع ذلك أسعارهم أرخص وخدماتهم أفضل.</li>
+    <li><span class="icon">💰</span> التسعير حسب الاستهلاك ظلم، لأن السرعة هي المقياس الحقيقي لقيمة الخدمة.</li>
   </ul>
 </section>
+
+<style>
+  .why-section {
+    padding: 3rem 1rem;
+    background: #111;
+    color: #fff;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.4);
+  }
+
+  .why-section h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: #ff3b30;
+  }
+
+  .why-section ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .why-section li {
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 0.6s forwards;
+  }
+
+  .why-section li:nth-child(1){animation-delay: 0.2s;}
+  .why-section li:nth-child(2){animation-delay: 0.4s;}
+  .why-section li:nth-child(3){animation-delay: 0.6s;}
+  .why-section li:nth-child(4){animation-delay: 0.8s;}
+  .why-section li:nth-child(5){animation-delay: 1s;}
+  .why-section li:nth-child(6){animation-delay: 1.2s;}
+  .why-section li:nth-child(7){animation-delay: 1.4s;}
+
+  .icon {
+    font-size: 1.5rem;
+    color: #ff3b30;
+    flex-shrink: 0;
+  }
+
+  @keyframes fadeUp {
+    to {opacity: 1; transform: translateY(0);}
+  }
+</style>
 
   
  
@@ -452,155 +864,578 @@ Hello .. I am an Egyptian citizen. I am sending you a complaint about Vodafone i
 <section id="how">
   <h2>كيف تشارك الآن؟</h2>
   <ol>
-    <li><a href="https://www.facebook.com/share/g/16oiiv7GdB/">انضم للجروب الرسمي</a></li>
-    <li><a href="https://www.mediafire.com/file/czs4k5tjwnf6pye/%2523Poster.rar/file">>أطبع QR Code وشارك في النشر </a></li>
+    <li>
+      <a href="https://www.facebook.com/share/g/16oiiv7GdB/" target="_blank" onclick="trackClick('facebook_group')">
+        انضم للجروب الرسمي
+      </a>
+      <div class="step-info">انضم إلى مجتمعنا على فيسبوك وتابع آخر التطورات</div>
+    </li>
+    
+    <li>
+      <a href="https://www.mediafire.com/file/czs4k5tjwnf6pye/%2523Poster.rar/file" target="_blank" onclick="trackClick('download_poster')">
+        أطبع QR Code وشارك في النشر
+      </a>
+      <div class="step-info">حمل الملصقات واطبعها ووزعها في الأماكن المناسبة</div>
+    </li>
+    
     <li>
       ادعُ أصدقاءك:
-      <a href="https://wa.me/?text=أنا%20مع%20%23انترنت_غير_محدود_في_مصر">واتساب</a> |
-      <a href="https://t.me/share/url?url=https://YOUR_URL_HERE&text=أنا%20مع%20%23انترنت_غير_محدود_في_مصر">تليجرام</a>
+      <div class="social-share">
+        <a href="https://wa.me/?text=أنا%20مع%20%23انترنت_غير_محدود_في_مصر" target="_blank" onclick="trackClick('whatsapp_share')">واتساب</a> |
+        <a href="https://t.me/share/url?url=https://https://ziadmohamed-w7.github.io/campaign-site/&text=أنا%20مع%20%23انترنت_غير_محدود_في_مصر" target="_blank" onclick="trackClick('telegram_share')">تليجرام</a> |
+        <a href="https://www.facebook.com/sharer/sharer.php?u=https://ziadmohamed-w7.github.io/campaign-site/" target="_blank" onclick="trackClick('facebook_share')">فيسبوك</a> |
+        <a href="https://twitter.com/intent/tweet?text=أنا%20مع%20%23انترنت_غير_محدود_في_مصر&url=https://ziadmohamed-w7.github.io/campaign-site/" target="_blank" onclick="trackClick('twitter_share')">تويتر</a>
+      </div>
+      <div class="step-info">شارك الحملة مع أصدقائك على وسائل التواصل</div>
     </li>
   </ol>
 </section>
 
-<!-- Join everywhere -->
+<style>
+/* تحسينات بسيطة على قسم المشاركة */
+#how .step-info {
+  color: #a0a0a0;
+  font-size: 0.9em;
+  margin-top: 8px;
+  font-style: italic;
+}
+
+#how .social-share {
+  margin: 10px 0;
+  line-height: 1.8;
+}
+
+#how .social-share a {
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+#how .social-share a:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-1px);
+}
+
+#how ol li {
+  transition: all 0.3s ease;
+}
+
+#how ol li:hover {
+  transform: translateX(-5px);
+}
+
+#how ol li a {
+  transition: all 0.3s ease;
+}
+
+#how ol li a:hover {
+  opacity: 0.8;
+  transform: translateY(-2px);
+}
+
+/* للهواتف */
+@media (max-width: 768px) {
+  #how .social-share {
+    line-height: 2.5;
+  }
+  
+  #how .social-share a {
+    display: inline-block;
+    margin: 2px;
+  }
+  
+  #how ol li:hover {
+    transform: none;
+  }
+}
+</style>
+
+<script>
+function trackClick(action) {
+  console.log('تم النقر على:', action, new Date().toLocaleString('ar-EG'));
+  
+  // يمكن إضافة Google Analytics هنا:
+  // gtag('event', 'click', {
+  //   'event_category': 'participation',
+  //   'event_label': action
+  // });
+}
+
+// تحديث الروابط (استبدل YOUR_URL_HERE بالرابط الحقيقي)
+function updateSiteUrl(siteUrl) {
+  const links = document.querySelectorAll('a[href*="https://ziadmohamed-w7.github.io/campaign-site/"]');
+  links.forEach(link => {
+    link.href = link.href.replace('https://ziadmohamed-w7.github.io/campaign-site/', siteUrl);
+  });
+}
+
+
+// تحسين إمكانية الوصول
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('#how a[target="_blank"]').forEach(link => {
+    link.setAttribute('rel', 'noopener noreferrer');
+  });
+});
+</script>
+
+<!-- Join everywhere - Enhanced Version -->
 <section id="join-all">
   <h2>📢 انضم إلى الحملة عبر منصاتنا</h2>
-  <div class="platforms" style="display:flex; flex-wrap:wrap; gap:12px; margin-top:12px;">
+  <div class="platforms">
     
-    <a class="btn" href="https://www.facebook.com/share/g/16oiiv7GdB/" target="_blank" 
-       style="background:#1877f2; color:#fff; padding:10px 16px; border-radius:8px; text-decoration:none; font-weight:bold;">
-       🌐 فيسبوك
+    <a class="btn btn-facebook" href="https://www.facebook.com/share/g/16oiiv7GdB/" target="_blank" rel="noopener">
+      <span class="btn-icon">🌐</span>
+      <span class="btn-text">فيسبوك</span>
     </a>
     
-    <a class="btn" href="https://whatsapp.com/channel/0029VbAiNkKLikgBJNa4e72m" target="_blank" 
-       style="background:#25D366; color:#fff; padding:10px 16px; border-radius:8px; text-decoration:none; font-weight:bold;">
-       💬 واتساب
+    <a class="btn btn-whatsapp" href="https://whatsapp.com/channel/0029VbAiNkKLikgBJNa4e72m" target="_blank" rel="noopener">
+      <span class="btn-icon">💬</span>
+      <span class="btn-text">واتساب</span>
     </a>
     
-    <a class="btn" href="https://t.me/limitedInternetInEgypt" target="_blank" 
-       style="background:#0088cc; color:#fff; padding:10px 16px; border-radius:8px; text-decoration:none; font-weight:bold;">
-       📲 تليجرام
+    <a class="btn btn-telegram" href="https://t.me/limitedInternetInEgypt" target="_blank" rel="noopener">
+      <span class="btn-icon">📲</span>
+      <span class="btn-text">تليجرام</span>
     </a>
     
-    <a class="btn" href="https://x.com/elkoshelkosh?t=EKWDNw8DbCJlCpMC5Zzk7g&s=09" target="_blank" 
-       style="background:#000; color:#fff; padding:10px 16px; border-radius:8px; text-decoration:none; font-weight:bold;">
-       🐦 تويتر / X
+    <a class="btn btn-twitter" href="https://x.com/elkoshelkosh?t=EKWDNw8DbCJlCpMC5Zzk7g&s=09" target="_blank" rel="noopener">
+      <span class="btn-icon">🐦</span>
+      <span class="btn-text">تويتر / X</span>
     </a>
     
-    <a class="btn" href="https://www.mediafire.com/file/6nc53iayrpm4f5l/Unlimited_net_app_v1.6_.apk/file" target="_blank" 
-       style="background:#e67e22; color:#fff; padding:10px 16px; border-radius:8px; text-decoration:none; font-weight:bold;">
-       📥 حمل تطبيق الحملة (APK)
+    <a class="btn btn-download" href="https://www.mediafire.com/file/6nc53iayrpm4f5l/Unlimited_net_app_v1.6_.apk/file" target="_blank" rel="noopener">
+      <span class="btn-icon">📥</span>
+      <span class="btn-text">حمل تطبيق الحملة (APK)</span>
     </a>
     
   </div>
 </section>
 
+<style>
+#join-all {
+  padding: 2rem 1rem;
+  text-align: center;
+}
 
-<!-- Day Zero -->
-<section id="day-zero" style="text-align:center;margin:4rem 1rem">
-  <h2>يوم الصفر</h2>
-  <p>قوة المقاطعة في التزامنا سويًا.</p>
+#join-all h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+}
 
-  <!-- العداد التنازلي -->
-  <div id="countdown" style="font-size:2rem;margin:1rem 0">
-    <span id="cd-days">--</span> يوم
-    <span id="cd-hours">--</span> ساعة
-    <span id="cd-mins">--</span> دقيقة
+.platforms {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.875rem 1.25rem;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+  position: relative;
+  overflow: hidden;
+  min-height: 50px;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.btn:hover::before {
+  left: 100%;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+  filter: brightness(1.1);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.btn-icon {
+  font-size: 1.2rem;
+  filter: drop-shadow(0 1px 2px rgba(0,0,0,0.3));
+}
+
+.btn-text {
+  font-weight: bold;
+  letter-spacing: 0.02em;
+}
+
+/* Platform-specific colors */
+.btn-facebook {
+  background: linear-gradient(135deg, #1877f2 0%, #0c63d4 100%);
+  color: #fff;
+}
+
+.btn-facebook:hover {
+  background: linear-gradient(135deg, #0c63d4 0%, #1877f2 100%);
+}
+
+.btn-whatsapp {
+  background: linear-gradient(135deg, #25D366 0%, #1ebe57 100%);
+  color: #fff;
+}
+
+.btn-whatsapp:hover {
+  background: linear-gradient(135deg, #1ebe57 0%, #25D366 100%);
+}
+
+.btn-telegram {
+  background: linear-gradient(135deg, #0088cc 0%, #006bb3 100%);
+  color: #fff;
+}
+
+.btn-telegram:hover {
+  background: linear-gradient(135deg, #006bb3 0%, #0088cc 100%);
+}
+
+.btn-twitter {
+  background: linear-gradient(135deg, #000 0%, #333 100%);
+  color: #fff;
+}
+
+.btn-twitter:hover {
+  background: linear-gradient(135deg, #333 0%, #000 100%);
+}
+
+.btn-download {
+  background: linear-gradient(135deg, #e67e22 0%, #d35400 100%);
+  color: #fff;
+}
+
+.btn-download:hover {
+  background: linear-gradient(135deg, #d35400 0%, #e67e22 100%);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .platforms {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+  
+  #join-all {
+    padding: 1.5rem 1rem;
+  }
+  
+  #join-all h2 {
+    font-size: 1.3rem;
+  }
+  
+  .btn {
+    padding: 1rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .btn-text {
+    font-size: 0.85rem;
+  }
+  
+  .btn-icon {
+    font-size: 1.1rem;
+  }
+}
+</style>
+
+
+<!-- Day Zero - Simple Enhanced -->
+<section id="day-zero">
+  <h2>⏰ يوم الصفر</h2>
+  <p>قوة المقاطعة في التزامنا سويًا</p>
+  
+  <div id="countdown">
+    <div class="time-unit">
+      <span id="cd-days">--</span>
+      <small>يوم</small>
+    </div>
+    <div class="time-unit">
+      <span id="cd-hours">--</span>
+      <small>ساعة</small>
+    </div>
+    <div class="time-unit">
+      <span id="cd-mins">--</span>
+      <small>دقيقة</small>
+    </div>
   </div>
-
-  <script>
-    (function () {
-      const target = new Date("2025-09-01T00:00:00+02:00").getTime(); // توقيت القاهرة
-      const cd   = document.getElementById('countdown');
-      const days = document.getElementById('cd-days');
-      const hrs  = document.getElementById('cd-hours');
-      const mins = document.getElementById('cd-mins');
-
-      function tick() {
-        const diff = target - Date.now();
-        if (diff <= 0) {
-          cd.innerHTML = "انتهى العدّاد";
-          return;
-        }
-        days.textContent = Math.floor(diff / (1000*60*60*24));
-        hrs.textContent  = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
-        mins.textContent = Math.floor((diff % (1000*60*60)) / (1000*60));
-      }
-
-      tick();                 // تشغيل فورًا
-      setInterval(tick, 60000); // تحديث كل دقيقة
-    })();
-  </script>
 </section>
+
+<style>
+#day-zero {
+  text-align: center;
+  margin: 4rem 1rem;
+  padding: 2rem;
+  background: #1a1a1a;
+  border-radius: 12px;
+  border: 1px solid #333;
+}
+
+#day-zero h2 {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+  color: #fff;
+  font-weight: 700;
+}
+
+#day-zero p {
+  color: #ccc;
+  margin-bottom: 2rem;
+  font-size: 1.1rem;
+}
+
+#countdown {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.time-unit {
+  text-align: center;
+  background: #2a2a2a;
+  padding: 1.5rem 1rem;
+  border-radius: 8px;
+  border: 1px solid #444;
+  min-width: 80px;
+  transition: transform 0.2s ease;
+}
+
+.time-unit:hover {
+  transform: translateY(-2px);
+  border-color: #666;
+}
+
+.time-unit span {
+  display: block;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #fff;
+  font-family: monospace;
+}
+
+.time-unit small {
+  color: #aaa;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+  display: block;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  #day-zero {
+    margin: 2rem 0.5rem;
+    padding: 1.5rem;
+  }
+  
+  #countdown {
+    gap: 1rem;
+  }
+  
+  .time-unit {
+    min-width: 70px;
+    padding: 1rem 0.75rem;
+  }
+  
+  .time-unit span {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  #day-zero h2 {
+    font-size: 1.4rem;
+  }
+  
+  .time-unit span {
+    font-size: 1.8rem;
+  }
+}
+</style>
+
+<script>
+(function() {
+  const target = new Date("2025-09-01T00:00:00+02:00").getTime();
+  const days = document.getElementById('cd-days');
+  const hours = document.getElementById('cd-hours');
+  const mins = document.getElementById('cd-mins');
+  const countdown = document.getElementById('countdown');
+  
+  if (!days || !hours || !mins) return;
+  
+  function updateCountdown() {
+    const now = Date.now();
+    const diff = target - now;
+    
+    if (diff <= 0) {
+      countdown.innerHTML = '<div style="font-size:1.5rem;color:#4ecdc4;font-weight:bold;">🎉 انتهى العدّاد 🎉</div>';
+      return;
+    }
+    
+    const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    
+    days.textContent = d.toString().padStart(2, '0');
+    hours.textContent = h.toString().padStart(2, '0');
+    mins.textContent = m.toString().padStart(2, '0');
+  }
+  
+  updateCountdown();
+  setInterval(updateCountdown, 60000);
+})();
+</script>
 
 <!-- Assets -->
-<section id="assets">
-  <h2 class="ar">الملفات الجاهزة</h2>
+<section id="assets" class="assets-section">
+  <h2 class="ar">📂 الملفات الجاهزة</h2>
 
-  <a class="btn" href="https://www.mediafire.com/file/czs4k5tjwnf6pye/%2523Poster.rar/file">
-    <span class="ar"> تحميل البوستر </span>
+  <a class="btn-download" href="https://www.mediafire.com/file/czs4k5tjwnf6pye/%2523Poster.rar/file" target="_blank">
+    ⬇️ تحميل البوستر
   </a>
 
-<!-- تنبيه تحت زر تحميل البوستر -->
-<details style="margin-top:12px;">
-  <summary style="cursor:pointer; font-weight:bold; color:#e74c3c; font-size:18px;">
-    ⚠️ تنبيه
-  </summary>
+  <!-- تنبيه -->
+  <details class="warning-box">
+    <summary>⚠️ تنبيه</summary>
+    <div>
+      <p>
+        تحميل واستخدام البوستر يكون على <strong>مسؤوليتك الشخصية</strong>.  
+        يُسمح بلصقه فقط في أماكن خاصة أو بإذن صاحب المكان (مثل المقاهي، المحلات، الجامعات).  
+        أي استخدام في أماكن حكومية أو غير مصرّح بها يكون خارج نطاق مسؤوليتنا.
+      </p>
 
-  <div style="margin-top:10px; line-height:1.8; background:#2c2c2c; padding:12px; border-radius:8px; color:#fff; font-size:15px;">
-    <p style="margin:0 0 12px;">
-      تحميل واستخدام البوستر يكون على <strong>مسؤوليتك الشخصية</strong>.  
-      يُسمح بلصقه فقط في أماكن خاصة أو بإذن صاحب المكان (مثل المقاهي، المحلات، الجامعات).  
-      أي استخدام في أماكن حكومية أو غير مصرّح بها يكون خارج نطاق مسؤوليتنا.
-    </p>
+      <!-- المسموح -->
+      <details>
+        <summary>✅ الأماكن المسموح بها</summary>
+        <ol>
+          <li><strong>أماكن خاصة تجارية</strong> (محلات – كافيهات – ورش…)</li>
+          <li><strong>مؤسسات تعليمية خاصة</strong> (جامعات، مدارس خاصة…)</li>
+          <li><strong>أماكن ترفيهية ورياضية خاصة</strong></li>
+          <li><strong>مناطق سكنية خاصة</strong> بموافقة المالك</li>
+          <li><strong>فعاليات خاصة منظمة بإذن</strong></li>
+        </ol>
+      </details>
 
-    <!-- الأماكن المسموح بها -->
-    <details style="margin-top:12px;">
-      <summary style="cursor:pointer; font-weight:bold; color:#2ecc71; font-size:16px;">
-        ✅ الأماكن المسموح بها
-      </summary>
-      <ol style="margin:8px 0 0 20px; line-height:1.7;">
-        <li><strong>أماكن خاصة تجارية أو خدمية</strong><br>
-            - محلات تجارية (ملابس، مكتبات، إلكترونيات… إلخ).<br>
-            - كافيهات ومطاعم خاصة.<br>
-            - صالونات حلاقة وتجميل.<br>
-            - ورش ومراكز صيانة خاصة.</li>
+      <!-- الممنوع -->
+      <details>
+        <summary>⛔ الأماكن الممنوعة</summary>
+        <ul>
+          <li>أي مكان حكومي (مدارس، مستشفيات، محطات…)</li>
+          <li>الأماكن العامة بدون إذن (أعمدة، أرصفة، جدران…)</li>
+          <li>أي مكان قد يسبب مشاكل قانونية أو أضرار للحملة</li>
+        </ul>
+      </details>
+    </div>
+  </details>
+</section>
 
-        <li><strong>مؤسسات تعليمية خاصة</strong><br>
-            - جامعات خاصة أو أقسام محددة داخل الجامعات.<br>
-            - مدارس خاصة.<br>
-            - نوادي طلابية أو مراكز تعليمية إضافية.</li>
+<style>
+  .assets-section {
+    background: #1a1a1a;
+    padding: 2.5rem 1.5rem;
+    border-radius: 18px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.4);
+    margin-top: 2rem;
+  }
 
-        <li><strong>أماكن ترفيهية ورياضية خاصة</strong><br>
-            - أندية رياضية خاصة.<br>
-            - صالات ألعاب أو مراكز نشاط شبابي خاصة.<br>
-            - قاعات مناسبات خاصة.</li>
+  .assets-section h2 {
+    color: #ff3b30;
+    font-size: 1.8rem;
+    margin-bottom: 1.2rem;
+    text-align: center;
+    border-bottom: 2px solid #333;
+    padding-bottom: 0.5rem;
+  }
 
-        <li><strong>مناطق سكنية خاصة</strong><br>
-            - مجمعات سكنية خاصة (بموافقة الإدارة).<br>
-            - بيوت أو عقارات بإذن صاحبها.</li>
+  .btn-download {
+    display: block;
+    text-align: center;
+    background: linear-gradient(135deg, #ff3b30, #c92a1f);
+    color: #fff;
+    font-weight: bold;
+    padding: 14px 20px;
+    border-radius: 12px;
+    font-size: 1.2rem;
+    text-decoration: none;
+    box-shadow: 0 0 15px rgba(255,59,48,0.5);
+    transition: all 0.3s ease;
+  }
 
-        <li><strong>فعاليات عامة منظمة بإذن</strong><br>
-            - معارض أو فعاليات توعية.<br>
-            - تجمعات أو مهرجانات خاصة.</li>
-      </ol>
-    </details>
+  .btn-download:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px rgba(255,59,48,0.8);
+  }
 
-    <!-- الأماكن الممنوعة -->
-    <details style="margin-top:12px;">
-      <summary style="cursor:pointer; font-weight:bold; color:#e74c3c; font-size:16px;">
-        ⛔ الأماكن الممنوعة
-      </summary>
-      <ul style="margin:8px 0 0 20px; line-height:1.7;">
-        <li>أي مكان حكومي: (مدارس، مستشفيات، مراكز، محطات…).</li>
-        <li>أعمدة الشوارع، الأرصفة، الجدران العامة بدون إذن.</li>
-        <li>أي مكان عام قد يسبب مشاكل قانونية أو أضرار.</li>
-        <li>أي مكان يضر الحملة أو يسبب لك مساءلة شخصية.</li>
-      </ul>
-    </details>
-  </div>
-</details>
+  .warning-box {
+    margin-top: 20px;
+    background: #222;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #e74c3c;
+  }
 
+  .warning-box summary {
+    cursor: pointer;
+    font-weight: bold;
+    color: #ff3b30;
+    font-size: 18px;
+    padding: 12px 16px;
+    background: #2b2b2b;
+    border-bottom: 1px solid #333;
+  }
+
+  .warning-box div {
+    padding: 15px;
+    color: #ddd;
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  .warning-box details {
+    margin-top: 12px;
+    background: #2c2c2c;
+    border-radius: 8px;
+    padding: 8px 12px;
+  }
+
+  .warning-box details summary {
+    font-size: 16px;
+    color: #2ecc71;
+  }
+
+  .warning-box details[open] summary {
+    color: #ff3b30;
+  }
+
+  .warning-box ul, 
+  .warning-box ol {
+    margin: 10px 0 0 20px;
+    line-height: 1.8;
+  }
+</style>
 
 
     
@@ -608,67 +1443,432 @@ Hello .. I am an Egyptian citizen. I am sending you a complaint about Vodafone i
     
     
 <!-- FAQ -->
-<section id="faq">
+<section id="faq" class="faq-section">
   <h2>الأسئلة الشائعة</h2>
   <div class="faq">
+
     <details>
-      <summary>ماذا أفعل إذا لم أستطع المقاطعة بسبب العمل؟</summary>
-      يمكنك المساهمة بطرق أخرى مثل نشر الحملة عبر الإنترنت، أو طباعة ونشر الملصقات المزودة بـ QR Code في محيطك.
+      <summary>💼 ماذا أفعل إذا لم أستطع المقاطعة بسبب العمل؟</summary>
+      <p>ممكن تساهم بطرق مختلفة زي نشر الحملة على الإنترنت، مشاركة البوستات، أو حتى طباعة ونشر الملصقات المزودة بـ QR Code في محيطك.</p>
     </details>
 
     <details>
-      <summary>لماذا المقاطعة وسيلة فعّالة؟</summary>
-      لأن الضغط الاقتصادي المنظم هو الأداة الأقوى لإجبار الشركات على تحسين خدماتها أو التفاوض بجدية.
+      <summary>⚡ لماذا المقاطعة وسيلة فعّالة؟</summary>
+      <p>لأن الضغط الاقتصادي المنظم هو الأداة الأقوى لإجبار الشركات على تحسين خدماتها أو التفاوض بجدية مع المستخدمين.</p>
     </details>
 
     <details>
-      <summary>كيف يمكنني توثيق مشاركتي؟</summary>
-      قم بتصوير الملصقات أو أي أنشطة داعمة للحملة، وشاركها معنا على الجروب الرسمي في <a href="https://www.facebook.com" target="_blank">Facebook</a>.
+      <summary>📸 كيف يمكنني توثيق مشاركتي؟</summary>
+      <p>بسهولة: صوّر الملصقات أو أي نشاط داعم للحملة، وانشره معانا على الجروب الرسمي في 
+      <a href="https://www.facebook.com" target="_blank">Facebook</a> علشان نوصل صوتنا أكتر.</p>
     </details>
 
     <details>
-      <summary>هل بياناتي آمنة؟</summary>
-      نعم، لن يتم مشاركة أي بيانات شخصية مع أي طرف خارجي، وجميع المعلومات محمية تمامًا داخل إطار الحملة.
+      <summary>🔒 هل بياناتي آمنة؟</summary>
+      <p>أكيد. الحملة سلمية، ولا يتم جمع أو مشاركة بياناتك مع أي طرف خارجي. كل مشاركتك مقتصرة على دعم الفكرة فقط.</p>
     </details>
+
+    <details>
+      <summary>🚫 هل الحملة سياسية أو تابعة لجهة معينة؟</summary>
+      <p>لأ، الحملة مجتمعية بالكامل وسلمية 100%، ومش تابعة لأي حزب أو كيان سياسي. هدفها تحسين الخدمة فقط.</p>
+    </details>
+
+    <details>
+      <summary>💰 هل المقاطعة هتكلفني فلوس؟</summary>
+      <p>العكس تمامًا. المقاطعة معناها توقف عن شراء باقات إضافية أو شحن جديد لفترة معينة، وده بيوفرلك فلوس وبيوصل رسالة قوية للشركات.</p>
+    </details>
+
+    <details>
+      <summary>👨‍👩‍👧 إزاي أشرح الفكرة لأهلي أو أصدقائي؟</summary>
+      <p>اشرحلهم إن الهدف إن الإنترنت يبقى حق للجميع وبسعر عادل، وإن المقاطعة مش ضد شخص أو شركة معينة، لكنها ضغط عادل لتحسين الخدمة.</p>
+    </details>
+
   </div>
 </section>
-  
-  
-  <!-- قسم الاقتراحات -->
-<details id="suggestions" style="margin:4rem 1rem">
-  <summary style="cursor:pointer;font-size:1.1rem;color:#0f0;font-weight:900">
-    اضف اقتراح
-  </summary>
 
-  <div style="margin-top:1rem;text-align:center">
-    <a class="btn" href="https://forms.gle/opa9JSJJf6fHsnQf9" target="_blank">
-      اضغط هنا لإرسال اقتراحك
-    </a>
-  </div>
-</details>
+<style>
+  .faq-section {
+    padding: 3rem 1rem;
+    background: #1a1a1a;
+    color: #fff;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.4);
+  }
+
+  .faq-section h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: #ff3b30;
+  }
+
+  .faq details {
+    margin-bottom: 1rem;
+    padding: 1rem;
+    background: #222;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+
+  .faq details[open] {
+    background: #292929;
+    border-left: 4px solid #ff3b30;
+  }
+
+  .faq summary {
+    font-size: 1.1rem;
+    font-weight: 600;
+    outline: none;
+  }
+
+  .faq p {
+    margin-top: 0.5rem;
+    line-height: 1.7;
+    color: #ddd;
+  }
+
+  .faq a {
+    color: #ff3b30;
+    text-decoration: underline;
+  }
+</style>
+
   
-  <!-- تنويه هام + فخامة الرئيس -->
-<section style="max-width:960px;margin:0 auto 4rem;padding:0 1rem;">
+  
+  
+  
+ <!-- قسم الاقتراحات - محسن -->
+<section id="suggestions">
+  <details class="suggestions-details">
+    <summary class="suggestions-summary">
+      💡 اضف اقتراح
+      <span class="arrow">▼</span>
+    </summary>
+    <div class="suggestions-content">
+      <p class="suggestions-text">شاركنا أفكارك واقتراحاتك لتطوير الحملة</p>
+      <a class="suggestions-btn" href="https://forms.gle/opa9JSJJf6fHsnQf9" target="_blank" rel="noopener">
+        📝 اضغط هنا لإرسال اقتراحك
+      </a>
+    </div>
+  </details>
+</section>
+
+<style>
+#suggestions {
+  margin: 4rem 1rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.suggestions-details {
+  background: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.suggestions-details:hover {
+  border-color: #444;
+}
+
+.suggestions-details[open] {
+  border-color: #0f0;
+  box-shadow: 0 0 15px rgba(0, 255, 0, 0.1);
+}
+
+.suggestions-summary {
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: #0f0;
+  font-weight: 700;
+  padding: 1.5rem;
+  background: #2a2a2a;
+  border: none;
+  outline: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.suggestions-summary:hover {
+  background: #333;
+  color: #4f4;
+}
+
+.suggestions-summary::-webkit-details-marker {
+  display: none;
+}
+
+.arrow {
+  transition: transform 0.3s ease;
+  font-size: 0.9rem;
+  color: #888;
+}
+
+.suggestions-details[open] .arrow {
+  transform: rotate(180deg);
+  color: #0f0;
+}
+
+.suggestions-content {
+  padding: 2rem 1.5rem;
+  text-align: center;
+  background: #1a1a1a;
+  animation: slideDown 0.3s ease;
+}
+
+.suggestions-text {
+  color: #ccc;
+  margin-bottom: 1.5rem;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.suggestions-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 2rem;
+  background: linear-gradient(135deg, #0f0 0%, #0c0 100%);
+  color: #000;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.suggestions-btn:hover {
+  background: linear-gradient(135deg, #4f4 0%, #0f0 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 255, 0, 0.2);
+}
+
+.suggestions-btn:active {
+  transform: translateY(0);
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  #suggestions {
+    margin: 2rem 0.5rem;
+  }
+  
+  .suggestions-summary {
+    font-size: 1.1rem;
+    padding: 1.25rem;
+  }
+  
+  .suggestions-content {
+    padding: 1.5rem 1rem;
+  }
+  
+  .suggestions-btn {
+    padding: 0.875rem 1.5rem;
+    font-size: 0.95rem;
+    width: 100%;
+    max-width: 280px;
+  }
+}
+
+@media (max-width: 480px) {
+  .suggestions-summary {
+    font-size: 1rem;
+    padding: 1rem;
+  }
+  
+  .suggestions-text {
+    font-size: 0.9rem;
+  }
+  
+  .suggestions-btn {
+    font-size: 0.9rem;
+  }
+}
+</style>
+  
+ <!-- تنويه هام + فخامة الرئيس - محسن -->
+<section id="important-notices">
+  
   <!-- تنويه هام -->
-  <details style="border:1px solid #444;border-radius:12px;overflow:hidden;background:#111;margin-bottom:.75rem;">
-    <summary style="padding:1rem 1.2rem;background:var(--primary);color:#fff;font-weight:700;font-size:1.1rem;cursor:pointer;outline:none;">
-      تنويه هام
+  <details class="notice-item">
+    <summary class="notice-summary important">
+      ⚠️ تنويه هام
+      <span class="arrow">▼</span>
     </summary>
-    <p style="padding:1.2rem 1.2rem 1.4rem;color:#ccc;line-height:1.7;margin:0;">
-      نؤكد أن حملتنا الحالية متعلقة فقط بالمطالبة بتحسين وتطوير خدمات الإنترنت في مصر، وهي مبادرة شعبية مستقلة لا تتبع أي جهة أو كيان سياسي أو حزبي، ولا تمثل سوى صوت المستخدمين الراغبين في خدمة أفضل.
-    </p>
+    <div class="notice-content">
+      <p>
+        نؤكد أن حملتنا الحالية متعلقة فقط بالمطالبة بتحسين وتطوير خدمات الإنترنت في مصر، وهي مبادرة شعبية مستقلة لا تتبع أي جهة أو كيان سياسي أو حزبي، ولا تمثل سوى صوت المستخدمين الراغبين في خدمة أفضل.
+      </p>
+    </div>
   </details>
-
+  
   <!-- فخامة الرئيس -->
-  <details style="border:1px solid #444;border-radius:12px;overflow:hidden;background:#111;">
-    <summary style="padding:1rem 1.2rem;background:var(--primary);color:#fff;font-weight:700;font-size:1.1rem;cursor:pointer;outline:none;">
-      فخامة الرئيس
+  <details class="notice-item">
+    <summary class="notice-summary presidential">
+       فخامة الرئيس
+      <span class="arrow">▼</span>
     </summary>
-    <p style="padding:1.2rem 1.2rem 1.4rem;color:#ccc;line-height:1.7;margin:0;">
-      نجدد العهد بالولاء والدعم لفخامة الرئيس عبد الفتاح السيسي، تقديرًا لجهوده العظيمة في قيادة مسيرة التنمية وحماية الوطن وبناء مستقبل أفضل للأجيال القادمة.
-    </p>
+    <div class="notice-content">
+      <p>
+        نجدد العهد بالولاء والدعم لفخامة الرئيس عبد الفتاح السيسي، تقديرًا لجهوده العظيمة في قيادة مسيرة التنمية وحماية الوطن وبناء مستقبل أفضل للأجيال القادمة.
+      </p>
+    </div>
   </details>
+  
 </section>
+
+<style>
+#important-notices {
+  max-width: 960px;
+  margin: 0 auto 4rem;
+  padding: 0 1rem;
+}
+
+.notice-item {
+  border: 1px solid #444;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #111;
+  margin-bottom: 0.75rem;
+  transition: all 0.3s ease;
+}
+
+.notice-item:hover {
+  border-color: #666;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.notice-item[open] {
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+.notice-summary {
+  padding: 1rem 1.2rem;
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.1rem;
+  cursor: pointer;
+  outline: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: all 0.2s ease;
+  user-select: none;
+  border: none;
+}
+
+.notice-summary::-webkit-details-marker {
+  display: none;
+}
+
+.notice-summary.important {
+  background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+}
+
+.notice-summary.important:hover {
+  background: linear-gradient(135deg, #ec7063 0%, #e74c3c 100%);
+}
+
+.notice-summary.presidential {
+  background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+}
+
+.notice-summary.presidential:hover {
+  background: linear-gradient(135deg, #34495e 0%, #2c3e50 100%);
+}
+
+.arrow {
+  transition: transform 0.3s ease;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.notice-item[open] .arrow {
+  transform: rotate(180deg);
+}
+
+.notice-content {
+  padding: 1.2rem 1.2rem 1.4rem;
+  background: #111;
+  animation: slideDown 0.3s ease;
+}
+
+.notice-content p {
+  color: #ccc;
+  line-height: 1.7;
+  margin: 0;
+  font-size: 1rem;
+  text-align: justify;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  #important-notices {
+    padding: 0 0.5rem;
+  }
+  
+  .notice-summary {
+    padding: 0.875rem 1rem;
+    font-size: 1rem;
+  }
+  
+  .notice-content {
+    padding: 1rem;
+  }
+  
+  .notice-content p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+}
+
+@media (max-width: 480px) {
+  .notice-summary {
+    padding: 0.75rem 0.875rem;
+    font-size: 0.95rem;
+  }
+  
+  .notice-content {
+    padding: 0.875rem;
+  }
+  
+  .notice-content p {
+    font-size: 0.9rem;
+  }
+}
+</style>
+  
+  
 <!-- Footer -->
 <footer>
   <p>
@@ -679,6 +1879,35 @@ Hello .. I am an Egyptian citizen. I am sending you a complaint about Vodafone i
   <small>© 2025 حملة الإنترنت غير المحدود في مصر – <a href="/privacy">سياسة الخصوصية</a></small>
 </footer>
 
+  </script>
+</section>
+</footer>
+
+<!-- JS مشاركة -->
+<script>
+  function openShare(){
+    const shareData={
+      title:'حملة الإنترنت غير المحدود',
+      text:'انضم لحملة #انترنت_غير_محدود_في_مصر وشارك صوتك معنا!',
+      url:location.href
+    };
+    if(navigator.share){
+      navigator.share(shareData).catch(()=>fallbackCopy(shareData.url));
+    }else{
+      fallbackCopy(shareData.url);
+    }
+  }
+  function fallbackCopy(text){
+    navigator.clipboard?.writeText(text)
+      .then(()=>alert('✅ تم نسخ الرابط!'))
+      .catch(()=>{
+        const i=document.createElement('input');i.value=text;
+        document.body.appendChild(i);i.select();
+        document.execCommand('copy');
+        document.body.removeChild(i);
+        alert('✅ تم نسخ الرابط!');
+      });
+  }
 </script>
 </body>
 </html>
