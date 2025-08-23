@@ -106,69 +106,7 @@
 <body>
   
   
-<!-- عدّاد الزوار | يبدأ من 806 ويتحديث كل 5 دقائق -->
-<div style="position:fixed; top:20px; left:20px; z-index:9999;">
-  <div id="visits-card" style="
-    display:flex; align-items:center; gap:6px;
-    padding:10px 14px; border-radius:12px;
-    background: rgba(0, 255, 128, 0.14);
-    border: 1px solid rgba(0, 255, 128, 0.45);
-    color:#00ff80; font-weight:700; font-size:16px;
-    box-shadow:0 0 12px rgba(0, 255, 128, 0.7);
-    backdrop-filter: blur(10px);
-  ">
-    <span style="font-size:18px;"></span>
-    <span>عدد الزوار:</span>
-    <span id="visits" style="font-size:18px; color:#b3ffcc;">جاري التحميل...</span>
-  </div>
-</div>
 
-<script>
-  // إعدادات العداد
-  const NAMESPACE = 'internet_unlimited_egypt_2025'; // ← اسم فريد
-  const KEY = 'visits';
-  const UPDATE_INTERVAL = 5 * 60 * 1000; // تحديث كل 5 دقائق
-
-  function getToday() {
-    return new Date().toISOString().slice(0, 10);
-  }
-
-  async function fetchVisits() {
-    try {
-      const response = await fetch(`https://api.countapi.xyz/get/${NAMESPACE}/${KEY}`);
-      const data = await response.json();
-      const baseCount = 806; // الرقم الابتدائي
-      const totalCount = baseCount + (data?.value || 0);
-      document.getElementById('visits').textContent = totalCount.toLocaleString();
-    } catch (err) {
-      document.getElementById('visits').textContent = '806';
-    }
-  }
-
-  async function incrementVisit() {
-    const lastVisit = localStorage.getItem('visit_date');
-    const today = getToday();
-
-    if (lastVisit === today) return;
-
-    try {
-      await fetch(`https://api.countapi.xyz/hit/${NAMESPACE}/${KEY}`);
-      localStorage.setItem('visit_date', today);
-    } catch (err) {
-      console.warn("فشل في زيادة العداد");
-    }
-  }
-
-  function startAutoUpdate() {
-    setInterval(fetchVisits, UPDATE_INTERVAL);
-  }
-
-  document.addEventListener('DOMContentLoaded', () => {
-    incrementVisit();
-    fetchVisits();
-    startAutoUpdate();
-  });
-</script>
   
   
   
