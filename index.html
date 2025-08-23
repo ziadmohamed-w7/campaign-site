@@ -110,13 +110,20 @@
 
   
   
-<!-- ✅ عدّاد الزوار  -->
+<!-- ✅ عدّاد زوار عالمي (يبدأ من 806) -->
 <style>
   #visitor-badge {
-    position: fixed; top: 10px; left: 10px; z-index: 9999;
-    background: linear-gradient(135deg, #0f0, #090); color: #000;
-    font-family: 'Cairo', sans-serif; font-weight: 700; font-size: 0.9rem;
-    padding: 6px 12px; border-radius: 20px;
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 9999;
+    background: linear-gradient(135deg, #0f0, #090);
+    color: #000;
+    font-family: 'Cairo', sans-serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+    padding: 6px 12px;
+    border-radius: 20px;
     box-shadow: 0 2px 8px rgba(0, 255, 0, 0.4);
     transition: transform 0.3s ease;
   }
@@ -129,46 +136,49 @@
 
 <script>
 (async () => {
-  const boxID = 'neteg_visitors_counter'; /
-  const url   = `https://jsonbox.io/${boxID}`;
+  const BOX   = 'neteg_visitors_counter'; 
+  const url   = `https://jsonbox.io/${BOX}`;
 
-  
+
   let data = await (await fetch(url)).json();
   let item = data.find(d => d.key === 'visits');
 
   if (!item) {
-    
-    await fetch(url, {
-      method: 'POST',
+    const create = await fetch(url, {
+      method : 'POST',
       headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({key: 'visits', value: 806})
+      body   : JSON.stringify({key: 'visits', value: 806})
     });
-    item = {value: 806};
+    const created = await create.json();
+    item = { _id: created._id, value: 806 };
   }
 
- 
   const last = +localStorage.getItem('lastHit');
   const now  = Date.now();
-  const one  = 60_000;
+  const one  = 60_000; 
   if (!last || now - last > one) {
     const newVal = item.value + 1;
     await fetch(`${url}/${item._id}`, {
-      method: 'PUT',
+      method : 'PUT',
       headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({key: 'visits', value: newVal})
+      body   : JSON.stringify({key: 'visits', value: newVal})
     });
     localStorage.setItem('lastHit', now);
     item.value = newVal;
   }
 
-  
   document.getElementById('count').textContent = item.value;
 })();
 </script>
 
+  
+  
 
-  
-  
+
+
+
+
+
   
 
 <!-- الشريط العلوي الثابت -->
