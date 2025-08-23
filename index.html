@@ -104,8 +104,62 @@
   
 </head>
 <body>
+
+
+
+
   
   
+  
+<!-- ✅ عدّاد الزوار -->
+<style>
+  #visitor-badge {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 9999;
+    background: linear-gradient(135deg, #0f0, #090);
+    color: #000;
+    font-family: 'Cairo', sans-serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+    padding: 6px 12px;
+    border-radius: 20px;
+    box-shadow: 0 2px 8px rgba(0, 255, 0, 0.4);
+    transition: transform 0.3s ease;
+  }
+  #visitor-badge:hover { transform: scale(1.05); }
+</style>
+
+<div id="visitor-badge">
+  الزوار: <span id="count">جاري التحميل...</span>
+</div>
+
+<script>
+(async () => {
+  const ns = 'netegypt';
+  const ky = 'visits';
+
+ 
+  await fetch(`https://api.countapi.xyz/create?namespace=${ns}&key=${ky}&value=806`, {method:'POST'}).catch(()=>{});
+
+  const last = localStorage.getItem('lastHit');
+  const now  = Date.now();
+  const one  = 1 * 60 * 1000;
+
+  if (!last || now - last > one) {
+    await fetch(`https://api.countapi.xyz/hit/${ns}/${ky}`, {method:'POST'});
+    localStorage.setItem('lastHit', now);
+  }
+
+  const res  = await fetch(`https://api.countapi.xyz/get/${ns}/${ky}`);
+  const data = await res.json();
+  document.getElementById('count').textContent = data.value;
+})();
+</script>
+
+
+
 
   
   
