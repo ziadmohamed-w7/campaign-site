@@ -101,62 +101,51 @@
 
     gtag('config', 'G-LV29X3081P');
   </script>
-<!-- عدّاد الزيارات | صندوق بلّوري أخضر ثابت أعلى-يسار -->
-<div style="position:fixed; top:20px; left:20px; z-index:9999;">
-  <div id="visits-card" style="
-    display:flex; align-items:center; gap:6px;
-    padding:10px 14px; border-radius:12px;
-    background: rgba(0, 255, 128, 0.14);
-    border: 1px solid rgba(0, 255, 128, 0.45);
-    color:#00ff80; font-weight:700; font-size:16px;
-    box-shadow:0 0 12px rgba(0, 255, 128, 0.7);
-    backdrop-filter: blur(10px);
-  ">
-    <span style="font-size:18px;">👀</span>
-    <span> عدد الزيارات :</span>
-    <span id="visits" style="font-size:18px; color:#b3ffcc;">—</span>
-  </div>
-</div>
-
-<script>
-  // اختر "نمط العدّ" اللي يناسبك:
-  // A) يحسب كل تحميل صفحة
-  // B) يحسب مرة واحدة لكل جهاز في اليوم
-
-  // 1) عرّف اسم فريد للعداد (مافيهوش مسافات أو سلاشات)
-  const NAMESPACE = 'campaign_site_ziadmohamed_w7';
-  const KEY = 'visits';
-
-  // 2) اختَر واحد من النمطين تحت:
-
-  // ===== (A) يحسب كل مرة الصفحة تتفتح/تتحدّث =====
-  // const endpoint = `https://api.countapi.xyz/hit/${NAMESPACE}/${KEY}`;
-
-   ===== (B) يحسب مرة واحدة باليوم لكل جهاز =====
-  const today = new Date().toISOString().slice(0, 10);
-  const lastVisit = localStorage.getItem('visit_date');
- const endpoint = (lastVisit === today)
-   ? `https://api.countapi.xyz/get/${NAMESPACE}/${KEY}`   // اقرأ فقط
-    : `https://api.countapi.xyz/hit/${NAMESPACE}/${KEY}`;  // زوّد +1
-  if (lastVisit !== today) localStorage.setItem('visit_date', today);
-
-  // 3) هات القيمة وعرِضها
-  fetch(endpoint)
-    .then(r => r.json())
-    .then(data => {
-      document.getElementById('visits').textContent = (data && data.value) ? data.value : '0';
-    })
-    .catch(() => {
-      document.getElementById('visits').textContent = '0'; // في حالة أي خطأ
-      // اختياري: قلّل التوهّج لو الخدمة ما استجابت
-      const card = document.getElementById('visits-card');
-      if (card) card.style.boxShadow = '0 0 6px rgba(0, 255, 128, 0.4)';
-    });
-</script>
-
   
 </head>
 <body>
+  
+  
+  <!-- عداد الزيارات -->
+<div id="visits-card" style="
+  position:fixed; top:16px; left:16px; z-index:9999;
+  padding:10px 16px; border-radius:16px;
+  background: rgba(0, 255, 128, 0.15);
+  border: 1px solid rgba(0, 255, 128, 0.45);
+  color: #b3ffcc; font-weight:bold; font-size:16px;
+  box-shadow: 0 0 15px rgba(0, 255, 128, 0.7);
+  backdrop-filter: blur(12px);
+">
+   عدد الزوار :  <span id="visits">—</span>
+</div>
+
+<script>
+const NAMESPACE = 'ziadmohamed-w7.github.io';
+const KEY = 'visits';
+const cooldownMinutes = 5;
+const cooldown = cooldownMinutes * 60 * 1000;
+
+const now = Date.now();
+const lastTime = Number(localStorage.getItem('count_last_time') || 0);
+const fresh = now - lastTime >= cooldown;
+const endpoint = fresh
+  ? `https://api.countapi.xyz/hit/${NAMESPACE}/${KEY}`
+  : `https://api.countapi.xyz/get/${NAMESPACE}/${KEY}`;
+if (fresh) localStorage.setItem('count_last_time', String(now));
+
+fetch(endpoint)
+  .then(r => r.json())
+  .then(d => {
+    document.getElementById('visits').textContent = d.value;
+  })
+  .catch(() => {
+    document.getElementById('visits').textContent = '0';
+  });
+</script>
+
+  
+  
+  
 
 <!-- الشريط العلوي الثابت -->
 <div class="sticky">
@@ -1322,7 +1311,7 @@ Hello .. I am an Egyptian citizen. I am sending you a complaint about Vodafone i
       ادعُ أصدقاءك:
       <div class="social-share">
         <a href="https://wa.me/?text=أنا%20مع%20%23انترنت_غير_محدود_في_مصر" target="_blank" onclick="trackClick('whatsapp_share')">واتساب</a> |
-        <a href="https://t.me/share/url?url=https://https://ziadmohamed-w7.github.io/campaign-site/&text=أنا%20مع%20%23انترنت_غير_محدود_في_مصر" target="_blank" onclick="trackClick('telegram_share')">تليجرام</a> |
+        <a href="https://t.me/share/url?url=https://ziadmohamed-w7.github.io/campaign-site/&text=أنا%20مع%20%23انترنت_غير_محدود_في_مصر" target="_blank" onclick="trackClick('telegram_share')">تليجرام</a> |
         <a href="https://www.facebook.com/sharer/sharer.php?u=https://ziadmohamed-w7.github.io/campaign-site/" target="_blank" onclick="trackClick('facebook_share')">فيسبوك</a> |
         <a href="https://twitter.com/intent/tweet?text=أنا%20مع%20%23انترنت_غير_محدود_في_مصر&url=https://ziadmohamed-w7.github.io/campaign-site/" target="_blank" onclick="trackClick('twitter_share')">تويتر</a>
       </div>
@@ -1332,6 +1321,8 @@ Hello .. I am an Egyptian citizen. I am sending you a complaint about Vodafone i
 </section>
 
 <style>
+  
+  
 /* تحسينات بسيطة على قسم المشاركة */
 #how .step-info {
   color: #a0a0a0;
@@ -1395,11 +1386,6 @@ Hello .. I am an Egyptian citizen. I am sending you a complaint about Vodafone i
 function trackClick(action) {
   console.log('تم النقر على:', action, new Date().toLocaleString('ar-EG'));
   
-  // يمكن إضافة Google Analytics هنا:
-  // gtag('event', 'click', {
-  //   'event_category': 'participation',
-  //   'event_label': action
-  // });
 }
 
 
