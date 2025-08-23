@@ -110,26 +110,17 @@
 
   
   
-<!-- ✅ عدّاد الزوار (1 دقيقة مهلة + يبدأ من 806) -->
+<!-- ✅ عدّاد الزوار  -->
 <style>
   #visitor-badge {
-    position: fixed;
-    top: 10px;
-    left: 10px;
-    z-index: 9999;
-    background: linear-gradient(135deg, #0f0, #090);
-    color: #000;
-    font-family: 'Cairo', sans-serif;
-    font-weight: 700;
-    font-size: 0.9rem;
-    padding: 6px 12px;
-    border-radius: 20px;
+    position: fixed; top: 10px; left: 10px; z-index: 9999;
+    background: linear-gradient(135deg, #0f0, #090); color: #000;
+    font-family: 'Cairo', sans-serif; font-weight: 700; font-size: 0.9rem;
+    padding: 6px 12px; border-radius: 20px;
     box-shadow: 0 2px 8px rgba(0, 255, 0, 0.4);
     transition: transform 0.3s ease;
   }
-  #visitor-badge:hover {
-    transform: scale(1.05);
-  }
+  #visitor-badge:hover { transform: scale(1.05); }
 </style>
 
 <div id="visitor-badge">
@@ -138,33 +129,42 @@
 
 <script>
 (async () => {
-  const ns  = 'netegypt';
-  const ky  = 'visits';
-  const api = 'https://api.countapi.com'; 
+  const boxID = 'neteg_visitors_counter'; /
+  const url   = `https://jsonbox.io/${boxID}`;
+
   
-  await fetch(`${api}/create?namespace=${ns}&key=${ky}&value=806`, {method:'POST'}).catch(()=>{});
+  let data = await (await fetch(url)).json();
+  let item = data.find(d => d.key === 'visits');
+
+  if (!item) {
+    
+    await fetch(url, {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({key: 'visits', value: 806})
+    });
+    item = {value: 806};
+  }
 
  
   const last = +localStorage.getItem('lastHit');
   const now  = Date.now();
-  const one  = 60_000; 
-
+  const one  = 60_000;
   if (!last || now - last > one) {
-    await fetch(`${api}/hit/${ns}/${ky}`, {method:'POST'});
+    const newVal = item.value + 1;
+    await fetch(`${url}/${item._id}`, {
+      method: 'PUT',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({key: 'visits', value: newVal})
+    });
     localStorage.setItem('lastHit', now);
+    item.value = newVal;
   }
 
-
-  try {
-    const res  = await fetch(`${api}/get/${ns}/${ky}`);
-    const data = await res.json();
-    document.getElementById('count').textContent = data.value;
-  } catch {
-    document.getElementById('count').textContent = 'غير متاح';
-  }
+  
+  document.getElementById('count').textContent = item.value;
 })();
 </script>
-
 
 
   
