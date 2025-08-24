@@ -202,18 +202,29 @@
         inset 0 1px 0 rgba(255,255,255,0.3);
     }
 
-    /* زر وقع العريضة */
-    .btn.petition-btn {
-      background: var(--gradient-secondary);
-      color: white;
-      border: 1px solid rgba(102, 126, 234, 0.3);
-      box-shadow: 
-        0 0 35px var(--glow-blue),
-        0 8px 32px rgba(102, 126, 234, 0.3),
-        inset 0 1px 0 rgba(255,255,255,0.2);
-      animation: glowPulseBlue 2.5s ease-in-out infinite alternate;
-      transform: scale(1.05);
-    }
+   /* زر وقع العريضة */
+.btn.petition-btn {
+  background: var(--gradient-secondary);
+  color: white;
+  border: 1px solid rgba(102, 126, 234, 0.3);
+  box-shadow: 
+    0 0 35px var(--glow-blue),
+    0 8px 32px rgba(102, 126, 234, 0.3),
+    inset 0 1px 0 rgba(255,255,255,0.2);
+  animation: glowPulseBlue 2.5s ease-in-out infinite alternate;
+  transform: scale(1.05);
+}
+
+/* العداد باللون الأخضر البللوري */
+.counter {
+  text-align: center;
+  font-size: 14px;
+  margin-top: 8px;
+  color: rgba(0, 255, 128, 0.85); /* أخضر شفاف */
+  text-shadow: 0 0 6px rgba(0, 255, 128, 0.8),
+               0 0 12px rgba(0, 255, 128, 0.6);
+}
+
 
     .btn.petition-btn:hover {
       transform: translateY(-3px) scale(1.07);
@@ -463,7 +474,12 @@
 
   <div class="buttons-container">
     <a class="btn" href="https://www.facebook.com/share/g/16oiiv7GdB/" target="_blank">انضم للجروب</a>
-    <button class="btn petition-btn" onclick="openPetition()">وقع العريضة</button>
+    
+   <div class="petition-wrapper">
+  <button class="btn petition-btn" onclick="openPetition()">وقّع العريضة</button>
+  <div class="counter"> عدد الموقّعين : <span id="count">2</span></div>
+</div>
+    
     <button class="btn btn-outline" onclick="openShare()">شارك الحملة الآن</button>
   </div>
 
@@ -474,9 +490,9 @@
 
 <script>
 function openPetition() {
-  // يمكن إضافة رابط العريضة هنا
-  alert('سيتم اضافه العريضه قريبا');
-  // window.open('رابط_العريضة_هنا', '_blank');
+
+  // alert('سيتم اضافه العريضه قريبا');
+   window.open('https://forms.gle/GdPd6QE9GkbYQeiV9', '_blank');
 }
 
 function openShare() {
@@ -493,9 +509,6 @@ function openShare() {
   }
 }
 </script>
-
-</body>
-</html>
   
   
   
@@ -814,7 +827,7 @@ function fallbackCopy(text) {
   
   try {
     document.execCommand('copy');
-    showToast('تم نسخ الهاشتاج! 📋');
+    showToast('تم نسخ الهاشتاج!');
   } catch (err) {
     showToast('فشل في النسخ، انسخ يدوياً');
   }
@@ -2028,7 +2041,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const diff = target - now;
     
     if (diff <= 0) {
-      countdown.innerHTML = '<div style="font-size:1.5rem;color:#4ecdc4;font-weight:bold;">🎉 انتهى العدّاد 🎉</div>';
+      countdown.innerHTML = '<div style="font-size:1.5rem;color:#4ecdc4;font-weight:bold;">⚠️ قااطع ⚠️</div>';
       return;
     }
     
