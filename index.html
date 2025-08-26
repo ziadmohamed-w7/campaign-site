@@ -15,7 +15,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
-
+  <!-- المكتبه -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  
   <style>
     :root{
       --primary:#e53935;
@@ -477,7 +479,7 @@
     
    <div class="petition-wrapper">
   <button class="btn petition-btn" onclick="openPetition()">وقّع العريضة</button>
-  <div class="counter"> عدد الموقّعين : <span id="count">1509</span></div>
+  <div class="counter"> عدد الموقّعين : <span id="count">1519</span></div>
 </div>
     
     <button class="btn btn-outline" onclick="openShare()">شارك الحملة الآن</button>
@@ -1003,15 +1005,6 @@ function showToast(message) {
       transition: transform 0.3s ease;
     }
     
-    #phases details[open] summary::before {
-      transform: translateY(-50%) rotate(135deg);
-    }
-    
-    #phases details summary:hover {
-      background: linear-gradient(135deg, #404040 0%, #4a4a4a 100%);
-      padding-right: 50px;
-    }
-    
     #phases details summary span {
       background: var(--success-gradient);
       -webkit-background-clip: text;
@@ -1238,16 +1231,7 @@ function showToast(message) {
       opacity: 0.1;
       pointer-events: none;
     }
-    
-    /* تأثير الظلال المتحركة */
-    @keyframes shadowMove {
-      0%, 100% { box-shadow: 0 8px 25px rgba(0,0,0,0.2), 0 0 0 1px var(--border-color); }
-      50% { box-shadow: 0 15px 40px rgba(46,204,113,0.1), 0 0 0 1px var(--success); }
-    }
-    
-    #phases details:not([open]):hover {
-      animation: shadowMove 2s ease-in-out infinite;
-    }
+   
   </style>
 
   <h2>
@@ -1722,27 +1706,27 @@ document.addEventListener('DOMContentLoaded', function() {
   <div class="platforms">
     
     <a class="btn btn-facebook" href="https://www.facebook.com/share/g/16oiiv7GdB/" target="_blank" rel="noopener">
-      <span class="btn-icon">🌐</span>
+        <span class="btn-icon"><i class="fa-brands fa-facebook-f"></i></span>
       <span class="btn-text">فيسبوك</span>
     </a>
     
     <a class="btn btn-whatsapp" href="https://whatsapp.com/channel/0029VbAiNkKLikgBJNa4e72m" target="_blank" rel="noopener">
-      <span class="btn-icon">💬</span>
+      <span class="btn-icon"><i class="fa-brands fa-whatsapp"></i></span>
       <span class="btn-text">واتساب</span>
     </a>
     
     <a class="btn btn-telegram" href="https://t.me/limitedInternetInEgypt" target="_blank" rel="noopener">
-      <span class="btn-icon">📲</span>
+      <span class="btn-icon"><i class="fa-brands fa-telegram"></i></span>
       <span class="btn-text">تليجرام</span>
     </a>
     
     <a class="btn btn-twitter" href="https://x.com/elkoshelkosh?t=EKWDNw8DbCJlCpMC5Zzk7g&s=09" target="_blank" rel="noopener">
-      <span class="btn-icon">🐦</span>
+      <span class="btn-icon"><i class="fa-brands fa-twitter"></i></span>
       <span class="btn-text">تويتر / X</span>
     </a>
     
     <a class="btn btn-download" href="https://www.mediafire.com/file/6nc53iayrpm4f5l/Unlimited_net_app_v1.6_.apk/file" target="_blank" rel="noopener">
-      <span class="btn-icon">📥</span>
+      <span class="btn-icon"><i class="fa-brands fa-android"></i></span>
       <span class="btn-text">حمل تطبيق الحملة (APK)</span>
     </a>
     
@@ -1767,6 +1751,7 @@ document.addEventListener('DOMContentLoaded', function() {
   gap: 1rem;
   max-width: 1000px;
   margin: 0 auto;
+  justify-items: center;
 }
 
 .btn {
@@ -1900,7 +1885,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </style>
 
 
-<!-- Day Zero - Simple Enhanced -->
+<!-- Day Zero -->
 <section id="day-zero">
   <h2>⏰ يوم الصفر</h2>
   <p>قوة المقاطعة في التزامنا سويًا</p>
@@ -1928,7 +1913,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <style>
 #day-zero {
   text-align: center;
-  margin: 4rem 1rem;
+  margin: 4rem auto;
   padding: 2rem;
   background: #1a1a1a;
   border-radius: 12px;
