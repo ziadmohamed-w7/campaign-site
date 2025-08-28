@@ -452,9 +452,9 @@
       }
 
       /* إخفاء العناصر المتحركة على الشاشات الصغيرة جداً لتحسين الأداء */
-      .float-icon {
+      /*.float-icon {
         display: none;
-      }
+      }*/
 
       .hero::before {
         opacity: 0.5; 
@@ -558,7 +558,7 @@
    <div class="petition-wrapper">
   <button class="btn petition-btn" onclick="openPetition()">وقّع العريضة</button>
 
-  <div class="counter"> عدد الموقّعين : <span id="count">2409</span></div>
+  <div class="counter"> عدد الموقّعين : <span id="count">2415</span></div>
 </div>
     
     <button class="btn btn-outline" onclick="openShare()">شارك الحملة الآن</button>
@@ -1618,13 +1618,40 @@ Hello .. I am an Egyptian citizen. I am sending you a complaint about Vodafone i
 <section id="why" class="why-section">
   <h2>لماذا نطالب بإنترنت غير محدود وعادل؟</h2>
   <ul>
-    <li><span class="icon">🌍</span> الإنترنت أصبح خدمة أساسية زي الكهرباء والمياه، ومش رفاهية، وبالتالي لازم يكون متاح بجودة عادلة للجميع.</li>
-    <li><span class="icon">⚡</span> السرعات الحالية لا تكفي لاجتماعات العمل ولا المحاضرات أونلاين، ومع الهبوط بعد انتهاء الكوتا بتبقى الخدمة شبه منعدمة.</li>
-    <li><span class="icon">📚</span> الطلاب والباحثين بيضطروا يدفعوا زيادة أو يشتروا باقات إضافية علشان يقدروا يذاكروا أو يحملوا مراجع، وده عبء غير منطقي.</li>
-    <li><span class="icon">💼</span> أصحاب الأعمال الصغيرة والفريلانسرز بيعتمدوا كليًا على الإنترنت، وأي بطء أو قيود بيأثر مباشرة على مصدر دخلهم.</li>
-    <li><span class="icon">🏛️</span> خدمات الحكومة الرقمية نفسها محتاجة إنترنت ثابت وسريع (التقديم للكليات، الشكاوى الحكومية، الدفع الإلكتروني)، وده مش متحقق.</li>
-    <li><span class="icon">📉</span> معايير الإنترنت في مصر أقل من دول أقل في الإمكانيات، ومع ذلك أسعارهم أرخص وخدماتهم أفضل.</li>
-    <li><span class="icon">💰</span> التسعير حسب الاستهلاك ظلم، لأن السرعة هي المقياس الحقيقي لقيمة الخدمة.</li>
+    <li>
+      <i class="fa-solid fa-earth-africa fa-bounce" style="color:#ff3b30; margin-left:8px;"></i>
+      الإنترنت أصبح خدمة أساسية زي الكهرباء والمياه، ومش رفاهية، وبالتالي لازم يكون متاح بجودة عادلة للجميع.
+    </li>
+
+    <li>
+      <i class="fa-solid fa-bolt fa-fade" style="color:#ff3b30; margin-left:8px;"></i>
+      السرعات الحالية لا تكفي لاجتماعات العمل ولا المحاضرات أونلاين، ومع الهبوط بعد انتهاء الكوتا بتبقى الخدمة شبه منعدمة.
+    </li>
+
+    <li>
+      <i class="fa-solid fa-book-open fa-bounce" style="color:#ff3b30; margin-left:8px;"></i>
+      الطلاب والباحثين بيضطروا يدفعوا زيادة أو يشتروا باقات إضافية علشان يقدروا يذاكروا أو يحملوا مراجع، وده عبء غير منطقي.
+    </li>
+
+    <li>
+      <i class="fa-solid fa-briefcase fa-beat" style="color:#ff3b30; margin-left:8px;"></i>
+      أصحاب الأعمال الصغيرة والفريلانسرز بيعتمدوا كليًا على الإنترنت، وأي بطء أو قيود بيأثر مباشرة على مصدر دخلهم.
+    </li>
+
+    <li>
+      <i class="fa-solid fa-landmark fa-shake" style="color:#ff3b30; margin-left:8px;"></i>
+      خدمات الحكومة الرقمية نفسها محتاجة إنترنت ثابت وسريع (التقديم للكليات، الشكاوى الحكومية، الدفع الإلكتروني)، وده مش متحقق.
+    </li>
+
+    <li>
+      <i class="fa-solid fa-chart-line fa-fade" style="color:#ff3b30; margin-left:8px;"></i>
+      معايير الإنترنت في مصر أقل من دول أقل في الإمكانيات، ومع ذلك أسعارهم أرخص وخدماتهم أفضل.
+    </li>
+
+    <li>
+      <i class="fa-solid fa-coins fa-bounce" style="color:#ff3b30; margin-left:8px;"></i>
+      التسعير حسب الاستهلاك ظلم، لأن السرعة هي المقياس الحقيقي لقيمة الخدمة.
+    </li>
   </ul>
 </section>
 
@@ -1827,7 +1854,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     <a class="btn btn-download" href="https://www.mediafire.com/file/6nc53iayrpm4f5l/Unlimited_net_app_v1.6_.apk/file" target="_blank" rel="noopener">
       <span class="btn-icon"><i class="fa-brands fa-android"></i></span>
-      <span class="btn-text">حمل تطبيق الحملة (APK)</span>
+      <span class="btn-text">تطبيق الحملة</span>
     </a>
     
   </div>
@@ -1987,7 +2014,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <!-- Day Zero -->
 <section id="day-zero">
-  <h2>⏰ يوم الصفر</h2>
+  <h2>
+    <i class="fa-solid fa-clock dayzero-icon"></i>
+    يوم الصفر
+  </h2>
   <p>قوة المقاطعة في التزامنا سويًا</p>
   
   <div id="countdown">
@@ -2100,6 +2130,16 @@ document.addEventListener('DOMContentLoaded', function() {
     font-size: 1.8rem;
   }
 }
+  
+  /*-- وميض قاطع --*/
+  .blink-icon {
+  animation: blink 2s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.2; }
+}
 </style>
 
 <script>
@@ -2117,11 +2157,13 @@ document.addEventListener('DOMContentLoaded', function() {
     const now = Date.now();
     const diff = target - now;
     
-    if (diff <= 0) {
-      countdown.innerHTML = '<div style="font-size:1.5rem;color:#4ecdc4;font-weight:bold;">⚠️ قااطع ⚠️</div>';
-      return;
-    }
-    
+   if (diff <= 0) {
+  countdown.innerHTML = `
+    <div style="font-size:1.5rem;color:#4ecdc4;font-weight:bold;">
+      <i class="fa-solid fa-triangle-exclamation blink-icon"></i> قاطع <i class="fa-solid fa-triangle-exclamation blink-icon"></i>
+    </div>`;
+  return;
+}
     const d = Math.floor(diff / (1000 * 60 * 60 * 24));
     const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
     const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
@@ -2145,15 +2187,19 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <!-- Assets -->
 <section id="assets" class="assets-section">
-  <h2 class="ar">📂 الملفات الجاهزة</h2>
+  <h2 class="ar">
+    <i class="fa-solid fa-folder-open"></i> الملفات الجاهزة
+  </h2>
 
   <a class="btn-download" href="https://www.mediafire.com/file/czs4k5tjwnf6pye/%2523Poster.rar/file" target="_blank">
-    ⬇️ تحميل البوستر
+    <i class="fa-solid fa-download"></i> تحميل البوستر
   </a>
 
   <!-- تنبيه -->
   <details class="warning-box">
-    <summary>⚠️ تنبيه</summary>
+    <summary>
+      <i class="fa-solid fa-triangle-exclamation"></i> تنبيه
+    </summary>
     <div>
       <p>
         تحميل واستخدام البوستر يكون على <strong>مسؤوليتك الشخصية</strong>.  
@@ -2276,58 +2322,87 @@ document.addEventListener('DOMContentLoaded', function() {
     
     
     
+<!-- CDN Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
 <!-- FAQ -->
 <section id="faq" class="faq-section">
   <h2>الأسئلة الشائعة</h2>
   <div class="faq">
 
     <details>
-      <summary> 🖊️ يعني إيه عريضة وليه لازم أوقعها؟</summary>
+      <summary>
+        <i class="fa-solid fa-pen fa-bounce" style="color:#ff3b30; margin-left:8px;"></i>
+        يعني إيه عريضة وليه لازم أوقعها؟
+      </summary>
       <p>العريضة زي ورقة اعتراض جماعية، كل ما يزيد عدد التوقيعات كل ما صوتنا يبقى أقوى قدام المسؤولين، والتوقيع بيأكد إنك جزء من المطالبة بالحق ومش مجرد متفرج.</p>
     </details>
     
-     <details>
-      <summary>💼 ماذا أفعل إذا لم أستطع المقاطعة بسبب العمل؟</summary>
+    <details>
+      <summary>
+        <i class="fa-solid fa-briefcase fa-beat" style="color:#ff3b30; margin-left:8px;"></i>
+        ماذا أفعل إذا لم أستطع المقاطعة بسبب العمل؟
+      </summary>
       <p>ممكن تساهم بطرق مختلفة زي نشر الحملة على الإنترنت، مشاركة البوستات، أو حتى طباعة ونشر الملصقات المزودة بـ QR Code في محيطك.</p>
     </details>
 
     <details>
-      <summary>⚡ لماذا المقاطعة وسيلة فعّالة؟</summary>
+      <summary>
+        <i class="fa-solid fa-bolt fa-fade" style="color:#ff3b30; margin-left:8px;"></i>
+        لماذا المقاطعة وسيلة فعّالة؟
+      </summary>
       <p>لأن الضغط الاقتصادي المنظم هو الأداة الأقوى لإجبار الشركات على تحسين خدماتها أو التفاوض بجدية مع المستخدمين.</p>
     </details>
 
     <details>
-      <summary>📸 كيف يمكنني توثيق مشاركتي؟</summary>
+      <summary>
+        <i class="fa-solid fa-camera fa-bounce" style="color:#ff3b30; margin-left:8px;"></i>
+        كيف يمكنني توثيق مشاركتي؟
+      </summary>
       <p>بسهولة: صوّر الملصقات أو أي نشاط داعم للحملة، وانشره معانا على الجروب الرسمي في 
       <a href="https://www.facebook.com" target="_blank">Facebook</a> علشان نوصل صوتنا أكتر.</p>
     </details>
 
     <details>
-      <summary>🔒 هل بياناتي آمنة؟</summary>
+      <summary>
+        <i class="fa-solid fa-lock fa-shake" style="color:#ff3b30; margin-left:8px;"></i>
+        هل بياناتي آمنة؟
+      </summary>
       <p>أكيد. الحملة سلمية، ولا يتم جمع أو مشاركة بياناتك مع أي طرف خارجي. كل مشاركتك مقتصرة على دعم الفكرة فقط.</p>
     </details>
 
     <details>
-      <summary>🚫 هل الحملة سياسية أو تابعة لجهة معينة؟</summary>
+      <summary>
+        <i class="fa-solid fa-ban fa-beat-fade" style="color:#ff3b30; margin-left:8px;"></i>
+        هل الحملة سياسية أو تابعة لجهة معينة؟
+      </summary>
       <p>لأ، الحملة مجتمعية بالكامل وسلمية 100%، ومش تابعة لأي حزب أو كيان سياسي. هدفها تحسين الخدمة فقط.</p>
     </details>
 
     <details>
-      <summary>💰 هل المقاطعة هتكلفني فلوس؟</summary>
+      <summary>
+        <i class="fa-solid fa-coins fa-bounce" style="color:#ff3b30; margin-left:8px;"></i>
+        هل المقاطعة هتكلفني فلوس؟
+      </summary>
       <p>العكس تمامًا. المقاطعة معناها توقف عن شراء باقات إضافية أو شحن جديد لفترة معينة، وده بيوفرلك فلوس وبيوصل رسالة قوية للشركات.</p>
     </details>
 
     <details>
-      <summary>👨‍👩‍👧 إزاي أشرح الفكرة لأهلي أو أصدقائي؟</summary>
+      <summary>
+        <i class="fa-solid fa-users fa-fade" style="color:#ff3b30; margin-left:8px;"></i>
+        إزاي أشرح الفكرة لأهلي أو أصدقائي؟
+      </summary>
       <p>اشرحلهم إن الهدف إن الإنترنت يبقى حق للجميع وبسعر عادل، وإن المقاطعة مش ضد شخص أو شركة معينة، لكنها ضغط عادل لتحسين الخدمة.</p>
     </details>
-
   </div>
 </section>
 
 <style>
   .faq-section {
-    padding: 3rem 1rem;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 2rem 1rem;
     background: #1a1a1a;
     color: #fff;
     border-radius: 20px;
@@ -2347,7 +2422,6 @@ document.addEventListener('DOMContentLoaded', function() {
     background: #222;
     border-radius: 12px;
     transition: all 0.3s ease;
-    cursor: pointer;
   }
 
   .faq details[open] {
@@ -2358,36 +2432,65 @@ document.addEventListener('DOMContentLoaded', function() {
   .faq summary {
     font-size: 1.1rem;
     font-weight: 600;
-    outline: none;
+    cursor: pointer;
   }
 
-  .faq p {
-    margin-top: 0.5rem;
+  /* Focus for accessibility */
+  .faq summary:focus {
+    outline: 2px solid #ff3b30;
+    border-radius: 6px;
+  }
+
+  /* Animation for answer */
+  .faq details p {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+    margin: 0;
     line-height: 1.7;
     color: #ddd;
+  }
+
+  .faq details[open] p {
+    margin-top: 0.5rem;
+    max-height: 500px; /* لازم يكون أكبر من أكبر إجابة */
   }
 
   .faq a {
     color: #ff3b30;
     text-decoration: underline;
+    transition: color 0.3s ease;
+  }
+
+  .faq a:hover {
+    color: #ff6659;
+  }
+
+  @media(max-width: 768px) {
+    .faq-section {
+      margin: 1rem 0.5rem;
+      padding: 2rem 1rem;
+    }
   }
 </style>
+
 
   
   
   
   
- <!-- قسم الاقتراحات - محسن -->
+<!-- قسم الاقتراحات - محسن -->
 <section id="suggestions">
   <details class="suggestions-details">
     <summary class="suggestions-summary">
-      💡 اضف اقتراح
-      <span class="arrow">▼</span>
+      <i class="fa-solid fa-lightbulb fa-bounce" style="color:#f4c542; margin-left:6px;"></i>
+      اضف اقتراح
+      <i class="fa-solid fa-chevron-down arrow" style="margin-right:6px; transition: transform 0.3s;"></i>
     </summary>
     <div class="suggestions-content">
-      <p class="suggestions-text">شاركنا أفكارك واقتراحاتك لتطوير الحملة</p>
+      <p class="suggestions-text">شاركنا أفكارك واقتراحاتك لتطوير الموقع والحملة</p>
       <a class="suggestions-btn" href="https://forms.gle/opa9JSJJf6fHsnQf9" target="_blank" rel="noopener">
-        📝 اضغط هنا لإرسال اقتراحك
+        <i class="fa-solid fa-pen-to-square"></i> اضغط هنا لإرسال اقتراحك
       </a>
     </div>
   </details>
@@ -2544,14 +2647,15 @@ document.addEventListener('DOMContentLoaded', function() {
 }
 </style>
   
- <!-- تنويه هام + فخامة الرئيس - محسن -->
+<!-- تنويه هام + فخامة الرئيس - محسن -->
 <section id="important-notices">
-  
+
   <!-- تنويه هام -->
   <details class="notice-item">
     <summary class="notice-summary important">
-      ⚠️ تنويه هام
-      <span class="arrow">▼</span>
+      <i class="fa-solid fa-triangle-exclamation" style="color:#e63946; margin-left:6px;"></i>
+      تنويه هام
+      <i class="fa-solid fa-chevron-down arrow"></i>
     </summary>
     <div class="notice-content">
       <p>
@@ -2559,12 +2663,13 @@ document.addEventListener('DOMContentLoaded', function() {
       </p>
     </div>
   </details>
-  
+
   <!-- فخامة الرئيس -->
   <details class="notice-item">
     <summary class="notice-summary presidential">
-       فخامة الرئيس
-      <span class="arrow">▼</span>
+      <i class="fa-solid fa-flag" style="color:#1d3557; margin-left:6px;"></i>
+      فخامة الرئيس
+      <i class="fa-solid fa-chevron-down arrow"></i>
     </summary>
     <div class="notice-content">
       <p>
@@ -2572,7 +2677,7 @@ document.addEventListener('DOMContentLoaded', function() {
       </p>
     </div>
   </details>
-  
+
 </section>
 
 <style>
