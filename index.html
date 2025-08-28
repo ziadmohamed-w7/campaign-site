@@ -47,7 +47,7 @@
     body{
       font-family:'Cairo',sans-serif;
       background:linear-gradient(135deg,var(--bg) 0%,var(--surface) 100%);
-      min-height:100vh;
+      height: auto;
       color:var(--text);
       line-height:1.6;
       scroll-behavior:smooth;
@@ -121,7 +121,7 @@
       position: relative;
       animation: heroEntrance 1.2s ease-out;
       overflow: hidden;
-      min-height: clamp(70vh, 80vh, 85vh);
+      min-height: clamp(80vh, 90vh, 95vh);
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -438,7 +438,7 @@
         width: calc(100% - 15px);
         margin: clamp(70px, 10vh, 80px) auto 0;
         padding: clamp(30px, 6vh, 40px) clamp(15px, 3vw, 20px);
-        min-height: 75vh;
+        min-height: 100vh;
       }
       
       .btn {
@@ -470,7 +470,7 @@
 
     footer{
       background:#000;
-      padding: clamp(1.5rem, 4vh, 2rem) 1rem;
+      padding: 0;
       text-align:center;
       font-size: clamp(0.8rem, 2vw, 0.9rem);
       color:#ccc;
@@ -565,7 +565,7 @@
    <div class="petition-wrapper">
   <button class="btn petition-btn" onclick="openPetition()">وقّع العريضة</button>
 
-  <div class="counter"> عدد الموقّعين : <span id="count">2425</span></div>
+  <div class="counter"> عدد الموقّعين : <span id="count">2452</span></div>
 </div>
     
     <button class="btn btn-outline" onclick="openShare()">شارك الحملة الآن</button>
@@ -2322,8 +2322,7 @@ document.addEventListener('DOMContentLoaded', function() {
     margin: 10px 0 0 20px;
     line-height: 1.8;
   }
-</style>
-<section> 
+</style> 
 
     
     
