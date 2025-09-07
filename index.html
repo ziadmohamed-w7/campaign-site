@@ -1735,6 +1735,14 @@ Hello .. I am an Egyptian citizen. I am sending you a complaint about Vodafone i
       </a>
       <div class="step-info">حمل الملصقات واطبعها ووزعها في الأماكن المناسبة</div>
     </li>
+
+    <li>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSfxsw43WwwSXzad5Vt8hJDMzIhTECoUCNLvmVJ0u9KAFHEyQQ/viewform" target="_blank" onclick="trackClick('petition_share')">
+        شارك العريضة الرسمية
+      </a>
+      <button onclick="copyPetitionLink()" class="copy-btn">📋 نسخ الرابط</button>
+      <div class="step-info">انشر رابط العريضة مع أصدقائك وساعد في جمع التوقيعات</div>
+    </li>
     
     <li>
       ادعُ أصدقاءك:
@@ -1750,8 +1758,6 @@ Hello .. I am an Egyptian citizen. I am sending you a complaint about Vodafone i
 </section>
 
 <style>
-  
-  
 /* تحسينات بسيطة على قسم المشاركة */
 #how .step-info {
   color: #a0a0a0;
@@ -1794,6 +1800,24 @@ Hello .. I am an Egyptian citizen. I am sending you a complaint about Vodafone i
   transform: translateY(-2px);
 }
 
+/* زر نسخ الرابط */
+.copy-btn {
+  margin-left: 8px;
+  padding: 3px 8px;
+  font-size: 0.8em;
+  background: #e63946;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.copy-btn:hover {
+  background: #ff4d5a;
+  transform: translateY(-2px);
+}
+
 /* للهواتف */
 @media (max-width: 768px) {
   #how .social-share {
@@ -1814,9 +1838,7 @@ Hello .. I am an Egyptian citizen. I am sending you a complaint about Vodafone i
 <script>
 function trackClick(action) {
   console.log('تم النقر على:', action, new Date().toLocaleString('ar-EG'));
-  
 }
-
 
 function updateSiteUrl(siteUrl) {
   const links = document.querySelectorAll('a[href*="https://ziadmohamed-w7.github.io/campaign-site/"]');
@@ -1825,6 +1847,13 @@ function updateSiteUrl(siteUrl) {
   });
 }
 
+// زر نسخ الرابط
+function copyPetitionLink() {
+  const petitionLink = "https://docs.google.com/forms/d/e/1FAIpQLSfxsw43WwwSXzad5Vt8hJDMzIhTECoUCNLvmVJ0u9KAFHEyQQ/viewform";
+  navigator.clipboard.writeText(petitionLink).then(() => {
+    alert("تم نسخ رابط العريضة ✅");
+  });
+}
 
 // تحسين إمكانية الوصول
 document.addEventListener('DOMContentLoaded', function() {
@@ -1833,6 +1862,7 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 </script>
+
 
 <!-- Join everywhere - Enhanced Version -->
 <section id="join-all">
@@ -2024,173 +2054,6 @@ document.addEventListener('DOMContentLoaded', function() {
 </style>
 
 
-<!-- Day Zero -->
-<section id="day-zero">
-  <h2>
-    <i class="fa-solid fa-clock dayzero-icon"></i>
-    يوم الصفر
-  </h2>
-  <p>قوة المقاطعة في التزامنا سويًا</p>
-  
-  <div id="countdown">
-    <div class="time-unit">
-      <span id="cd-days">--</span>
-      <small>يوم</small>
-    </div>
-    <div class="time-unit">
-      <span id="cd-hours">--</span>
-      <small>ساعة</small>
-    </div>
-    <div class="time-unit">
-      <span id="cd-mins">--</span>
-      <small>دقيقة</small>
-    </div>
-    <div class="time-unit">
-      <span id="cd-secs">--</span>
-      <small>ثانية</small>
-    </div>
-  </div>
-</section>
-
-<style>
-#day-zero {
-  text-align: center;
-  margin: 4rem auto;
-  padding: 2rem;
-  background: #1a1a1a;
-  border-radius: 12px;
-  border: 1px solid #333;
-}
-
-#day-zero h2 {
-  font-size: 1.8rem;
-  margin-bottom: 0.5rem;
-  color: #fff;
-  font-weight: 700;
-}
-
-#day-zero p {
-  color: #ccc;
-  margin-bottom: 2rem;
-  font-size: 1.1rem;
-}
-
-#countdown {
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-  flex-wrap: wrap;
-}
-
-.time-unit {
-  text-align: center;
-  background: #2a2a2a;
-  padding: 1.5rem 1rem;
-  border-radius: 8px;
-  border: 1px solid #444;
-  min-width: 80px;
-  transition: transform 0.2s ease;
-}
-
-.time-unit:hover {
-  transform: translateY(-2px);
-  border-color: #666;
-}
-
-.time-unit span {
-  display: block;
-  font-size: 2.5rem;
-  font-weight: bold;
-  color: #fff;
-  font-family: monospace;
-}
-
-.time-unit small {
-  color: #aaa;
-  font-size: 0.9rem;
-  margin-top: 0.5rem;
-  display: block;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  #day-zero {
-    margin: 2rem 0.5rem;
-    padding: 1.5rem;
-  }
-  
-  #countdown {
-    gap: 1rem;
-  }
-  
-  .time-unit {
-    min-width: 70px;
-    padding: 1rem 0.75rem;
-  }
-  
-  .time-unit span {
-    font-size: 2rem;
-  }
-}
-
-@media (max-width: 480px) {
-  #day-zero h2 {
-    font-size: 1.4rem;
-  }
-  
-  .time-unit span {
-    font-size: 1.8rem;
-  }
-}
-  
-  /*-- وميض قاطع --*/
-  .blink-icon {
-  animation: blink 2s infinite;
-}
-
-@keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.2; }
-}
-</style>
-
-<script>
-(function() {
-  const target = new Date("2025-09-01T00:00:00+02:00").getTime();
-  const days = document.getElementById('cd-days');
-  const hours = document.getElementById('cd-hours');
-  const mins = document.getElementById('cd-mins');
-  const secs = document.getElementById('cd-secs');
-  const countdown = document.getElementById('countdown');
-  
-  if (!days || !hours || !mins || !secs) return;
-  
-  function updateCountdown() {
-    const now = Date.now();
-    const diff = target - now;
-    
-   if (diff <= 0) {
-  countdown.innerHTML = `
-    <div style="font-size:1.5rem;color:#4ecdc4;font-weight:bold;">
-      <i class="fa-solid fa-triangle-exclamation blink-icon"></i> قاطع <i class="fa-solid fa-triangle-exclamation blink-icon"></i>
-    </div>`;
-  return;
-}
-    const d = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-    const s = Math.floor((diff % (1000 * 60)) / 1000);
-    
-    days.textContent = d.toString().padStart(2, '0');
-    hours.textContent = h.toString().padStart(2, '0');
-    mins.textContent = m.toString().padStart(2, '0');
-    secs.textContent = s.toString().padStart(2, '0');
-  }
-  
-  updateCountdown();
-  setInterval(updateCountdown, 1000);
-})();
-</script>
 
 
 
