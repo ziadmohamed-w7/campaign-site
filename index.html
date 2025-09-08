@@ -2197,7 +2197,386 @@ document.addEventListener('DOMContentLoaded', function() {
   
    
    
-    
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title> صفحات و مشاهير داعمين للحملة</title>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        background: #0a0b0f;
+        color: #ffffff;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        overflow-x: hidden;
+    }
+
+    /* قسم المشاهير */
+    .celebrity-section {
+        background: linear-gradient(180deg, #0a0b0f 0%, #151823 50%, #0a0b0f 100%);
+        padding: 100px 0 120px;
+        position: relative;
+        min-height: 100vh;
+        overflow: hidden; /* يمنع أي تمدد أفقي */
+    }
+
+    .celebrity-section::before {
+        content: '';
+        position: absolute;
+        top: 20%;
+        left: 50%;
+        width: 500px;
+        height: 500px;
+        background: radial-gradient(circle, rgba(88, 86, 214, 0.08) 0%, transparent 60%);
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        animation: breathe 8s ease-in-out infinite alternate;
+    }
+
+    @keyframes breathe {
+        0% { 
+            transform: translate(-50%, -50%) scale(0.9);
+            opacity: 0.4;
+        }
+        100% { 
+            transform: translate(-50%, -50%) scale(1.1);
+            opacity: 0.6;
+        }
+    }
+
+    .container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 24px;
+        position: relative;
+        z-index: 2;
+    }
+
+    .section-header {
+        text-align: center;
+        margin-bottom: 80px;
+        opacity: 0;
+        animation: fadeInUp 1s ease-out 0.3s forwards;
+    }
+
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .section-header h2 {
+        font-size: clamp(2.5rem, 5vw, 3.5rem);
+        font-weight: 300;
+        letter-spacing: -0.02em;
+        margin-bottom: 16px;
+        background: linear-gradient(135deg, #ffffff 0%, #b8b9ff 50%, #8b5cf6 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        line-height: 1.2;
+    }
+
+    .section-header .subtitle {
+        font-size: 1.125rem;
+        color: rgba(255, 255, 255, 0.6);
+        font-weight: 400;
+        letter-spacing: 0.5px;
+    }
+
+    .celebrities-container {
+        position: relative;
+        overflow: hidden;
+    }
+
+    .celebrities-slider {
+        display: flex;
+        gap: 24px;
+        overflow-x: auto;
+        scroll-behavior: smooth;
+        padding: 20px 0 40px 0;
+        scrollbar-width: thin;
+        scrollbar-color: rgba(139, 92, 246, 0.5) transparent;
+        -webkit-overflow-scrolling: touch; /* للتمرير السلس على الموبايل */
+    }
+
+    .celebrities-slider::-webkit-scrollbar {
+        height: 6px;
+    }
+
+    .celebrities-slider::-webkit-scrollbar-track {
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 3px;
+    }
+
+    .celebrities-slider::-webkit-scrollbar-thumb {
+        background: linear-gradient(90deg, #8b5cf6, #a855f7);
+        border-radius: 3px;
+    }
+
+    .celebrity-card {
+        min-width: 340px;
+        flex: 0 0 auto; /* يمنع الكارت من كسر العرض */
+        flex-shrink: 0;
+        background: rgba(255, 255, 255, 0.04);
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 24px;
+        padding: 40px 32px;
+        text-align: center;
+        transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+        opacity: 0;
+        transform: translateY(40px);
+        animation: cardAppear 0.8s ease-out forwards;
+    }
+
+    .celebrity-card:nth-child(1) { animation-delay: 0.1s; }
+    .celebrity-card:nth-child(2) { animation-delay: 0.2s; }
+    .celebrity-card:nth-child(3) { animation-delay: 0.3s; }
+    .celebrity-card:nth-child(4) { animation-delay: 0.4s; }
+    .celebrity-card:nth-child(5) { animation-delay: 0.5s; }
+
+    @keyframes cardAppear {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .celebrity-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, rgba(139, 92, 246, 0.5), transparent);
+        transform: scaleX(0);
+        transition: transform 0.4s ease;
+    }
+
+    .celebrity-card:hover::before {
+        transform: scaleX(1);
+    }
+
+    .celebrity-card:hover {
+        transform: translateY(-8px);
+        background: rgba(255, 255, 255, 0.08);
+        border-color: rgba(139, 92, 246, 0.3);
+        box-shadow: 
+            0 20px 40px rgba(0, 0, 0, 0.3),
+            0 0 0 1px rgba(139, 92, 246, 0.1);
+    }
+
+    .celebrity-avatar {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        margin: 0 auto 24px;
+        overflow: hidden;
+        border: 3px solid rgba(139, 92, 246, 0.2);
+        transition: all 0.4s ease;
+        position: relative;
+    }
+
+    .celebrity-avatar::after {
+        content: '';
+        position: absolute;
+        inset: -3px;
+        border-radius: 50%;
+        background: linear-gradient(45deg, #8b5cf6, #a855f7);
+        opacity: 0;
+        transition: opacity 0.4s ease;
+        z-index: -1;
+    }
+
+    .celebrity-card:hover .celebrity-avatar::after {
+        opacity: 0.5;
+    }
+
+    .celebrity-avatar img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        max-width: 100%;
+        transition: transform 0.4s ease;
+    }
+
+    .celebrity-card:hover .celebrity-avatar img {
+        transform: scale(1.1);
+    }
+
+    .celebrity-info h3 {
+        font-size: 1.375rem;
+        font-weight: 500;
+        color: #ffffff;
+        margin-bottom: 8px;
+        letter-spacing: -0.01em;
+    }
+
+    .celebrity-role {
+        display: inline-block;
+        font-size: 0.875rem;
+        color: rgba(139, 92, 246, 0.9);
+        background: rgba(139, 92, 246, 0.1);
+        padding: 6px 16px;
+        border-radius: 20px;
+        margin-bottom: 20px;
+        font-weight: 500;
+        letter-spacing: 0.5px;
+    }
+
+    .celebrity-quote {
+        font-size: 0.9375rem;
+        color: rgba(255, 255, 255, 0.7);
+        line-height: 1.6;
+        font-style: italic;
+        margin-bottom: 24px;
+        min-height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .proof-button {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: linear-gradient(135deg, rgba(139, 92, 246, 0.15) 0%, rgba(168, 85, 247, 0.15) 100%);
+        border: 1px solid rgba(139, 92, 246, 0.3);
+        color: rgba(139, 92, 246, 0.9);
+        padding: 8px 16px;
+        border-radius: 20px;
+        text-decoration: none;
+        font-size: 0.875rem;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        letter-spacing: 0.3px;
+    }
+
+    .proof-button:hover {
+        background: linear-gradient(135deg, rgba(139, 92, 246, 0.25) 0%, rgba(168, 85, 247, 0.25) 100%);
+        border-color: rgba(139, 92, 246, 0.5);
+        color: #ffffff;
+        transform: translateY(-1px);
+    }
+
+    .proof-button::before {
+        content: '🔗';
+        font-size: 0.75rem;
+    }
+
+    @media (max-width: 768px) {
+        .celebrity-section {
+            padding: 80px 0 100px;
+        }
+        
+        .container {
+            padding: 0 16px;
+        }
+        
+        .section-header {
+            margin-bottom: 60px;
+        }
+        
+        .celebrities-slider {
+            gap: 20px;
+        }
+        
+        .celebrity-card {
+            min-width: 280px;
+            padding: 28px 24px 40px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .celebrity-avatar {
+            width: 100px;
+            height: 100px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .celebrity-card {
+            min-width: 260px;
+            padding: 24px 20px 36px;
+        }
+        
+        .celebrity-avatar {
+            width: 80px;
+            height: 80px;
+        }
+    }
+</style>
+
+<section class="celebrity-section">
+    <div class="container">
+        <div class="section-header">
+            <h2> داعمين للحملة</h2>
+            <p class="subtitle">شخصيات مؤثرة تقف معنا لدعم القضية</p>
+        </div>
+        
+        <div class="celebrities-container">
+            <div class="celebrities-slider">
+                
+                <!-- بطاقة 1 -->
+                <div class="celebrity-card">
+                    <div class="celebrity-avatar">
+                        <img src="https://i.ibb.co/FSMYxyv/image.png">
+                    </div>
+                    <div class="celebrity-info">
+                        <h3>محمود ابو خطيب</h3>
+                        <span class="celebrity-role">يوتيوبر</span>
+                        <p class="celebrity-quote">أحلامنا مش أوهام ✊</p>
+                        <a href="https://youtu.be/m1_V6wF3cF0" class="proof-button" target="_blank" rel="noopener">
+                            إثبات الدعم
+                        </a>
+                    </div>
+                </div>
+             <!-- بطاقة 2 -->
+                <div class="celebrity-card">
+                    <div class="celebrity-avatar">
+                        <img src="https://i.ibb.co/7N0M2rqp/image.png">
+                    </div>
+                    <div class="celebrity-info">
+                        <h3>Internet Explorer Egypt</h3>
+                        <span class="celebrity-role">صفحة ترفيهية</span>
+                        <p class="celebrity-quote">اعلن دعمي الكامل ✊</p>
+                        <a href="https://www.facebook.com/share/p/1FGmV19DT8/" class="proof-button" target="_blank" rel="noopener">
+                            إثبات الدعم
+                        </a>
+                    </div>
+                </div>
+              <!--بطاقة 3 -->
+                <div class="celebrity-card">
+                    <div class="celebrity-avatar">
+                        <img src="https://i.ibb.co/Zzb1VWrq/5909157319307020750-120.jpg">
+                    </div>
+                    <div class="celebrity-info">
+                        <h3>Compare Hardware</h3>
+                        <span class="celebrity-role">يوتيوبر</span>
+                        <p class="celebrity-quote">داعم للحمله </p>
+                        <a href="https://youtube.com/shorts/J8IZfXkrufI?si=4yru0GLyozUk01ht" class="proof-button" target="_blank" rel="noopener">
+                            إثبات الدعم
+                        </a>
+                    </div>
+                </div> 
+            </div> 
+        </div> 
+    </div> 
+</section>
+
 
     
     
