@@ -2066,24 +2066,77 @@ document.addEventListener('DOMContentLoaded', function() {
     <i class="fa-solid fa-folder-open"></i> الملفات الجاهزة
   </h2>
 
-  <a class="btn-download" href="https://www.mediafire.com/file/czs4k5tjwnf6pye/%2523Poster.rar/file" target="_blank">
-    <i class="fa-solid fa-download"></i> تحميل البوستر
-  </a>
+  <!-- مجموعة الملفات -->
+  <div class="files-grid">
+    
+    <!-- ملف البوستر -->
+    <div class="file-card">
+      <div class="file-preview">
+        <img src="https://i.ibb.co/67qgrnfy/image.png" alt="بوستر الحملة" loading="lazy">
+        <div class="file-overlay">
+          <span class="file-size">3.11 MB</span>
+          <span class="file-type">RAR</span>
+        </div>
+      </div>
+      <div class="file-info">
+        <h3>بوستر الحملة</h3>
+        <p>ملف مضغوط يحتوي على البوستر بجودة عالية</p>
+        <a href="https://www.mediafire.com/file/czs4k5tjwnf6pye/%2523Poster.rar/file" target="_blank" class="btn-download">
+          <i class="fa-solid fa-download"></i> تحميل
+        </a>
+      </div>
+    </div>
 
-  <!-- تنبيه -->
+    <!-- ملف الاطار -->
+    <div class="file-card">
+      <div class="file-preview">
+        <img src="https://i.ibb.co/Y4KpRXYX/image.png" alt="اطار الحملة" loading="lazy">
+        <div class="file-overlay">
+          <span class="file-size">1.93 MB</span>
+          <span class="file-type">PNG</span>
+        </div>
+      </div>
+      <div class="file-info">
+        <h3>الإطار الرسمي للحملة</h3>
+        <p> ضع صورتك داخل الإطار وشاركه على بروفايلك لدعمنا</p>
+        <a href="https://www.mediafire.com/file/zo9apon53mpfyox/1ST+FRAME.png/file" target="_blank" class="btn-download">
+          <i class="fa-solid fa-download"></i> تحميل
+        </a>
+      </div>
+    </div>
+
+    <!-- ملف البروشور 
+    <div class="file-card">
+      <div class="file-preview">
+        <img src="https://i.ibb.co/9yKmF4G/brochure-preview.jpg" alt="بروشور الحملة" loading="lazy">
+        <div class="file-overlay">
+          <span class="file-size">3.2 MB</span>
+          <span class="file-type">PDF</span>
+        </div>
+      </div>
+      <div class="file-info">
+        <h3>بروشور الحملة</h3>
+        <p>دليل شامل بمعلومات الحملة وأهدافها</p>
+        <a href="#" target="_blank" class="btn-download">
+          <i class="fa-solid fa-download"></i> تحميل
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- تنبيه الاستخدام -->
   <details class="warning-box">
     <summary>
-      <i class="fa-solid fa-triangle-exclamation"></i> تنبيه
-    </summary>
+      <i class="fa-solid fa-triangle-exclamation"></i> تنبيه هام قبل استخدام
+ البوستر    </summary>
     <div>
       <p>
-        تحميل واستخدام البوستر يكون على <strong>مسؤوليتك الشخصية</strong>.  
-        يُسمح بلصقه فقط في أماكن خاصة أو بإذن صاحب المكان (مثل المقاهي، المحلات، الجامعات).  
-        أي استخدام في أماكن حكومية أو غير مصرّح بها يكون خارج نطاق مسؤوليتنا.
+        تحميل واستخدام هذا البوستر يكون على <strong>مسؤوليتك الشخصية</strong>.  
+        يُسمح باستخدامها فقط في أماكن خاصة أو بإذن صاحب المكان.
       </p>
 
       <!-- المسموح -->
-      <details>
+      <details class="usage-rules allowed">
         <summary>✅ الأماكن المسموح بها</summary>
         <ol>
           <li><strong>أماكن خاصة تجارية</strong> (محلات – كافيهات – ورش…)</li>
@@ -2095,7 +2148,7 @@ document.addEventListener('DOMContentLoaded', function() {
       </details>
 
       <!-- الممنوع -->
-      <details>
+      <details class="usage-rules forbidden">
         <summary>⛔ الأماكن الممنوعة</summary>
         <ul>
           <li>أي مكان حكومي (مدارس، مستشفيات، محطات…)</li>
@@ -2108,89 +2161,261 @@ document.addEventListener('DOMContentLoaded', function() {
 </section>
 
 <style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    background: #0a0a0a;
+    color: #fff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 20px;
+    min-height: 100vh;
+  }
+
   .assets-section {
-    background: #1a1a1a;
+    background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
     padding: 2.5rem 1.5rem;
-    border-radius: 18px;
-    box-shadow: 0 0 20px rgba(0,0,0,0.4);
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.6);
     margin-top: 2rem;
+    border: 1px solid #333;
   }
 
   .assets-section h2 {
     color: #ff3b30;
-    font-size: 1.8rem;
-    margin-bottom: 1.2rem;
+    font-size: 2.2rem;
+    margin-bottom: 2rem;
     text-align: center;
-    border-bottom: 2px solid #333;
-    padding-bottom: 0.5rem;
+    position: relative;
+    padding-bottom: 1rem;
   }
 
+  .assets-section h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background: linear-gradient(90deg, #ff3b30, #c92a1f);
+    border-radius: 2px;
+  }
+
+  /* Grid Layout للملفات */
+  .files-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  /* كارد الملف */
+  .file-card {
+    background: #222;
+    border-radius: 15px;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    border: 1px solid #333;
+    position: relative;
+  }
+
+  .file-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(255,59,48,0.3);
+    border-color: #ff3b30;
+  }
+
+  /* منطقة المعاينة */
+  .file-preview {
+    position: relative;
+    height: 160px;
+    overflow: hidden;
+  }
+
+  .file-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+  }
+
+  .file-card:hover .file-preview img {
+    transform: scale(1.05);
+  }
+
+  /* طبقة المعلومات */
+  .file-overlay {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    gap: 5px;
+  }
+
+  .file-size, .file-type {
+    background: rgba(0,0,0,0.8);
+    color: #fff;
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: bold;
+    backdrop-filter: blur(10px);
+  }
+
+  .file-type {
+    background: rgba(255,59,48,0.9);
+  }
+
+  /* معلومات الملف */
+  .file-info {
+    padding: 1.2rem;
+  }
+
+  .file-info h3 {
+    color: #fff;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+  }
+
+  .file-info p {
+    color: #bbb;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    margin-bottom: 1rem;
+  }
+
+  /* زر التحميل */
   .btn-download {
-    display: block;
-    text-align: center;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
     background: linear-gradient(135deg, #ff3b30, #c92a1f);
     color: #fff;
-    font-weight: bold;
-    padding: 14px 20px;
-    border-radius: 12px;
-    font-size: 1.2rem;
+    font-weight: 600;
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-size: 0.9rem;
     text-decoration: none;
-    box-shadow: 0 0 15px rgba(255,59,48,0.5);
     transition: all 0.3s ease;
+    width: 100%;
+    justify-content: center;
   }
 
   .btn-download:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 25px rgba(255,59,48,0.8);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(255,59,48,0.4);
+    background: linear-gradient(135deg, #ff4b40, #d93a2f);
   }
 
+  /* صندوق التنبيه */
   .warning-box {
-    margin-top: 20px;
+    margin-top: 2rem;
     background: #222;
-    border-radius: 12px;
+    border-radius: 15px;
     overflow: hidden;
-    border: 1px solid #e74c3c;
+    border: 2px solid #ff3b30;
+    box-shadow: 0 0 20px rgba(255,59,48,0.2);
   }
 
   .warning-box summary {
     cursor: pointer;
     font-weight: bold;
     color: #ff3b30;
-    font-size: 18px;
-    padding: 12px 16px;
-    background: #2b2b2b;
+    font-size: 1.1rem;
+    padding: 1rem 1.2rem;
+    background: linear-gradient(135deg, #2b2b2b, #1a1a1a);
     border-bottom: 1px solid #333;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease;
   }
 
-  .warning-box div {
-    padding: 15px;
+  .warning-box summary:hover {
+    background: linear-gradient(135deg, #333, #222);
+  }
+
+  .warning-box[open] summary {
+    border-bottom: 2px solid #ff3b30;
+  }
+
+  .warning-box > div {
+    padding: 1.2rem;
     color: #ddd;
-    font-size: 15px;
-    line-height: 1.7;
+    font-size: 0.95rem;
+    line-height: 1.6;
   }
 
-  .warning-box details {
+  /* قوانين الاستخدام */
+  .usage-rules {
     margin-top: 12px;
     background: #2c2c2c;
     border-radius: 8px;
     padding: 8px 12px;
   }
 
-  .warning-box details summary {
+  .usage-rules summary {
     font-size: 16px;
+    cursor: pointer;
+  }
+
+  .usage-rules.allowed summary {
     color: #2ecc71;
   }
 
-  .warning-box details[open] summary {
+  .usage-rules.forbidden summary {
     color: #ff3b30;
   }
 
-  .warning-box ul, 
-  .warning-box ol {
+  .usage-rules[open] summary {
+    color: #ff3b30;
+  }
+
+  .usage-rules ul, 
+  .usage-rules ol {
     margin: 10px 0 0 20px;
     line-height: 1.8;
   }
-</style> 
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .files-grid {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+    
+    .assets-section {
+      padding: 1.5rem 1rem;
+    }
+    
+    .assets-section h2 {
+      font-size: 1.8rem;
+    }
+    
+    .file-preview {
+      height: 140px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .files-grid {
+      gap: 0.8rem;
+    }
+    
+    .file-info {
+      padding: 1rem;
+    }
+    
+    .file-preview {
+      height: 120px;
+    }
+  }
+</style>
   
   
   
@@ -2199,7 +2424,7 @@ document.addEventListener('DOMContentLoaded', function() {
    
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title> صفحات و مشاهير داعمين للحملة</title>
+<title> داعمين للحملة</title>
 <style>
     * {
         margin: 0;
