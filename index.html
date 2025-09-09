@@ -2105,30 +2105,13 @@ document.addEventListener('DOMContentLoaded', function() {
       </div>
     </div>
 
-    <!-- ملف البروشور 
-    <div class="file-card">
-      <div class="file-preview">
-        <img src="https://i.ibb.co/9yKmF4G/brochure-preview.jpg" alt="بروشور الحملة" loading="lazy">
-        <div class="file-overlay">
-          <span class="file-size">3.2 MB</span>
-          <span class="file-type">PDF</span>
-        </div>
-      </div>
-      <div class="file-info">
-        <h3>بروشور الحملة</h3>
-        <p>دليل شامل بمعلومات الحملة وأهدافها</p>
-        <a href="#" target="_blank" class="btn-download">
-          <i class="fa-solid fa-download"></i> تحميل
-        </a>
-      </div>
-    </div>
   </div>
 
   <!-- تنبيه الاستخدام -->
   <details class="warning-box">
     <summary>
-      <i class="fa-solid fa-triangle-exclamation"></i> تنبيه هام قبل استخدام
- البوستر    </summary>
+      <i class="fa-solid fa-triangle-exclamation"></i> تنبيه هام قبل استخدام البوستر
+    </summary>
     <div>
       <p>
         تحميل واستخدام هذا البوستر يكون على <strong>مسؤوليتك الشخصية</strong>.  
@@ -2171,7 +2154,8 @@ document.addEventListener('DOMContentLoaded', function() {
     background: #0a0a0a;
     color: #fff;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    padding: 20px;
+    padding: 0;
+    margin: 0;
     min-height: 100vh;
   }
 
@@ -2180,7 +2164,8 @@ document.addEventListener('DOMContentLoaded', function() {
     padding: 2.5rem 1.5rem;
     border-radius: 20px;
     box-shadow: 0 10px 40px rgba(0,0,0,0.6);
-    margin-top: 2rem;
+    margin: 0;
+    min-height: 100vh;
     border: 1px solid #333;
   }
 
@@ -2353,15 +2338,31 @@ document.addEventListener('DOMContentLoaded', function() {
 
   /* قوانين الاستخدام */
   .usage-rules {
-    margin-top: 12px;
+    margin-top: 1rem;
     background: #2c2c2c;
-    border-radius: 8px;
-    padding: 8px 12px;
+    border-radius: 10px;
+    overflow: hidden;
+    border-left: 4px solid transparent;
+  }
+
+  .usage-rules.allowed {
+    border-left-color: #2ecc71;
+  }
+
+  .usage-rules.forbidden {
+    border-left-color: #e74c3c;
   }
 
   .usage-rules summary {
-    font-size: 16px;
+    font-size: 1rem;
+    padding: 12px 16px;
+    background: #333;
     cursor: pointer;
+    transition: background 0.3s ease;
+  }
+
+  .usage-rules summary:hover {
+    background: #3a3a3a;
   }
 
   .usage-rules.allowed summary {
@@ -2369,17 +2370,19 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   .usage-rules.forbidden summary {
-    color: #ff3b30;
-  }
-
-  .usage-rules[open] summary {
-    color: #ff3b30;
+    color: #e74c3c;
   }
 
   .usage-rules ul, 
   .usage-rules ol {
-    margin: 10px 0 0 20px;
-    line-height: 1.8;
+    margin: 1rem 0 0 1.5rem;
+    line-height: 1.7;
+    padding: 0 1rem 1rem;
+  }
+
+  .usage-rules li {
+    margin-bottom: 8px;
+    color: #ccc;
   }
 
   /* Responsive Design */
@@ -2391,6 +2394,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     .assets-section {
       padding: 1.5rem 1rem;
+      border-radius: 0;
     }
     
     .assets-section h2 {
@@ -2413,6 +2417,11 @@ document.addEventListener('DOMContentLoaded', function() {
     
     .file-preview {
       height: 120px;
+    }
+    
+    .assets-section {
+      padding: 1rem 0.5rem;
+      border-radius: 0;
     }
   }
 </style>
