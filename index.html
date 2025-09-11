@@ -1,7 +1,7 @@
 <!-- 
-بص يا صاحبي 👋
+بص يا صاحبي 
 أنا عارف إنك أول ما فتحت الكود هنا هتقول "ده واخد الأكواد من ChatGPT و Gemini و AI".
-مزعلنيش الكلام ده خالص، بالعكس، مع إني معنديش خبرة كبيرة بالبرمجة ولا درست HTML،
+مزعلنيش الكلام ده خالص، بالعكس، مع إني معنديش خبرة كبيرة بالبرمجة ولا متمكن من ال  HTML،
 قدرت أعمل موقع يساعد الحملة، وعملت عريضة نحصر بيها عدد الداعمين.  
 أنا مكنتش عايز أبين نفسي مبرمج، ولا عايز أقول إني جامد.  
 أنا عملت اللي أقدر أعمله عشان القضية دي: الإنترنت.
@@ -30,7 +30,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>موقع حملة الإنترنت غير المحدود في مصر</title>
   <meta name="description" content="معًا لـ #انترنت_غير_محدود_في_مصر. انضم، شارك، غيّر الواقع.">
-  <meta property="og:title" content="الإنترنت مش رفاهية… حقنا">
+  <meta property="og:title" content="الموقع الرسمي لحمله الانترنت الغير محدود في مصر ">
   <meta property="og:description" content="حملة الإنترنت غير المحدود في مصر">
   <meta property="og:image" content="<!--{{og_image}}-->">
   <meta name="twitter:card" content="summary_large_image">
@@ -57,10 +57,9 @@
       --gradient-secondary: linear-gradient(135deg, #667eea, #764ba2);
       --glow-red: rgba(229, 57, 53, 0.4);
       --glow-blue: rgba(102, 126, 234, 0.4);
-      /* متغيرات محسنة للموبايل */
       --mobile-padding: clamp(15px, 4vw, 30px);
       --mobile-radius: clamp(16px, 4vw, 24px);
-      --touch-target: 48px; /* الحد الأدنى لحجم اللمس */
+      --touch-target: 48px;
     }
 
     *,*::before,*::after{
@@ -77,7 +76,6 @@
       line-height:1.6;
       scroll-behavior:smooth;
       overflow-x: hidden;
-      /* تحسين النعومة على الموبايل */
       -webkit-overflow-scrolling: touch;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
@@ -133,7 +131,7 @@
     .hero{
       padding: clamp(40px, 8vh, 100px) var(--mobile-padding);
       background: var(--glass-bg);
-      backdrop-filter: blur(20px); /* قللت من 25px لتحسين الأداء */
+      backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
       border-radius: var(--mobile-radius);
       max-width: 900px;
@@ -152,7 +150,6 @@
       justify-content: center;
       align-items: center;
       text-align: center;
-      /* تحسين الأداء */
       will-change: transform, opacity;
       transform: translateZ(0);
     }
@@ -182,7 +179,7 @@
       position: relative;
       z-index: 2;
       text-shadow: 0 4px 20px rgba(255,255,255,0.1);
-      /* تحسين القراءة على الشاشات الصغيرة */
+      
       word-break: keep-all;
       overflow-wrap: break-word;
     }
@@ -199,7 +196,7 @@
       line-height: 1.5;
     }
 
-    /* حاوية الأزرار محسنة للموبايل */
+   
     .buttons-container{
       display: flex;
       gap: clamp(15px, 4vw, 25px);
@@ -212,7 +209,7 @@
       max-width: 500px;
     }
 
-    /* تصميم الأزرار محسن للمس */
+    
     .btn{
       padding: clamp(0.9rem, 2.5vw, 1rem) clamp(1.5rem, 4vw, 2.5rem);
       border: none;
@@ -221,9 +218,9 @@
       font-weight: 700;
       text-decoration: none;
       cursor: pointer;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); /* سرعة أكبر للاستجابة */
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
       min-width: clamp(160px, 40vw, 180px);
-      min-height: var(--touch-target); /* حجم مناسب للمس */
+      min-height: var(--touch-target); 
       display: inline-flex;
       align-items: center;
       justify-content: center;
@@ -234,7 +231,7 @@
       /* تحسين الأداء */
       will-change: transform;
       transform: translateZ(0);
-      -webkit-tap-highlight-color: transparent; /* إزالة هايلايت iOS */
+      -webkit-tap-highlight-color: transparent; 
     }
 
     /* زر انضم للجروب */
