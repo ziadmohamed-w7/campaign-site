@@ -440,7 +440,6 @@
         width: 100%;
         max-width: 280px;
         min-width: auto;
-        /* ضمان توحيد الحجم على الموبايل */
         padding: 1rem 1.5rem !important;
         min-height: 50px !important;
       }
@@ -466,24 +465,18 @@
       .btn {
         padding: 1rem 1.5rem;
         font-size: 0.95rem;
-        min-height: 50px; /* زيادة حجم اللمس */
+        min-height: 50px; 
       }
 
       .btn.petition-btn {
         transform: scale(1); 
       }
 
-      /* إخفاء العناصر المتحركة على الشاشات الصغيرة جداً لتحسين الأداء */
-      /*.float-icon {
-        display: none;
-      }*/
-
       .hero::before {
         opacity: 0.5; 
       }
     }
 
-    /* استعلام للشاشات العريضة جداً */
     @media(min-width: 1200px){
       .hero {
         max-width: 1000px;
@@ -557,8 +550,8 @@
 
 
 
-<div style="position: fixed; top: 15px; left: 15px; background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(10px); border: 1px solid #00ff88; border-radius: 15px; padding: 6px 14px; font-size: 11px; color: #00ff88; font-weight: 600; z-index: 1001; box-shadow: 0 0 5px #00ff88, 0 0 10px #00ff88, 0 0 15px rgba(0, 255, 136, 0.3); text-shadow: 0 0 5px #00ff88; font-family: Arial, sans-serif;">
-   Visit : 6.4K
+<div style="position: fixed; top: 50px; left: 15px; background: transparent; border: 1px solid #00ff88; border-radius: 15px; padding: 6px 14px; font-size: 11px; color: #00ff88; font-weight: 600; z-index: 1001; box-shadow: 0 0 5px #00ff88, 0 0 10px #00ff88, 0 0 15px rgba(0, 255, 136, 0.3); text-shadow: 0 0 5px #00ff88; font-family: Arial, sans-serif;">
+   Visit : 6.6K
 </div>
 
 
@@ -587,7 +580,7 @@
    <div class="petition-wrapper">
   <button class="btn petition-btn" onclick="openPetition()">وقّع العريضة</button>
 
-  <div class="counter"> عدد الموقّعين : <span id="count">4.3 الف </span></div>
+  <div class="counter"> عدد الموقّعين : <span id="count">4.4 الف </span></div>
 </div>
     
     <button class="btn btn-outline" onclick="openShare()">شارك الحملة الآن</button>
@@ -607,13 +600,13 @@ function openShare() {
   if (navigator.share) {
     navigator.share({
       title: 'انترنت غير محدود في مصر',
-      text: 'معًا لــ #انترنت_غير_محدود_في_مصر',
+      text: ' https://2h.ae/unlimited-internet معًا لــ #انترنت_غير_محدود_في_مصر',
       url: window.location.href
     });
   } else {
     // نسخ الرابط للحافظة
     navigator.clipboard.writeText(window.location.href);
-    alert('تم نسخ رابط الحملة');
+    alert('تم نسخ رابط الموقع');
   }
 }
 </script>
@@ -2828,6 +2821,21 @@ document.addEventListener('DOMContentLoaded', function() {
                         </a>
                     </div>
                 </div> 
+              <!--بطاقة 4 -->
+                <div class="celebrity-card">
+                    <div class="celebrity-avatar">
+                        <img src="https://i.ibb.co/Cj3mK89/398427744-6416373415134321-5977726374368957042-n.jpg">
+                    </div>
+                    <div class="celebrity-info">
+                        <h3>Asso Altorky</h3>
+                        <span class="celebrity-role">صانع محتوي</span>
+                        <p class="celebrity-quote">داعم للحمله </p>
+                        <a href="https://youtube.com/shorts/hnCJ7xYCjzA?si=mm0CXFKgZL9baqJ9" class="proof-button" target="_blank" rel="noopener">
+                            إثبات الدعم
+                        </a>
+                    </div>
+                </div> 
+             </div> 
             </div> 
         </div> 
     </div> 
