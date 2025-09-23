@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ziadmohamed-w7.github.io/campaign-site/sitemap.xml
