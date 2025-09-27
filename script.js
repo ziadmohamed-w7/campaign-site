@@ -31,7 +31,7 @@ function openShare() {
 /* ===== JS Block 4 ===== */
 // بيانات المهمة
 let missionData = {
-  hashtag: ' #الغاء_التليفون_الارضي',
+  hashtag: ' #انترنت_غير_محدود_في_مصر',
   currentShares: 0
 };
 
