@@ -31,7 +31,7 @@ function openShare() {
 /* ===== JS Block 4 ===== */
 // بيانات المهمة
 let missionData = {
-  hashtag: ' #انترنت_غير_محدود_في_مصر',
+  hashtag: ' #انترنت_غير_محدود_ياNTRA',
   currentShares: 0
 };
 
