@@ -36,6 +36,41 @@
 <body>
 
 
+ <!-- الرسالة المنبثقة -->
+<div id="popup-overlay" style="position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.7);display:none;align-items:center;justify-content:center;z-index:9999;">
+  <div id="popup" style="background:white;padding:25px;border-radius:15px;text-align:center;max-width:350px;box-shadow:0 0 15px rgba(0,0,0,0.3);animation:fadeIn 0.4s ease;">
+    <h2 style="margin-bottom:10px;color:#222;">🚀 تحديث جديد قريبًا!</h2>
+    <p style="color:#555;margin-bottom:20px;">نحن نعمل على إطلاق تحديث كبير قريبًا، سيغير تجربتك على الموقع!</p>
+    <button onclick="closePopup()" style="background:#007BFF;color:white;border:none;padding:10px 20px;border-radius:8px;cursor:pointer;">حسنًا</button>
+  </div>
+</div>
+
+<script>
+  function closePopup() {
+    document.getElementById('popup-overlay').style.display = 'none';
+  }
+
+  window.onload = function() {
+    const shown = localStorage.getItem('popupShownToday');
+    const today = new Date().toDateString();
+
+    if (shown !== today) {
+      document.getElementById('popup-overlay').style.display = 'flex';
+      localStorage.setItem('popupShownToday', today);
+    }
+  };
+</script>
+
+<style>
+@keyframes fadeIn {
+  from {opacity:0;transform:scale(0.9);}
+  to {opacity:1;transform:scale(1);}
+}
+</style>
+
+
+<!-- نهايه الاشعار -->
+
 <div class="sticky">
   <span>الموقع الرسمي لحمله الانترنت الغير محدود في مصر</span>
 </div>
