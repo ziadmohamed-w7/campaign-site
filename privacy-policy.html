@@ -1,123 +1,516 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>سياسة الخصوصية – الإنترنت غير محدود في مصر</title>
-  <style>
-    :root {
-      --bg: #fafafa;
-      --text: #222;
-      --accent: #0066cc;
-      --card: #ffffff;
-      --border: #e5e5e5;
-    }
-    body {
-      margin: 0;
-      padding: 2rem;
-      font-family: "Cairo", "Noto Sans Arabic", Arial, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.8;
-    }
-    .container {
-      max-width: 800px;
-      margin: auto;
-      background: var(--card);
-      padding: 2rem 3rem;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      box-shadow: 0 2px 6px rgba(0,0,0,.03);
-    }
-    h1 {
-      font-size: 1.8rem;
-      margin-bottom: 1rem;
-      color: var(--accent);
-    }
-    h2 {
-      font-size: 1.4rem;
-      margin-top: 2rem;
-      color: var(--accent);
-    }
-    p, li {
-      font-size: 1rem;
-    }
-    a {
-      color: var(--accent);
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-    footer {
-      margin-top: 3rem;
-      font-size: 0.85rem;
-      color: #666;
-      text-align: center;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سياسة الخصوصية | Privacy Policy</title>
+    <meta name="robots" content="index, follow">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Cairo', sans-serif;
+            line-height: 1.8;
+            color: #333;
+            background: #f5f5f7;
+            padding: 2rem 1rem;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 3rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            color: #0071e3;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        
+        h2 {
+            color: #0071e3;
+            font-size: 1.8rem;
+            margin: 2rem 0 1rem;
+            border-bottom: 2px solid #0071e3;
+            padding-bottom: 0.5rem;
+        }
+        
+        h3 {
+            color: #333;
+            font-size: 1.3rem;
+            margin: 1.5rem 0 0.5rem;
+        }
+        
+        p {
+            margin-bottom: 1rem;
+        }
+        
+        ul, ol {
+            margin: 1rem 0 1rem 2rem;
+        }
+        
+        li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .lang-toggle {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .lang-btn {
+            background: #0071e3;
+            color: white;
+            border: none;
+            padding: 0.75rem 2rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            margin: 0 0.5rem;
+            transition: all 0.3s;
+        }
+        
+        .lang-btn:hover {
+            background: #0066cc;
+            transform: translateY(-2px);
+        }
+        
+        .lang-btn.active {
+            background: #27ae60;
+        }
+        
+        .section {
+            margin-bottom: 2rem;
+        }
+        
+        .highlight {
+            background: #e3f2fd;
+            padding: 1rem;
+            border-left: 4px solid #0071e3;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+        
+        .back-btn {
+            display: inline-block;
+            background: #0071e3;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            margin-top: 2rem;
+            transition: all 0.3s;
+        }
+        
+        .back-btn:hover {
+            background: #0066cc;
+            transform: translateY(-2px);
+        }
+        
+        .arabic-content, .english-content {
+            display: none;
+        }
+        
+        .arabic-content.active, .english-content.active {
+            display: block;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 1.5rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
 </head>
 <body>
-  <div class="container">
-    <h1>سياسة الخصوصية</h1>
-    <p><strong>آخر تحديث:</strong> 2025</p>
+    <div class="container">
+        <div class="lang-toggle">
+            <button class="lang-btn active" onclick="switchLang('ar')" id="btnAr">العربية</button>
+            <button class="lang-btn" onclick="switchLang('en')" id="btnEn">English</button>
+        </div>
 
-    <p>
-      نحن في حملة "الإنترنت غير محدود في مصر" نحترم خصوصية زوّارنا وداعمينا، 
-      ونلتزم بحماية أي بيانات شخصية يتم جمعها أو مشاركتها عبر موقعنا. 
-      توضح هذه الصفحة كيفية التعامل مع البيانات الخاصة بك.
-    </p>
+        <!-- المحتوى العربي -->
+        <div class="arabic-content active" id="arabicContent">
+            <h1>سياسة الخصوصية</h1>
+            <p style="text-align: center; color: #666; margin-bottom: 2rem;">
+                آخر تحديث: 15 يناير 2025
+            </p>
 
-    <h2>1. جمع المعلومات</h2>
-    <ul>
-      <li>لا يطلب موقعنا أي بيانات شخصية حساسة (مثل أرقام الهوية أو الحسابات البنكية).</li>
-      <li>قد نجمع بيانات أساسية يقدّمها المستخدم بشكل طوعي عند التواصل معنا (مثل الاسم أو البريد الإلكتروني).</li>
-      <li>بعض الخدمات المستضافة (مثل GitHub Pages أو Google) قد تجمع بيانات غير شخصية تلقائيًا مثل: 
-          عنوان IP، نوع المتصفح، ووقت الزيارة، لأغراض تحليلية فقط.</li>
-    </ul>
+            <div class="section">
+                <h2>1. مقدمة</h2>
+                <p>
+                    مرحباً بك في موقع حملة الإنترنت غير المحدود في مصر. نحن نحترم خصوصيتك ونلتزم بحماية بياناتك الشخصية. 
+                    توضح سياسة الخصوصية هذه كيفية جمع واستخدام وحماية معلوماتك عند استخدام موقعنا.
+                </p>
+                <div class="highlight">
+                    <strong>ملاحظة مهمة:</strong> هذا الموقع تطوعي وغير ربحي، ولا نقوم بجمع أو بيع أي بيانات شخصية.
+                </div>
+            </div>
 
-    <h2>2. استخدام المعلومات</h2>
-    <ul>
-      <li>تُستخدم البيانات فقط للرد على استفساراتك أو للتواصل معك بشأن الحملة.</li>
-      <li>لا نقوم ببيع أو مشاركة بيانات المستخدمين مع أي طرف ثالث.</li>
-    </ul>
+            <div class="section">
+                <h2>2. المعلومات التي نجمعها</h2>
+                <h3>2.1 المعلومات التي تقدمها طوعاً:</h3>
+                <ul>
+                    <li>عند التوقيع على العريضة عبر Google Forms</li>
+                    <li>عند الانضمام إلى مجموعة الفيسبوك</li>
+                    <li>عند التواصل معنا عبر القنوات الرسمية</li>
+                </ul>
 
-    <h2>3. ملفات تعريف الارتباط (Cookies)</h2>
-    <ul>
-      <li>قد يستخدم الموقع ملفات تعريف الارتباط لتحسين تجربة التصفح.</li>
-      <li>يمكنك تعطيل الكوكيز من إعدادات متصفحك في أي وقت.</li>
-    </ul>
+                <h3>2.2 المعلومات التي نجمعها تلقائياً:</h3>
+                <ul>
+                    <li><strong>ملفات تعريف الارتباط (Cookies):</strong> لحفظ تفضيلات اللغة والوضع الليلي</li>
+                    <li><strong>البيانات التحليلية:</strong> عدد الزوار، الصفحات المشاهدة (عبر Google Analytics - إن وجد)</li>
+                    <li><strong>معلومات الجهاز:</strong> نوع المتصفح، نظام التشغيل (للأغراض التقنية فقط)</li>
+                </ul>
+            </div>
 
-    <h2>4. الروابط الخارجية</h2>
-    <p>
-      قد يحتوي الموقع على روابط لمواقع خارجية مثل فيسبوك أو تليجرام. 
-      لسنا مسؤولين عن محتوى أو سياسات الخصوصية الخاصة بتلك المواقع.
-    </p>
+            <div class="section">
+                <h2>3. كيفية استخدام معلوماتك</h2>
+                <p>نستخدم المعلومات المجمعة للأغراض التالية:</p>
+                <ol>
+                    <li><strong>تحسين تجربة المستخدم:</strong> تحسين أداء الموقع وسهولة الاستخدام</li>
+                    <li><strong>التواصل:</strong> الرد على استفساراتك وتقديم الدعم</li>
+                    <li><strong>الإحصائيات:</strong> فهم كيفية استخدام الموقع لتحسينه</li>
+                    <li><strong>الأمان:</strong> حماية الموقع من الأنشطة الضارة</li>
+                </ol>
+                
+                <div class="highlight">
+                    <strong>نحن لا نقوم بـ:</strong>
+                    <ul style="margin-top: 0.5rem;">
+                        <li>بيع معلوماتك لأطراف ثالثة</li>
+                        <li>استخدام بياناتك لأغراض تسويقية</li>
+                        <li>مشاركة معلوماتك بدون إذنك</li>
+                    </ul>
+                </div>
+            </div>
 
-    <h2>5. حماية البيانات</h2>
-    <p>
-      نتخذ الإجراءات اللازمة لحماية أي بيانات شخصية تُشارك معنا. 
-      ومع ذلك، نذكّر أن نقل البيانات عبر الإنترنت لا يمكن ضمان أمانه بنسبة 100%.
-    </p>
+            <div class="section">
+                <h2>4. ملفات تعريف الارتباط (Cookies)</h2>
+                <p>نستخدم ملفات تعريف الارتباط لـ:</p>
+                <ul>
+                    <li>حفظ تفضيلات اللغة (عربي/إنجليزي)</li>
+                    <li>حفظ إعدادات الوضع الليلي/الفاتح</li>
+                    <li>تحسين تجربة التصفح</li>
+                </ul>
+                <p>
+                    يمكنك تعطيل ملفات تعريف الارتباط من إعدادات المتصفح، لكن قد يؤثر ذلك على وظائف الموقع.
+                </p>
+            </div>
 
-    <h2>6. حقوقك</h2>
-    <p>
-      يمكنك طلب معرفة ما إذا كنا نحتفظ بأي بيانات عنك، وطلب تعديلها أو حذفها في أي وقت.
-    </p>
-    <p>
-      للتواصل معنا بخصوص سياسة الخصوصية:<br>
-      عبر <a href="https://t.me/ziad7mohamed" target="_blank" rel="noopener">تليجرام</a>.
-    </p>
+            <div class="section">
+                <h2>5. مشاركة المعلومات</h2>
+                <h3>5.1 الخدمات الخارجية:</h3>
+                <ul>
+                    <li><strong>Google Forms:</strong> لجمع التوقيعات على العريضة</li>
+                    <li><strong>Facebook:</strong> للمجموعة الرسمية</li>
+                    <li><strong>Font Awesome & Google Fonts:</strong> لتحسين مظهر الموقع</li>
+                </ul>
+                <p>هذه الخدمات لها سياسات خصوصية خاصة بها.</p>
 
-    <h2>7. التعديلات</h2>
-    <p>
-      قد يتم تحديث هذه السياسة من وقت لآخر. 
-      سيتم نشر أي تغييرات على نفس الصفحة مع تحديث تاريخ المراجعة.
-    </p>
+                <h3>5.2 متى نشارك المعلومات:</h3>
+                <ul>
+                    <li>عند وجود التزام قانوني</li>
+                    <li>لحماية حقوقنا أو حقوق الآخرين</li>
+                    <li>بموافقتك الصريحة</li>
+                </ul>
+            </div>
 
-    <footer>
-      © 2025 حملة الإنترنت غير محدود في مصر – جميع الحقوق محفوظة.
-    </footer>
-  </div>
+            <div class="section">
+                <h2>6. حقوقك</h2>
+                <p>لديك الحق في:</p>
+                <ul>
+                    <li><strong>الوصول:</strong> طلب نسخة من معلوماتك</li>
+                    <li><strong>التصحيح:</strong> تصحيح أي معلومات غير دقيقة</li>
+                    <li><strong>الحذف:</strong> طلب حذف معلوماتك</li>
+                    <li><strong>الاعتراض:</strong> الاعتراض على معالجة بياناتك</li>
+                    <li><strong>نقل البيانات:</strong> الحصول على نسخة من بياناتك بصيغة قابلة للاستخدام</li>
+                </ul>
+                <p>للقيام بأي من هذه الإجراءات، تواصل معنا عبر القنوات الرسمية.</p>
+            </div>
+
+            <div class="section">
+                <h2>7. أمان البيانات</h2>
+                <p>نتخذ إجراءات أمنية مناسبة لحماية معلوماتك:</p>
+                <ul>
+                    <li>استخدام HTTPS لتشفير الاتصال</li>
+                    <li>تخزين البيانات على خوادم آمنة</li>
+                    <li>الحد من الوصول إلى المعلومات الشخصية</li>
+                    <li>مراجعة دورية للإجراءات الأمنية</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>8. خصوصية الأطفال</h2>
+                <p>
+                    الموقع غير موجه للأطفال دون سن 13 عاماً. نحن لا نجمع معلومات من الأطفال عمداً. 
+                    إذا اكتشفنا أننا جمعنا معلومات من طفل، سنقوم بحذفها فوراً.
+                </p>
+            </div>
+
+            <div class="section">
+                <h2>9. الروابط الخارجية</h2>
+                <p>
+                    يحتوي موقعنا على روابط لمواقع خارجية (مثل فيسبوك، تويتر، Google Forms). 
+                    نحن غير مسؤولين عن محتوى أو سياسات الخصوصية لهذه المواقع. 
+                    ننصحك بمراجعة سياسات الخصوصية لأي موقع تزوره.
+                </p>
+            </div>
+
+            <div class="section">
+                <h2>10. التغييرات على السياسة</h2>
+                <p>
+                    قد نقوم بتحديث سياسة الخصوصية من وقت لآخر. سنخطرك بأي تغييرات جوهرية عبر:
+                </p>
+                <ul>
+                    <li>نشر السياسة المحدثة على الموقع</li>
+                    <li>تحديث تاريخ "آخر تحديث" أعلى الصفحة</li>
+                    <li>إشعار في المجموعة الرسمية (للتغييرات الكبيرة)</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>11. التواصل معنا</h2>
+                <p>إذا كان لديك أي أسئلة أو استفسارات حول سياسة الخصوصية:</p>
+                <ul>
+                    <li><strong>تليجرام:</strong> <a href="https://t.me/ziad7mohamed" target="_blank">t.me/ziad7mohamed</a></li>
+                    <li><strong>المجموعة الرسمية:</strong> <a href="https://www.facebook.com/share/g/16oiiv7GdB/" target="_blank">رابط المجموعة</a></li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>12. القانون المطبق</h2>
+                <p>
+                    تخضع هذه السياسة لقوانين جمهورية مصر العربية. 
+                    نحن ملتزمون أيضاً بالمعايير الدولية لحماية البيانات حيثما أمكن.
+                </p>
+            </div>
+
+            <div class="highlight">
+                <h3>موافقتك</h3>
+                <p>
+                    باستخدامك لهذا الموقع، فإنك توافق على سياسة الخصوصية هذه. 
+                    إذا كنت لا توافق على أي جزء من هذه السياسة، يرجى عدم استخدام الموقع.
+                </p>
+            </div>
+
+            <center>
+                <a href="index.html" class="back-btn">← العودة للصفحة الرئيسية</a>
+            </center>
+        </div>
+
+        <!-- English Content -->
+        <div class="english-content" id="englishContent">
+            <h1>Privacy Policy</h1>
+            <p style="text-align: center; color: #666; margin-bottom: 2rem;">
+                Last Updated: January 15, 2025
+            </p>
+
+            <div class="section">
+                <h2>1. Introduction</h2>
+                <p>
+                    Welcome to the Unlimited Internet Campaign in Egypt website. We respect your privacy and are committed 
+                    to protecting your personal data. This Privacy Policy explains how we collect, use, and protect your 
+                    information when you use our website.
+                </p>
+                <div class="highlight">
+                    <strong>Important Note:</strong> This website is voluntary and non-profit. We do not collect or sell any personal data.
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>2. Information We Collect</h2>
+                <h3>2.1 Information You Provide Voluntarily:</h3>
+                <ul>
+                    <li>When signing the petition via Google Forms</li>
+                    <li>When joining the Facebook group</li>
+                    <li>When contacting us through official channels</li>
+                </ul>
+
+                <h3>2.2 Information Collected Automatically:</h3>
+                <ul>
+                    <li><strong>Cookies:</strong> To save language and dark mode preferences</li>
+                    <li><strong>Analytics Data:</strong> Visitor count, pages viewed (via Google Analytics if applicable)</li>
+                    <li><strong>Device Information:</strong> Browser type, operating system (for technical purposes only)</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>3. How We Use Your Information</h2>
+                <p>We use collected information for:</p>
+                <ol>
+                    <li><strong>Improving User Experience:</strong> Enhancing website performance and usability</li>
+                    <li><strong>Communication:</strong> Responding to inquiries and providing support</li>
+                    <li><strong>Statistics:</strong> Understanding website usage for improvements</li>
+                    <li><strong>Security:</strong> Protecting the website from harmful activities</li>
+                </ol>
+                
+                <div class="highlight">
+                    <strong>We Do Not:</strong>
+                    <ul style="margin-top: 0.5rem;">
+                        <li>Sell your information to third parties</li>
+                        <li>Use your data for marketing purposes</li>
+                        <li>Share your information without permission</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>4. Cookies</h2>
+                <p>We use cookies to:</p>
+                <ul>
+                    <li>Save language preferences (Arabic/English)</li>
+                    <li>Save dark/light mode settings</li>
+                    <li>Improve browsing experience</li>
+                </ul>
+                <p>
+                    You can disable cookies in your browser settings, but this may affect website functionality.
+                </p>
+            </div>
+
+            <div class="section">
+                <h2>5. Information Sharing</h2>
+                <h3>5.1 External Services:</h3>
+                <ul>
+                    <li><strong>Google Forms:</strong> For collecting petition signatures</li>
+                    <li><strong>Facebook:</strong> For the official group</li>
+                    <li><strong>Font Awesome & Google Fonts:</strong> For website design</li>
+                </ul>
+                <p>These services have their own privacy policies.</p>
+
+                <h3>5.2 When We Share Information:</h3>
+                <ul>
+                    <li>When legally required</li>
+                    <li>To protect our rights or others' rights</li>
+                    <li>With your explicit consent</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>6. Your Rights</h2>
+                <p>You have the right to:</p>
+                <ul>
+                    <li><strong>Access:</strong> Request a copy of your information</li>
+                    <li><strong>Correction:</strong> Correct any inaccurate information</li>
+                    <li><strong>Deletion:</strong> Request deletion of your information</li>
+                    <li><strong>Object:</strong> Object to data processing</li>
+                    <li><strong>Data Portability:</strong> Receive your data in a usable format</li>
+                </ul>
+                <p>To exercise these rights, contact us through official channels.</p>
+            </div>
+
+            <div class="section">
+                <h2>7. Data Security</h2>
+                <p>We take appropriate security measures to protect your information:</p>
+                <ul>
+                    <li>Using HTTPS for encrypted connections</li>
+                    <li>Storing data on secure servers</li>
+                    <li>Limiting access to personal information</li>
+                    <li>Regular security reviews</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>8. Children's Privacy</h2>
+                <p>
+                    This website is not directed to children under 13. We do not knowingly collect information from children. 
+                    If we discover we have collected information from a child, we will delete it immediately.
+                </p>
+            </div>
+
+            <div class="section">
+                <h2>9. External Links</h2>
+                <p>
+                    Our website contains links to external sites (Facebook, Twitter, Google Forms). 
+                    We are not responsible for the content or privacy policies of these sites. 
+                    We recommend reviewing the privacy policies of any site you visit.
+                </p>
+            </div>
+
+            <div class="section">
+                <h2>10. Policy Changes</h2>
+                <p>
+                    We may update this Privacy Policy from time to time. We will notify you of significant changes through:
+                </p>
+                <ul>
+                    <li>Posting the updated policy on the website</li>
+                    <li>Updating the "Last Updated" date at the top</li>
+                    <li>Announcement in the official group (for major changes)</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>11. Contact Us</h2>
+                <p>If you have questions about this Privacy Policy:</p>
+                <ul>
+                    <li><strong>Telegram:</strong> <a href="https://t.me/ziad7mohamed" target="_blank">t.me/ziad7mohamed</a></li>
+                    <li><strong>Official Group:</strong> <a href="https://www.facebook.com/share/g/16oiiv7GdB/" target="_blank">Group Link</a></li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>12. Applicable Law</h2>
+                <p>
+                    This policy is subject to the laws of the Arab Republic of Egypt. 
+                    We are also committed to international data protection standards where applicable.
+                </p>
+            </div>
+
+            <div class="highlight">
+                <h3>Your Consent</h3>
+                <p>
+                    By using this website, you consent to this Privacy Policy. 
+                    If you do not agree with any part of this policy, please do not use the website.
+                </p>
+            </div>
+
+            <center>
+                <a href="index.html" class="back-btn">← Back to Homepage</a>
+            </center>
+        </div>
+    </div>
+
+    <script>
+        function switchLang(lang) {
+            const arabicContent = document.getElementById('arabicContent');
+            const englishContent = document.getElementById('englishContent');
+            const btnAr = document.getElementById('btnAr');
+            const btnEn = document.getElementById('btnEn');
+            
+            if (lang === 'ar') {
+                arabicContent.classList.add('active');
+                englishContent.classList.remove('active');
+                btnAr.classList.add('active');
+                btnEn.classList.remove('active');
+                document.documentElement.setAttribute('lang', 'ar');
+                document.documentElement.setAttribute('dir', 'rtl');
+            } else {
+                arabicContent.classList.remove('active');
+                englishContent.classList.add('active');
+                btnAr.classList.remove('active');
+                btnEn.classList.add('active');
+                document.documentElement.setAttribute('lang', 'en');
+                document.documentElement.setAttribute('dir', 'ltr');
+            }
+        }
+    </script>
 </body>
 </html>
