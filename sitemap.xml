@@ -1,8 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://ziadmohamed-w7.github.io/campaign-site/</loc>
-    <lastmod>2025-09-23</lastmod>
+    <loc>https://ziadmohamed-w7.github.io/campaign-site/index.html</loc>
+    <lastmod>2026-01-26</lastmod>
     <priority>1.0</priority>
+  </url>
+  
+  <url>
+    <loc>https://ziadmohamed-w7.github.io/campaign-site/updates.html</loc>
+    <lastmod>2026-01-26</lastmod>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://ziadmohamed-w7.github.io/campaign-site/privacy-policy.html</loc>
+    <lastmod>2026-01-26</lastmod>
+    <priority>0.5</priority>
   </url>
 </urlset>
