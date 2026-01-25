@@ -4041,4 +4041,31 @@ img {
 .nav-list a.active {
     color: var(--primary-color) !important;
     font-weight: bold;
+} 
+.update-image-container {
+    width: 100%;
+    margin-bottom: var(--spacing-md);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    height: 250px;
+}
+
+.update-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    transition: transform 0.3s ease;
+}
+
+.update-card-new:hover .update-img {
+    transform: scale(1.05);
+}
+
+.read-more-link {
+    display: inline-block;
+    margin-top: 15px;
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
 }
