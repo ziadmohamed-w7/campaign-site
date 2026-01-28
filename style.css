@@ -4069,3 +4069,30 @@ img {
     font-weight: 600;
     font-size: 0.9rem;
 }
+.btn-vote-now {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white !important;
+    padding: 12px 24px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    box-shadow: 0 4px 15px rgba(0, 113, 227, 0.3);
+    transition: all 0.3s ease;
+}
+
+.btn-vote-now:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(0, 113, 227, 0.4);
+}
+
+@keyframes pulse-white {
+    0% { box-shadow: 0 0 0 0 rgba(0, 113, 227, 0.7); }
+    70% { box-shadow: 0 0 0 10px rgba(0, 113, 227, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(0, 113, 227, 0); }
+}
+.btn-vote-now {
+    animation: pulse-white 2s infinite;
+}
