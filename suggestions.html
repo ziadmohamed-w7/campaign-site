@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>اقتراحاتك | حملة الإنترنت غير المحدود</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body class="suggestions-page">
+    <div class="top-banner">
+        <div class="top-banner-content">
+            <span class="banner-text"><i class="fas fa-bullhorn"></i> منصة اقتراحات الحملة</span>
+            <a href="index.html" class="icon-btn"><i class="fas fa-arrow-right"></i></a>
+        </div>
+    </div>
+
+    <main class="container" style="margin-top: 120px; max-width: 700px;">
+        <div class="form-container" data-aos="zoom-in">
+            <div class="form-header">
+                <i class="fas fa-comment-dots"></i>
+                <h1>شاركنا برأيك</h1>
+                <p>ساهم في تطوير الحملة للوصول لهدفنا المشترك</p>
+            </div>
+
+            <form id="suggestionForm" action="https://docs.google.com/forms/d/e/1FAIpQLSfcZl3rHA2x1ymOswPrRQBszX9_PRRDF9-OCB6RyD3_Z6QNUQ/formResponse" method="POST" target="hidden_iframe" onsubmit="submitted=true;">
+                <div class="input-group">
+                    <label>الاسم (اختياري)</label>
+                    <input type="text" name="entry.312403167" placeholder="اكتب اسمك هنا...">
+                </div>
+                
+                <div class="input-group">
+                    <label>نوع الاقتراح</label>
+                    <select name="entry.1632554385" required>
+                        <option value="تطوير الموقع">تطوير الموقع</option>
+                        <option value="فكرة للحملة">فكرة للحملة</option>
+                        <option value="بلاغ عن مشكلة">بلاغ عن مشكلة</option>
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <label>تفاصيل الاقتراح</label>
+                    <textarea name="entry.703507982" rows="5" placeholder="اشرح لنا فكرتك بالتفصيل..." required></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block">
+                    <i class="fas fa-magic"></i> إرسال الاقتراح
+                </button>
+            </form>
+            
+            <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) { showSuccess(); }"></iframe>
+        </div>
+    </main>
+
+    <script>
+        let submitted = false;
+        function showSuccess() {
+            alert('تم استلام اقتراحك بنجاح! شكراً لمساهمتك.');
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>
