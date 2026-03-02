@@ -639,3 +639,23 @@ window.campaignFunctions = {
     toggleDarkMode,
     updateMultiLanguageElements
 };
+
+<script>
+    let submitted = false;
+    const form = document.getElementById('suggestionForm');
+    const submitBtn = form.querySelector('button[type="submit"]');
+
+    form.onsubmit = function() {
+        submitted = true;
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> جاري الإرسال...';
+        submitBtn.style.opacity = '0.7';
+    };
+
+    // الدالة اللي بتشتغل لما الـ iframe يخلص "تحميل" رد جوجل
+    function handleSuccess() {
+        if (submitted) {
+            window.location.href = 'index.html?sent=true';
+        }
+    }
+</script>
