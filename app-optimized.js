@@ -639,23 +639,20 @@ window.campaignFunctions = {
     toggleDarkMode,
     updateMultiLanguageElements
 };
-
-<script>
-    let submitted = false;
-    const form = document.getElementById('suggestionForm');
-    const submitBtn = form.querySelector('button[type="submit"]');
-
-    form.onsubmit = function() {
-        submitted = true;
-        submitBtn.disabled = true;
-        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> جاري الإرسال...';
-        submitBtn.style.opacity = '0.7';
-    };
-
-    // الدالة اللي بتشتغل لما الـ iframe يخلص "تحميل" رد جوجل
-    function handleSuccess() {
-        if (submitted) {
-            window.location.href = 'index.html?sent=true';
+window.addEventListener('load', function() {
+    if (window.location.search.includes('sent=true')) {
+        const toast = document.getElementById('toast');
+        if (toast) {
+            const isAr = document.documentElement.lang === 'ar';
+            toast.innerText = isAr ? '✅ شكرًا لك! تم استلام اقتراحك بنجاح.' : '✅ Thank you! Your suggestion was received.';
+            
+            toast.classList.add('show');
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 4000);
         }
+        
+        window.history.replaceState({}, document.title, window.location.pathname);
     }
-</script>
+});
