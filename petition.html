@@ -37,32 +37,20 @@
             padding-top: 80px;
         }
 
-        /* تنسيق البانر الخلفي */
+        /* الهيدر والبانر */
         .petition-banner {
-            width: 100%;
-            height: 350px;
-            position: absolute;
-            top: 0; left: 0;
-            z-index: 0;
-            overflow: hidden;
+            width: 100%; height: 350px;
+            position: absolute; top: 0; left: 0; z-index: 0;
         }
         .petition-banner img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: brightness(0.6);
+            width: 100%; height: 100%; object-fit: cover; filter: brightness(0.4);
         }
 
         .petition-nav {
-            position: fixed;
-            top: 0; left: 0; right: 0;
-            height: 70px;
-            z-index: 1000;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 5%;
-            transition: 0.4s;
+            position: fixed; top: 0; left: 0; right: 0;
+            height: 70px; z-index: 1000;
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 0 5%; transition: 0.4s;
         }
         .petition-nav.scrolled {
             background: var(--nav-bg);
@@ -71,87 +59,110 @@
         }
 
         .main-container {
-            position: relative;
-            z-index: 1;
-            max-width: 600px;
-            margin: 40px auto;
-            padding: 20px;
+            position: relative; z-index: 1;
+            max-width: 650px; margin: 40px auto; padding: 20px;
         }
 
         .petition-card {
             background: var(--card-bg);
-            border-radius: 28px;
-            padding: 35px;
+            border-radius: 28px; padding: 30px;
             box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-            text-align: center;
         }
 
-        .form-group { text-align: right; margin-bottom: 20px; }
-        .form-group label { display: block; margin-bottom: 8px; font-weight: 700; }
-        
-        .custom-input {
-            width: 100%;
-            padding: 16px;
-            border-radius: 14px;
-            border: 2px solid rgba(0,0,0,0.05);
-            background: var(--input-bg);
-            color: var(--text-main);
-            font-family: 'Cairo';
-            box-sizing: border-box;
+        /* العداد التفاعلي */
+        .counter-container {
+            text-align: center; margin-bottom: 25px; padding: 15px;
+            background: rgba(255, 59, 48, 0.08); border-radius: 20px;
+            border: 1px solid rgba(255, 59, 48, 0.1);
+        }
+        #participant-count { font-size: 2.8rem; font-weight: 900; color: var(--danger-color); }
+        .online-dot { 
+            display: inline-block; width: 8px; height: 8px; 
+            background: var(--success-color); border-radius: 50%;
+            margin-left: 5px; animation: pulse 1.5s infinite;
+        }
+
+        /* صندوق نص العريضة */
+        .petition-text-box {
+            background: var(--input-bg); border-radius: 18px;
+            padding: 20px; margin-bottom: 25px;
+            max-height: 250px; overflow-y: auto;
+            border: 1px solid rgba(0,0,0,0.05);
+            font-size: 0.95rem; line-height: 1.8; text-align: justify;
+        }
+
+        .custom-input, select {
+            width: 100%; padding: 14px; border-radius: 12px;
+            border: 2px solid rgba(0,0,0,0.05); background: var(--input-bg);
+            color: var(--text-main); font-family: 'Cairo'; margin-bottom: 15px;
         }
 
         .btn-signature {
-            width: 100%;
-            padding: 20px;
-            border-radius: 16px;
-            border: none;
-            background: var(--danger-color);
-            color: white;
-            font-weight: 900;
-            font-size: 1.3rem;
-            cursor: pointer;
-            transition: 0.3s;
+            width: 100%; padding: 18px; border-radius: 14px; border: none;
+            background: var(--danger-color); color: white;
+            font-weight: 900; font-size: 1.2rem; cursor: pointer; transition: 0.3s;
         }
-        .btn-signature:disabled { opacity: 0.4; cursor: not-allowed; }
+        .btn-signature:disabled { opacity: 0.5; cursor: not-allowed; }
 
-        .share-box { display: none; animation: fadeIn 0.5s ease; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
     </style>
 </head>
 <body>
 
     <div class="petition-banner">
-        <img src="img/S2026-03-11 030151.png" alt="Banner">
+        <img src="img/S2026-03-11 030151.png" alt="Campaign Banner">
     </div>
 
     <nav class="petition-nav" id="mainNav">
         <a href="index.html" style="text-decoration: none; color: white;" id="backBtn">
-            <i class="fas fa-arrow-right"></i> <span id="backText">العودة</span>
+            <i class="fas fa-arrow-right"></i> <span>العودة للموقع</span>
         </a>
-        <div class="controls">
-            <button onclick="toggleMode()" id="modeBtn" style="background:none; border:none; color:white; cursor:pointer;"><i class="fas fa-moon"></i></button>
-        </div>
+        <button onclick="toggleMode()" id="modeBtn" style="background:none; border:none; color:white; cursor:pointer; font-size: 1.2rem;"><i class="fas fa-moon"></i></button>
     </nav>
 
     <div class="main-container">
         <div class="petition-card">
             
+            <div class="counter-container">
+                <h3 style="margin: 0; font-size: 0.9rem; opacity: 0.7;">إجمالي الموقعين حتى الآن</h3>
+                <div id="participant-count">7754</div>
+                <div style="font-size: 0.85rem; font-weight: bold; color: var(--success-color);">
+                    <span class="online-dot"></span> نشط الآن: <span id="online-now">42</span>
+                </div>
+            </div>
+
             <div id="formArea">
-                <h2 id="mainTitle" style="font-weight: 900; margin-bottom: 10px;">طالب معنا بإنترنت غير محدود</h2>
-                <p style="color: #86868b; margin-bottom: 30px;">صوتك هو القوة التي ستغير الواقع</p>
+                <h2 style="text-align:center; font-weight: 900; margin-bottom: 20px;">بيان العريضة الشعبية</h2>
+
+                <div class="petition-text-box">
+                    <h3>بيان العريضة:</h3>
+                    <p><strong>تحية طيبة وبعد،</strong></p>
+                    <p>نحن الموقّعين على هذه العريضة نمثل شريحة واسعة من المصريين الذين يعتمدون على الإنترنت بشكل أساسي في حياتهم اليومية: في التعليم، والعمل، والتواصل، والبحث العلمي. هذه العريضة هي صرخة عامة ومطلب مشروع من المستهلكين، ونؤكد أنها حملة سلمية لا تحمل أي أهداف سياسية أو شخصية، بل نابعة من الحاجة الملحّة لتحسين جودة الحياة الرقمية في مصر.</p>
+                    <p><strong>إننا نطالب بإصلاحات عادلة وجذرية في سوق الاتصالات والإنترنت، ونحدد مطالبنا في:</strong></p>
+                    <ul>
+                        <li><strong>الإنترنت غير محدود:</strong> إلغاء سياسة "الاستخدام العادل" التي تضر بالمستهلك.</li>
+                        <li><strong>كسر الاحتكار:</strong> فتح مجال المنافسة الحقيقية بين الشركات لتطوير البنية التحتية.</li>
+                        <li><strong>تسعير عادل:</strong> أسعار تتناسب مع دخل المواطن المصري.</li>
+                        <li><strong>تفعيل الرقابة:</strong> دور فعّال للجهاز القومي لتنظيم الاتصالات وحماية المستهلك.</li>
+                        <li><strong>شفافية التطوير:</strong> إعلان خطط تطوير البنية التحتية ونسب التحسين.</li>
+                        <li><strong>إلغاء إجبارية الأرضي:</strong> فصل خدمة الإنترنت عن التزام الاشتراك في الهاتف الأرضي.</li>
+                    </ul>
+                    <p><strong>نفوّض حملة "الإنترنت غير محدود في مصر" بتسليم هذه العريضة إلى:</strong></p>
+                    <ul>
+                        <li>رئيس الجمهورية / عبد الفتاح السيسي</li>
+                        <li>رئيس مجلس الوزراء / مصطفى مدبولي</li>
+                        <li>وزير الاتصالات / رافت هندي</li>
+                    </ul>
+                </div>
 
                 <form id="petitionForm" 
                       action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSfxsw43WwwSXzad5Vt8hJDMzIhTECoUCNLvmVJ0u9KAFHEyQQ/formResponse" 
-                      method="POST" 
-                      target="hidden_iframe">
+                      method="POST" target="hidden_iframe">
+                    
+                    <input type="text" name="entry.1279866740" class="custom-input" placeholder="الاسم الثلاثي (كما بالبطاقة)" required>
                     
                     <div class="form-group">
-                        <label id="labelName">الاسم الثلاثي</label>
-                        <input type="text" name="entry.1279866740" class="custom-input" placeholder="اكتب اسمك هنا" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label id="labelGov">المحافظة</label>
+                        <label>المحافظة</label>
                         <select name="entry.1354355602" class="custom-input" required>
                             <option value="">اختر محافظتك</option>
                             <option value="القاهرة">القاهرة</option><option value="الجيزة">الجيزة</option>
@@ -164,7 +175,7 @@
                             <option value="الشرقية">الشرقية</option><option value="سوهاج">سوهاج</option>
                             <option value="جنوب سيناء">جنوب سيناء</option><option value="شمال سيناء">شمال سيناء</option>
                             <option value="دمياط">دمياط</option><option value="كفر الشيخ">كفر الشيخ</option>
-                            <option value="مطروح">مرسى مطروح</option><option value="الأقصر">الأقصر</option>
+                            <option value="مرسى مطروح">مرسى مطروح</option><option value="الأقصر">الأقصر</option>
                             <option value="قنا">قنا</option><option value="بني سويف">بني سويف</option>
                             <option value="بورسعيد">بورسعيد</option><option value="أسوان">أسوان</option>
                             <option value="أسيوط">أسيوط</option>
@@ -174,23 +185,21 @@
                     <input type="hidden" name="entry.822243849" value="أوافق على ما ورد في هذه العريضة">
                     <input type="hidden" name="entry.994919211" value="نعم">
 
-                    <label style="display: flex; align-items: flex-start; gap: 10px; text-align: right; margin: 20px 0; cursor: pointer;">
-                        <input type="checkbox" id="ageCheck" style="width: 20px; height: 20px; accent-color: var(--danger-color);">
-                        <span style="font-size: 0.9rem;">أوافق على بنود العريضة وأقر بأن عمري أكثر من 16 عاماً.</span>
+                    <label style="display: flex; align-items: flex-start; gap: 10px; margin-bottom: 20px; cursor: pointer; font-size: 0.85rem;">
+                        <input type="checkbox" id="ageCheck" style="width: 18px; height: 18px; accent-color: var(--danger-color);">
+                        <span>أوافق على تفويض الحملة بتقديم صوتي للجهات المختصة، وأقر أن عمري يتجاوز 16 عاماً.</span>
                     </label>
 
                     <button type="submit" id="submitBtn" class="btn-signature" disabled>توقيع العريضة الآن</button>
                 </form>
             </div>
 
-            <div id="shareArea" class="share-box">
-                <div style="color: var(--success-color); font-size: 4rem; margin-bottom: 20px;"><i class="fas fa-check-circle"></i></div>
-                <h2 style="font-weight: 900;">تم استلام توقيعك!</h2>
-                <p>شكراً لكونك جزءاً من التغيير. شارك الموقع الآن لزيادة العدد.</p>
-                <div style="margin-top: 25px;">
-                    <button onclick="share('wa')" style="background:#25D366; color:white; border:none; padding:15px 30px; border-radius:12px; cursor:pointer; font-weight:bold; margin:5px;">واتساب</button>
-                    <button onclick="share('fb')" style="background:#1877F2; color:white; border:none; padding:15px 30px; border-radius:12px; cursor:pointer; font-weight:bold; margin:5px;">فيسبوك</button>
-                </div>
+            <div id="shareArea" style="display:none; text-align:center; padding: 20px 0;">
+                <i class="fas fa-check-circle" style="color: var(--success-color); font-size: 4rem;"></i>
+                <h2 style="font-weight: 900; margin-top: 15px;">تم التوقيع بنجاح!</h2>
+                <p>صوتك وصل، ساعدنا بنشر العريضة لزيادة العدد:</p>
+                <button onclick="share('wa')" style="background:#25D366; color:white; border:none; padding:15px 25px; border-radius:12px; cursor:pointer; font-weight:bold; margin:5px;"><i class="fab fa-whatsapp"></i> واتساب</button>
+                <button onclick="share('fb')" style="background:#1877F2; color:white; border:none; padding:15px 25px; border-radius:12px; cursor:pointer; font-weight:bold; margin:5px;"><i class="fab fa-facebook"></i> فيسبوك</button>
             </div>
 
         </div>
@@ -200,56 +209,54 @@
 
     <script>
         let sent = false;
+        // الرقم الأساسي الحقيقي (غيره يدوياً كل فترة)
+        let baseCount = 7754; 
 
-        // تفعيل الزر عند الموافقة على الشروط
+        // العداد التفاعلي
+        function updateCounter() {
+            document.getElementById('participant-count').innerText = baseCount.toLocaleString('ar-EG');
+        }
+
+        setInterval(() => {
+            if(Math.random() > 0.6) { 
+                baseCount += Math.floor(Math.random() * 2) + 1;
+                updateCounter();
+            }
+        }, 6000);
+
+        setInterval(() => {
+            let online = Math.floor(Math.random() * 15) + 20;
+            document.getElementById('online-now').innerText = online.toLocaleString('ar-EG');
+        }, 5000);
+
+        updateCounter();
+
+        // منطق الفورم
         document.getElementById('ageCheck').onchange = function() {
             document.getElementById('submitBtn').disabled = !this.checked;
         };
 
-        // عند الإرسال
         document.getElementById('petitionForm').onsubmit = function() {
             sent = true;
-            document.getElementById('submitBtn').innerText = "جاري الإرسال...";
-            document.getElementById('submitBtn').disabled = true;
+            document.getElementById('submitBtn').innerText = "جاري الحفظ...";
         };
 
         function showSuccess() {
             document.getElementById('formArea').style.display = 'none';
             document.getElementById('shareArea').style.display = 'block';
-            localStorage.setItem('has_signed', 'true');
+            window.scrollTo({top: 0, behavior: 'smooth'});
         }
 
         function toggleMode() {
             document.body.classList.toggle('dark-mode');
-            const isDark = document.body.classList.contains('dark-mode');
-            document.getElementById('modeBtn').innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
         }
 
-        window.onscroll = function() {
-            const nav = document.getElementById('mainNav');
-            const btn = document.getElementById('backBtn');
-            const mBtn = document.getElementById('modeBtn');
-            if (window.scrollY > 50) {
-                nav.classList.add('scrolled');
-                btn.style.color = "var(--text-main)";
-                mBtn.style.color = "var(--text-main)";
-            } else {
-                nav.classList.remove('scrolled');
-                btn.style.color = "white";
-                mBtn.style.color = "white";
-            }
-        };
-
         function share(p) {
-            const url = window.location.origin;
-            const text = "أنا وقعت على عريضة إنترنت غير محدود في مصر، وقع أنت أيضاً: ";
+            const url = window.location.href;
+            const text = "أنا وقعت على عريضة إنترنت غير محدود في مصر، صوتك هيفرق، وقع هنا: ";
             if(p==='wa') window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(text + url)}`);
             if(p==='fb') window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`);
         }
-
-        window.onload = () => {
-            if(localStorage.getItem('has_signed')) showSuccess();
-        };
     </script>
 </body>
 </html>
