@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
     <style>
-        /* إعدادات المتغيرات للوضع الليلي والنهاري داخل الصفحة */
         :root {
             --danger-color: #ff3b30;
             --success-color: #34c759;
@@ -18,6 +17,7 @@
             --card-bg: #ffffff;
             --text-main: #1d1d1f;
             --input-bg: #f5f5f7;
+            --bg-page: #f5f5f7;
         }
 
         .dark-mode {
@@ -25,264 +25,231 @@
             --card-bg: #2c2c2e;
             --text-main: #f5f5f7;
             --input-bg: #1c1c1e;
-            background-color: #1d1d1f;
+            --bg-page: #1d1d1f;
         }
 
         body {
             font-family: 'Cairo', sans-serif;
-            background-color: var(--bg-light);
+            background-color: var(--bg-page);
             color: var(--text-main);
             transition: 0.3s;
             margin: 0;
-            padding-top: 100px;
+            padding-top: 80px;
         }
 
-        /* الهيدر المصلح */
+        /* تنسيق البانر الخلفي */
+        .petition-banner {
+            width: 100%;
+            height: 350px;
+            position: absolute;
+            top: 0; left: 0;
+            z-index: 0;
+            overflow: hidden;
+        }
+        .petition-banner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.6);
+        }
+
         .petition-nav {
             position: fixed;
             top: 0; left: 0; right: 0;
             height: 70px;
-            background: var(--nav-bg);
-            backdrop-filter: blur(15px);
             z-index: 1000;
             display: flex;
             align-items: center;
             justify-content: space-between;
             padding: 0 5%;
-            border-bottom: 1px solid rgba(0,0,0,0.05);
+            transition: 0.4s;
+        }
+        .petition-nav.scrolled {
+            background: var(--nav-bg);
+            backdrop-filter: blur(15px);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
         .main-container {
+            position: relative;
+            z-index: 1;
             max-width: 600px;
-            margin: 0 auto;
+            margin: 40px auto;
             padding: 20px;
         }
 
         .petition-card {
             background: var(--card-bg);
-            border-radius: 24px;
-            padding: 30px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            border-radius: 28px;
+            padding: 35px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
             text-align: center;
         }
 
-        .counter-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: rgba(255, 59, 48, 0.1);
-            color: var(--danger-color);
-            padding: 10px 20px;
-            border-radius: 50px;
-            font-weight: 900;
-            font-size: 1.2rem;
-            margin-bottom: 20px;
-        }
-
-        .form-group { text-align: right; margin-bottom: 15px; }
+        .form-group { text-align: right; margin-bottom: 20px; }
         .form-group label { display: block; margin-bottom: 8px; font-weight: 700; }
         
         .custom-input {
             width: 100%;
-            padding: 14px;
-            border-radius: 12px;
-            border: 2px solid #eee;
+            padding: 16px;
+            border-radius: 14px;
+            border: 2px solid rgba(0,0,0,0.05);
             background: var(--input-bg);
             color: var(--text-main);
             font-family: 'Cairo';
             box-sizing: border-box;
         }
 
-        .dark-mode .custom-input { border-color: #3a3a3c; }
-
         .btn-signature {
             width: 100%;
-            padding: 18px;
-            border-radius: 12px;
+            padding: 20px;
+            border-radius: 16px;
             border: none;
             background: var(--danger-color);
             color: white;
             font-weight: 900;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             cursor: pointer;
             transition: 0.3s;
         }
-
         .btn-signature:disabled { opacity: 0.4; cursor: not-allowed; }
 
-        .share-box { display: none; padding: 20px 0; }
+        .share-box { display: none; animation: fadeIn 0.5s ease; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
 <body>
 
-<div class="petition-banner">
-    <img src="img/S2026-03-11 030151.png" alt="Campaign Banner">
-</div>
-
-<nav class="petition-nav">
-    <a href="index.html" class="icon-btn" style="text-decoration: none; color: white; font-weight: bold;">
-        <i class="fas fa-arrow-right"></i> <span id="backText">العودة</span>
-    </a>
-    <div class="controls">
-        <button onclick="toggleMode()" class="icon-btn" id="modeBtn" style="color: white;"><i class="fas fa-moon"></i></button>
-        <button onclick="toggleLang()" class="icon-btn" id="langBtn" style="color: white;">EN</button>
+    <div class="petition-banner">
+        <img src="img/S2026-03-11 030151.png" alt="Banner">
     </div>
-</nav>
+
+    <nav class="petition-nav" id="mainNav">
+        <a href="index.html" style="text-decoration: none; color: white;" id="backBtn">
+            <i class="fas fa-arrow-right"></i> <span id="backText">العودة</span>
+        </a>
+        <div class="controls">
+            <button onclick="toggleMode()" id="modeBtn" style="background:none; border:none; color:white; cursor:pointer;"><i class="fas fa-moon"></i></button>
+        </div>
+    </nav>
 
     <div class="main-container">
         <div class="petition-card">
             
             <div id="formArea">
-                <div class="counter-badge">
-                    <i class="fas fa-users"></i>
-                    <span id="sigCount">7.7 الف </span>
-                    <span id="sigUnit">توقيع</span>
-                </div>
-                
-                <h2 id="mainTitle">طالب معنا بإنترنت غير محدود</h2>
-                <p id="subTitle" style="color: #86868b; margin-bottom: 25px;">صوتك سيصل للمسؤولين عبر هذه العريضة الرسمية</p>
+                <h2 id="mainTitle" style="font-weight: 900; margin-bottom: 10px;">طالب معنا بإنترنت غير محدود</h2>
+                <p style="color: #86868b; margin-bottom: 30px;">صوتك هو القوة التي ستغير الواقع</p>
 
-                <form id="petitionForm" action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSfxsw43WwwSXzad5Vt8hJDMzIhTECoUCNLvmVJ0u9KAFHEyQQ/formResponse" method="POST" target="hidden_iframe">
+                <form id="petitionForm" 
+                      action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSfxsw43WwwSXzad5Vt8hJDMzIhTECoUCNLvmVJ0u9KAFHEyQQ/formResponse" 
+                      method="POST" 
+                      target="hidden_iframe">
+                    
                     <div class="form-group">
-                        <label id="labelName">الاسم بالكامل</label>
-                        <input type="text" name="entry.1279866740" class="custom-input" placeholder="اكتب اسمك الثلاثي" required>
+                        <label id="labelName">الاسم الثلاثي</label>
+                        <input type="text" name="entry.1279866740" class="custom-input" placeholder="اكتب اسمك هنا" required>
                     </div>
 
                     <div class="form-group">
                         <label id="labelGov">المحافظة</label>
                         <select name="entry.1354355602" class="custom-input" required>
                             <option value="">اختر محافظتك</option>
-                            <option value="القاهرة">القاهرة</option><option value="الجيزة">الجيزة</option><option value="الإسكندرية">الإسكندرية</option>
-                            <option value="الدقهلية">الدقهلية</option><option value="البحر الأحمر">البحر الأحمر</option><option value="البحيرة">البحيرة</option>
-                            <option value="الفيوم">الفيوم</option><option value="الغربية">الغربية</option><option value="الإسماعيلية">الإسماعيلية</option>
-                            <option value="المنوفية">المنوفية</option><option value="المنيا">المنيا</option><option value="القليوبية">القليوبية</option>
-                            <option value="الوادي الجديد">الوادي الجديد</option><option value="السويس">السويس</option><option value="الشرقية">الشرقية</option>
-                            <option value="سوهاج">سوهاج</option><option value="جنوب سيناء">جنوب سيناء</option><option value="شمال سيناء">شمال سيناء</option>
-                            <option value="دمياط">دمياط</option><option value="كفر الشيخ">كفر الشيخ</option><option value="مطروح">مطروح</option>
-                            <option value="الأقصر">الأقصر</option><option value="قنا">قنا</option><option value="بني سويف">بني سويف</option>
-                            <option value="بورسعيد">بورسعيد</option><option value="أسوان">أسوان</option><option value="أسيوط">أسيوط</option>
+                            <option value="القاهرة">القاهرة</option><option value="الجيزة">الجيزة</option>
+                            <option value="الإسكندرية">الإسكندرية</option><option value="الدقهلية">الدقهلية</option>
+                            <option value="البحر الأحمر">البحر الأحمر</option><option value="البحيرة">البحيرة</option>
+                            <option value="الفيوم">الفيوم</option><option value="الغربية">الغربية</option>
+                            <option value="الإسماعيلية">الإسماعيلية</option><option value="المنوفية">المنوفية</option>
+                            <option value="المنيا">المنيا</option><option value="القليوبية">القليوبية</option>
+                            <option value="الوادي الجديد">الوادي الجديد</option><option value="السويس">السويس</option>
+                            <option value="الشرقية">الشرقية</option><option value="سوهاج">سوهاج</option>
+                            <option value="جنوب سيناء">جنوب سيناء</option><option value="شمال سيناء">شمال سيناء</option>
+                            <option value="دمياط">دمياط</option><option value="كفر الشيخ">كفر الشيخ</option>
+                            <option value="مطروح">مرسى مطروح</option><option value="الأقصر">الأقصر</option>
+                            <option value="قنا">قنا</option><option value="بني سويف">بني سويف</option>
+                            <option value="بورسعيد">بورسعيد</option><option value="أسوان">أسوان</option>
+                            <option value="أسيوط">أسيوط</option>
                         </select>
                     </div>
 
-                    <input type="hidden" name="entry.822243849" value="أوافق">
+                    <input type="hidden" name="entry.822243849" value="أوافق على ما ورد في هذه العريضة">
                     <input type="hidden" name="entry.994919211" value="نعم">
 
-                    <label style="display: flex; align-items: flex-start; gap: 10px; text-align: right; margin: 25px 0; cursor: pointer;">
-                        <input type="checkbox" id="ageCheck" style="width: 20px; height: 20px; margin-top: 5px;">
-                        <span id="ageText">أقر بأن عمري 16 عاماً أو أكثر وأطالب بحقي في إنترنت عادل.</span>
+                    <label style="display: flex; align-items: flex-start; gap: 10px; text-align: right; margin: 20px 0; cursor: pointer;">
+                        <input type="checkbox" id="ageCheck" style="width: 20px; height: 20px; accent-color: var(--danger-color);">
+                        <span style="font-size: 0.9rem;">أوافق على بنود العريضة وأقر بأن عمري أكثر من 16 عاماً.</span>
                     </label>
 
-                    <button type="submit" id="submitBtn" class="btn-signature" disabled>
-                        توقيع العريضة الآن
-                    </button>
+                    <button type="submit" id="submitBtn" class="btn-signature" disabled>توقيع العريضة الآن</button>
                 </form>
             </div>
 
             <div id="shareArea" class="share-box">
-                <i class="fas fa-check-circle" style="font-size: 4rem; color: var(--success-color);"></i>
-                <h2 id="successTitle" style="margin-top: 20px;">شكراً لك! تم التوقيع</h2>
-                <p id="successDesc">أنت الآن ساهمت في تغيير المستقبل. شارك العريضة الآن:</p>
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 20px;">
-                    <button onclick="share('wa')" style="background: #25D366; color: white; border: none; padding: 15px; border-radius: 12px; cursor: pointer; font-weight: bold;"><i class="fab fa-whatsapp"></i> واتساب</button>
-                    <button onclick="share('fb')" style="background: #1877F2; color: white; border: none; padding: 15px; border-radius: 12px; cursor: pointer; font-weight: bold;"><i class="fab fa-facebook"></i> فيسبوك</button>
+                <div style="color: var(--success-color); font-size: 4rem; margin-bottom: 20px;"><i class="fas fa-check-circle"></i></div>
+                <h2 style="font-weight: 900;">تم استلام توقيعك!</h2>
+                <p>شكراً لكونك جزءاً من التغيير. شارك الموقع الآن لزيادة العدد.</p>
+                <div style="margin-top: 25px;">
+                    <button onclick="share('wa')" style="background:#25D366; color:white; border:none; padding:15px 30px; border-radius:12px; cursor:pointer; font-weight:bold; margin:5px;">واتساب</button>
+                    <button onclick="share('fb')" style="background:#1877F2; color:white; border:none; padding:15px 30px; border-radius:12px; cursor:pointer; font-weight:bold; margin:5px;">فيسبوك</button>
                 </div>
             </div>
 
         </div>
     </div>
 
-    <iframe name="hidden_iframe" style="display:none;" onload="if(sent)showSuccess()"></iframe>
+    <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(sent)showSuccess()"></iframe>
 
     <script>
         let sent = false;
-        let isAr = true;
 
-        // وظيفة الوضع الليلي المباشرة
+        // تفعيل الزر عند الموافقة على الشروط
+        document.getElementById('ageCheck').onchange = function() {
+            document.getElementById('submitBtn').disabled = !this.checked;
+        };
+
+        // عند الإرسال
+        document.getElementById('petitionForm').onsubmit = function() {
+            sent = true;
+            document.getElementById('submitBtn').innerText = "جاري الإرسال...";
+            document.getElementById('submitBtn').disabled = true;
+        };
+
+        function showSuccess() {
+            document.getElementById('formArea').style.display = 'none';
+            document.getElementById('shareArea').style.display = 'block';
+            localStorage.setItem('has_signed', 'true');
+        }
+
         function toggleMode() {
             document.body.classList.toggle('dark-mode');
             const isDark = document.body.classList.contains('dark-mode');
             document.getElementById('modeBtn').innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
-            localStorage.setItem('petition-dark', isDark);
         }
 
-        // وظيفة اللغة المباشرة
-        const translations = {
-            ar: {
-                back: "العودة", title: "طالب معنا بإنترنت غير محدود", sub: "صوتك سيصل للمسؤولين عبر هذه العريضة الرسمية",
-                name: "الاسم بالكامل", gov: "المحافظة", age: "أقر بأن عمري 16 عاماً أو أكثر وأطالب بحقي في إنترنت عادل.",
-                btn: "توقيع العريضة الآن", sTitle: "شكراً لك! تم التوقيع", sDesc: "أنت الآن ساهمت في تغيير المستقبل. شارك العريضة الآن:", unit: "توقيع"
-            },
-            en: {
-                back: "Back", title: "Demand Unlimited Internet", sub: "Your voice will reach officials through this petition",
-                name: "Full Name", gov: "Governorate", age: "I confirm I am 16+ and demand my right to fair internet.",
-                btn: "Sign Petition Now", sTitle: "Thank You! Signed", sDesc: "You have contributed to the future. Share now:", unit: "Signatures"
+        window.onscroll = function() {
+            const nav = document.getElementById('mainNav');
+            const btn = document.getElementById('backBtn');
+            const mBtn = document.getElementById('modeBtn');
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+                btn.style.color = "var(--text-main)";
+                mBtn.style.color = "var(--text-main)";
+            } else {
+                nav.classList.remove('scrolled');
+                btn.style.color = "white";
+                mBtn.style.color = "white";
             }
         };
 
-        function toggleLang() {
-            isAr = !isAr;
-            const l = isAr ? 'ar' : 'en';
-            document.documentElement.lang = l;
-            document.documentElement.dir = isAr ? 'rtl' : 'ltr';
-            document.getElementById('langBtn').innerText = isAr ? 'EN' : 'AR';
-            
-            document.getElementById('backText').innerText = translations[l].back;
-            document.getElementById('mainTitle').innerText = translations[l].title;
-            document.getElementById('subTitle').innerText = translations[l].sub;
-            document.getElementById('labelName').innerText = translations[l].name;
-            document.getElementById('labelGov').innerText = translations[l].gov;
-            document.getElementById('ageText').innerText = translations[l].age;
-            document.getElementById('submitBtn').innerText = translations[l].btn;
-            document.getElementById('successTitle').innerText = translations[l].sTitle;
-            document.getElementById('successDesc').innerText = translations[l].sDesc;
-            document.getElementById('sigUnit').innerText = translations[l].unit;
-        }
-
-        // تفعيل الزر عند الموافقة
-        document.getElementById('ageCheck').addEventListener('change', function(e) {
-            document.getElementById('submitBtn').disabled = !e.target.checked;
-        });
-
-        // إرسال الفورم
-        document.getElementById('petitionForm').onsubmit = function() {
-            sent = true;
-            document.getElementById('submitBtn').innerText = isAr ? "جاري الإرسال..." : "Sending...";
-        };
-
-        function showSuccess() {
-            localStorage.setItem('signed_petition', 'true');
-            document.getElementById('formArea').style.display = 'none';
-            document.getElementById('shareArea').style.display = 'block';
-        }
-
         function share(p) {
-            const url = window.location.href;
-            const text = "وقع معي على عريضة الإنترنت غير المحدود في مصر: ";
+            const url = window.location.origin;
+            const text = "أنا وقعت على عريضة إنترنت غير محدود في مصر، وقع أنت أيضاً: ";
             if(p==='wa') window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(text + url)}`);
             if(p==='fb') window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`);
         }
 
-        // عند التحميل
         window.onload = () => {
-            if(localStorage.getItem('signed_petition')) showSuccess();
-            if(localStorage.getItem('petition-dark') === 'true') toggleMode();
+            if(localStorage.getItem('has_signed')) showSuccess();
         };
-        window.onscroll = function() {
-    const nav = document.querySelector('.petition-nav');
-    const btns = document.querySelectorAll('.icon-btn, #backText');
-    
-    if (window.scrollY > 50) {
-        nav.style.background = "var(--nav-bg)";
-        nav.style.boxShadow = "0 2px 10px rgba(0,0,0,0.1)";
-        // تغيير لون الأيقونات للون النص العادي عند نزول الصفحة
-        btns.forEach(b => b.style.color = "var(--text-main)");
-    } else {
-        nav.style.background = "transparent";
-        nav.style.boxShadow = "none";
-        // إرجاع الأيقونات للأبيض لتظهر فوق الصورة
-        btns.forEach(b => b.style.color = "white");
-    }
-};
     </script>
 </body>
 </html>
