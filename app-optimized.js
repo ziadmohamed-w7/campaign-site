@@ -445,7 +445,7 @@ function openPetition() {
     const lang = isArabic ? 'ar' : 'en';
     showToast(translations[lang].openingPetition);
     
-    const petitionUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSfxsw43WwwSXzad5Vt8hJDMzIhTECoUCNLvmVJ0u9KAFHEyQQ/viewform';
+    const petitionUrl = 'petition.html';
     window.open(petitionUrl, '_blank', 'noopener,noreferrer');
 }
 
